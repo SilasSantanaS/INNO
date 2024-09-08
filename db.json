@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": "6b30",
+      "fullName": "sdfadsf",
+      "email": "sdfaj@4123.com",
+      "password": "dsfa"
+    },
+    {
+      "id": "fe32",
+      "fullName": "Silas Santana",
+      "email": "silas@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "a696",
+      "fullName": "Silas Santana",
+      "email": "silas@gmail.com",
+      "password": "123"
+    }
+  ]
+}

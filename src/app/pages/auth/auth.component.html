@@ -1,0 +1,66 @@
+<div class="grid min-h-full">
+  <div class="col flex align-items-center justify-content-center">
+    <h1><span class="text-primary">INNO</span>MED</h1>
+  </div>
+  <div class="col bg-primary-300">
+    <div class="flex justify-content-center align-items-center h-full">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <p-card header="Login" [style]="{ width: '400px' }">
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input
+              type="text"
+              pInputText
+              formControlName="email"
+              class="w-full"
+              name="email"
+              placeholder="Digite seu e-mail"
+            />
+          </div>
+          <small
+            *ngIf="email.invalid && (email.dirty || email.touched)"
+            class="block p-error"
+          >
+            <div *ngIf="email.errors?.['required']">
+              É necessário preencher o e-mail.
+            </div>
+            <div *ngIf="email.errors?.['email']">E-mail deve ser válido.</div>
+          </small>
+
+          <div class="field">
+            <label for="password">Senha</label>
+            <input
+              type="password"
+              pInputText
+              formControlName="password"
+              class="w-full"
+              name="password"
+              placeholder="Digite a senha"
+            />
+          </div>
+          <small
+            *ngIf="password.invalid && (password.dirty || password.touched)"
+            class="block p-error"
+          >
+            <div *ngIf="password.errors?.['required']">
+              É necessário preencher a senha.
+            </div>
+            <div *ngIf="password.errors?.['password']">
+              Senha deve ser válida.
+            </div>
+          </small>
+
+          <p-button
+            label="Entrar"
+            styleClass="w-full"
+            [disabled]="loginForm.invalid"
+            type="submit"
+          />
+          <div class="mt-2">
+            Não tem acesso? <a routerLink="/auth/sign-up">Cadastre-se</a>
+          </div>
+        </p-card>
+      </form>
+    </div>
+  </div>
+</div>
