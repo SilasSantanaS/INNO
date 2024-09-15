@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
+import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
-
 import { HomeRoutingModule } from './home-routing.module';
+
 import { HomeComponent } from './home.component';
 
 
@@ -11,6 +12,7 @@ import { HomeComponent } from './home.component';
   ],
   imports: [
     CommonModule,
+    ButtonModule,
     HomeRoutingModule
   ]
 })

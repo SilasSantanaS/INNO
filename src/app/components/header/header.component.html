@@ -1,0 +1,18 @@
+<p-menubar [model]="items">
+  <ng-template pTemplate="start">
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCHoykln_QkzNAuFx2RFg2uyrCMDYA6_152g&s"
+      height="35"
+      class="mr-2"
+    />
+  </ng-template>
+
+  <ng-template pTemplate="end">
+    <input type="text" pInputText placeholder="Pesquisar" class="mr-2" />
+
+    <p-button
+      icon="pi pi-sign-out"
+      (onClick)="logout()"
+    />
+  </ng-template>
+</p-menubar>

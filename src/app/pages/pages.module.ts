@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { PagesRoutingModule } from './pages-routing.module';
+import { HeaderModule } from '../components/header/header.module';
+
 import { PagesComponent } from './pages.component';
 
 
@@ -11,6 +12,7 @@ import { PagesComponent } from './pages.component';
   ],
   imports: [
     CommonModule,
+    HeaderModule,
     PagesRoutingModule
   ]
 })
