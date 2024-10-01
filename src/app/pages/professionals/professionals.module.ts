@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
+import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
+import { DividerModule } from 'primeng/divider';
 
 import { ProfessionalsRoutingModule } from './professionals-routing.module';
 import { ProfessionalsComponent } from './professionals.component';
@@ -11,6 +13,8 @@ import { ProfessionalsComponent } from './professionals.component';
   ],
   imports: [
     CommonModule,
+    DividerModule,
+    ButtonModule,
     ProfessionalsRoutingModule
   ]
 })

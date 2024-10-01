@@ -5,6 +5,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { AvatarModule } from 'primeng/avatar';
+import { RouterModule } from '@angular/router';
 import { StyleClassModule } from 'primeng/styleclass';
 
 import { DrawerComponent } from './drawer.component';
@@ -16,6 +17,7 @@ import { DrawerComponent } from './drawer.component';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     ButtonModule,
     RippleModule,
     AvatarModule,
