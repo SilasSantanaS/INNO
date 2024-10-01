@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 
 import { MessageService } from 'primeng/api';
 
-
 @NgModule({
   declarations: [
     AppComponent

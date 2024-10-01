@@ -13,7 +13,6 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router) {}
 
   logout(): void {
-    console.log('logando..');
     sessionStorage.clear();
     this.router.navigate(['auth/login']);
   }

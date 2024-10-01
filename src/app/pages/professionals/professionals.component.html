@@ -1,16 +1,55 @@
 <div class="grid h-full">
   <div class="col-6">
     <div class="flex -mb-4">
-      <h2>PROFISSIONAIS</h2>
+      <h2 class="text-primary">PROFISSIONAIS DE SAÚDE</h2>
     </div>
     <p-divider />
   </div>
   <div class="col-6 bg-danger">
     <div class="flex justify-content-end">
-      <p-button label="Novo Profissional" icon="pi pi-plus" size="small" />
+      <p-button label="Cadastrar" icon="pi pi-plus" size="small" />
+      <p-button
+        label="Importar XLS de Profissionais"
+        icon="pi pi-file-excel"
+        size="small"
+        [outlined]="true"
+        class="ml-4"
+      />
     </div>
   </div>
 
-  <div class="col-6">1</div>
-  <div class="col-6">2</div>
+  <form
+    [formGroup]="form"
+    class="flex w-9 justify-content-between bg-bluegray-50 p-3"
+  >
+    <input
+      type="text"
+      pInputText
+      formControlName="search"
+      placeholder="Buscar por nome"
+    />
+
+    <p-dropdown
+      formControlName="selectedCity"
+      [options]="cities"
+      optionLabel="name"
+      placeholder="Todas as especialidades"
+    />
+
+    <p-dropdown
+      formControlName="selectedCity"
+      [options]="cities"
+      optionLabel="name"
+      placeholder="Todas as especialidades"
+    />
+
+    <p-dropdown
+      formControlName="selectedCity"
+      [options]="cities"
+      optionLabel="name"
+      placeholder="Todas as especialidades"
+    />
+  </form>
+
+  <!-- <app-table></app-table> -->
 </div>
