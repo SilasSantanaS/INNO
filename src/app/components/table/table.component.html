@@ -1,1 +1,26 @@
-<p>table works!</p>
+<p-table
+  [value]="professionals"
+  [paginator]="true"
+  [rows]="10"
+  [tableStyle]="{ 'min-width': '50rem' }"
+  styleClass="p-datatable-striped"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Especialidade</th>
+      <th>Unidade</th>
+      <th>Status</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-professional>
+    <tr>
+      <td>{{ professional.id }}</td>
+      <td>{{ professional.name }}</td>
+      <td>{{ professional.type }}</td>
+      <td>{{ professional.unit }}</td>
+      <td>{{ professional.status }}</td>
+    </tr>
+  </ng-template>
+</p-table>

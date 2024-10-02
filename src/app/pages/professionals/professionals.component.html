@@ -1,7 +1,7 @@
 <div class="grid h-full">
   <div class="col-6">
     <div class="flex -mb-4">
-      <h2 class="text-primary">PROFISSIONAIS DE SAÚDE</h2>
+      <h2 class="text-primary">Profissionais de Saúde</h2>
     </div>
     <p-divider />
   </div>
@@ -20,36 +20,44 @@
 
   <form
     [formGroup]="form"
-    class="flex w-9 justify-content-between bg-bluegray-50 p-3"
+    class="flex w-12 justify-content-between bg-bluegray-50 p-3 mb-4"
   >
-    <input
-      type="text"
-      pInputText
-      formControlName="search"
-      placeholder="Buscar por nome"
-    />
+    <div class="w-9 flex justify-content-between">
+      <div class="p-toolbar-group-center">
+        <span class="p-input-icon-right">
+          <i class="pi pi-search"></i>
+          <input
+            pInputText
+            placeholder="Buscar profissional"
+            formControlName="search"
+          />
+        </span>
+      </div>
 
-    <p-dropdown
-      formControlName="selectedCity"
-      [options]="cities"
-      optionLabel="name"
-      placeholder="Todas as especialidades"
-    />
+      <p-dropdown
+        formControlName="selectedCity"
+        [options]="cities"
+        optionLabel="name"
+        placeholder="Todas as especialidades"
+      />
 
-    <p-dropdown
-      formControlName="selectedCity"
-      [options]="cities"
-      optionLabel="name"
-      placeholder="Todas as especialidades"
-    />
+      <p-dropdown
+        formControlName="selectedCity"
+        [options]="cities"
+        optionLabel="name"
+        placeholder="Todas as especialidades"
+      />
 
-    <p-dropdown
-      formControlName="selectedCity"
-      [options]="cities"
-      optionLabel="name"
-      placeholder="Todas as especialidades"
-    />
+      <p-dropdown
+        formControlName="selectedCity"
+        [options]="cities"
+        optionLabel="name"
+        placeholder="Todas as especialidades"
+      />
+    </div>
   </form>
 
-  <!-- <app-table></app-table> -->
+  <div class="w-full">
+    <app-table></app-table>
+  </div>
 </div>

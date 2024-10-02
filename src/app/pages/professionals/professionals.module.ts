@@ -5,10 +5,12 @@ import { CommonModule } from '@angular/common';
 import { DividerModule } from 'primeng/divider';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ProfessionalsRoutingModule } from './professionals-routing.module';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { TableModule as TModule } from '../../components/table/table.module';
 
 import { ProfessionalsComponent } from './professionals.component';
+
 
 
 @NgModule({
@@ -16,10 +18,10 @@ import { ProfessionalsComponent } from './professionals.component';
     ProfessionalsComponent
   ],
   imports: [
-    TableModule,
+    TModule,
     CommonModule,
-    DividerModule,
     ButtonModule,
+    DividerModule,
     DropdownModule,
     InputTextModule,
     ReactiveFormsModule,
