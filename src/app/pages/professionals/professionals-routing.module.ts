@@ -7,6 +7,10 @@ const routes: Routes = [
     path: '',
     title: 'INNO | Profissionais',
     component: ProfessionalsComponent
+  },
+  {
+    path: 'new',
+    loadChildren: () => import('./add-professionals/add-professionals.module').then(m => m.AddProfessionalsModule)
   }
 ];
 

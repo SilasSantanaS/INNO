@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-professionals',
@@ -13,7 +14,10 @@ export class ProfessionalsComponent implements OnInit {
     selectedCity: [],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+  ) {}
 
   ngOnInit(): void {
     this.cities = [
@@ -23,5 +27,9 @@ export class ProfessionalsComponent implements OnInit {
       { name: 'Istanbul', code: 'IST' },
       { name: 'Paris', code: 'PRS' },
     ];
+  }
+
+  create(): void {
+    this.router.navigate(['professionals/new']);
   }
 }

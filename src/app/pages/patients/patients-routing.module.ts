@@ -6,12 +6,19 @@ const routes: Routes = [
   {
     path: '',
     title: 'INNO | Pacientes',
-    component: PatientsComponent
-  }
+    component: PatientsComponent,
+  },
+  {
+    path: 'new',
+    loadChildren: () =>
+      import('./add-patients/add-patients.module').then(
+        (m) => m.AddPatientsModule
+      ),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class PatientsRoutingModule { }
+export class PatientsRoutingModule {}

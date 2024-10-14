@@ -1,0 +1,149 @@
+<div class="grid">
+  <div class="col-6">
+    <div class="flex -mb-4">
+      <h2 class="text-primary">Cadastro de Profissional</h2>
+    </div>
+    <p-divider />
+  </div>
+  <div class="col-6"></div>
+</div>
+
+<form class="grid flex" (ngSubmit)="save()">
+  <div class="col-12">
+    <h3>Dados Básicos</h3>
+    <div class="grid">
+      <div class="col-4">
+        <div class="flex flex-column gap-2">
+          <label for="username">Nome Completo</label>
+          <input pInputText id="username" aria-describedby="username-help" />
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="flex flex-column gap-2">
+          <label for="username">N° CNPJ/CPF</label>
+          <input pInputText id="username" aria-describedby="username-help" />
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="flex flex-column gap-2">
+          <label for="username">N° RG</label>
+          <input pInputText id="username" aria-describedby="username-help" />
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="flex flex-column gap-2">
+          <label for="username">N° Registro Profissional</label>
+          <input pInputText id="username" aria-describedby="username-help" />
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="flex flex-column gap-2">
+          <label for="username">Função</label>
+          <input pInputText id="username" aria-describedby="username-help" />
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="flex flex-column gap-2">
+          <label for="username">Especialidade</label>
+          <input pInputText id="username" aria-describedby="username-help" />
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="flex flex-column gap-2">
+          <label for="username">Data de contratação</label>
+          <input pInputText id="username" aria-describedby="username-help" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <h3>Endereço</h3>
+    <div class="grid">
+      <div class="col-4">
+        <div class="flex flex-column gap-2">
+          <label for="username">CEP (Se houver)</label>
+          <input pInputText id="username" aria-describedby="username-help" />
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="flex flex-column gap-2">
+          <label for="username">Estado</label>
+          <input pInputText id="username" aria-describedby="username-help" />
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="flex flex-column gap-2">
+          <label for="username">Cidade</label>
+          <input pInputText id="username" aria-describedby="username-help" />
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="flex flex-column gap-2">
+          <label for="username">Bairro</label>
+          <input pInputText id="username" aria-describedby="username-help" />
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="flex flex-column gap-2">
+          <label for="username">Logradouro</label>
+          <input pInputText id="username" aria-describedby="username-help" />
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="flex flex-column gap-2">
+          <label for="username">Nº</label>
+          <input pInputText id="username" aria-describedby="username-help" />
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="flex flex-column gap-2">
+          <label for="username">Complemento</label>
+          <input pInputText id="username" aria-describedby="username-help" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <h3>Contatos</h3>
+    <div class="grid">
+      <div class="col-4">
+        <div class="flex flex-column gap-2">
+          <label for="username">Telefone Principal</label>
+          <input pInputText id="username" aria-describedby="username-help" />
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="flex flex-column gap-2">
+          <label for="username">Telefone Secundário (Se houver)</label>
+          <input pInputText id="username" aria-describedby="username-help" />
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="flex flex-column gap-2">
+          <label for="username">E-mail</label>
+          <input pInputText id="username" aria-describedby="username-help" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-4">
+    <p-button type="submit" label="Salvar" class="ml-2" />
+    <p-button label="Cancelar" class="ml-2" [outlined]="true" />
+  </div>
+</form>
