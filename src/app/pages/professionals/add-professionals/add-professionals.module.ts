@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
+import { DividerModule } from 'primeng/divider';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
+import { InputMaskModule } from 'primeng/inputmask';
 import { AddProfessionalsRoutingModule } from './add-professionals-routing.module';
+import { BreadCrumbModule } from '../../../components/bread-crumb/bread-crumb.module';
 
 import { AddProfessionalsComponent } from './add-professionals.component';
 
@@ -12,8 +16,12 @@ import { AddProfessionalsComponent } from './add-professionals.component';
   imports: [
     CardModule,
     CommonModule,
+    ButtonModule,
+    DividerModule,
     DropdownModule,
     InputTextModule,
+    InputMaskModule,
+    BreadCrumbModule,
     AddProfessionalsRoutingModule
   ]
 })

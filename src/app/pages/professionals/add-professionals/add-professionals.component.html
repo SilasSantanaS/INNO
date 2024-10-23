@@ -1,13 +1,17 @@
 <div class="grid">
   <div class="col-9">
     <h2 class="in-text-primary">Profissional de Saúde</h2>
+    <app-bread-crumb class="mb-4 m-2"></app-bread-crumb>
   </div>
 </div>
 
 <form>
   <div class="grid">
     <div class="col-9">
-      <p-card header="Dados básicos">
+      <p-card
+        header="Dados básicos"
+        subheader="Informe os dados do profissional de saúde"
+      >
         <div class="grid">
           <div class="col">
             <div class="flex flex-column gap-2">
@@ -24,14 +28,18 @@
           <div class="col">
             <div class="flex flex-column gap-2">
               <label for="cnpj-cpf">CPF</label>
-              <input pInputText id="cnpj-cpf" placeholder="102.334.840-35" />
+              <p-inputMask
+                mask="999.999.999-99"
+                id="cnpj-cpf"
+                placeholder="102.334.840-35"
+              />
             </div>
           </div>
 
           <div class="col">
             <div class="flex flex-column gap-2">
               <label for="cnpj-cpf">RG</label>
-              <input pInputText id="cnpj-cpf" placeholder="36.281.140-4" />
+              <p-inputMask mask="99.999.999-9" id="cnpj-cpf" placeholder="36.281.140-4" />
             </div>
           </div>
 
@@ -46,7 +54,7 @@
             <div class="flex flex-column gap-2">
               <label>Função</label>
               <p-dropdown
-                class="size"
+                class="flex w-50rem"
                 [options]="cities"
                 optionLabel="name"
                 placeholder="Clínico Geral"
@@ -54,6 +62,10 @@
             </div>
           </div>
         </div>
+
+        <p-divider align="left" type="solid">
+          <b>Endereço e contatos</b>
+        </p-divider>
       </p-card>
     </div>
     <div class="col-3">
@@ -69,6 +81,17 @@
           />
         </ng-template>
         <p>Lorem ipsum dolor sit amet...</p>
+        <ng-template pTemplate="footer">
+          <div class="flex gap-3 mt-1">
+            <p-button
+              label="Documentos"
+              severity="secondary"
+              class="w-full"
+              styleClass="w-full"
+            />
+            <p-button label="LinkedIn" class="w-full" styleClass="w-full" />
+          </div>
+        </ng-template>
       </p-card>
     </div>
   </div>
