@@ -10,14 +10,10 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TableModule as TModule } from '../../components/table/table.module';
 
 import { ProfessionalsComponent } from './professionals.component';
-import { AddProfessionalsComponent } from './add-professionals/add-professionals.component';
-
-
 
 @NgModule({
   declarations: [
     ProfessionalsComponent,
-    AddProfessionalsComponent
   ],
   imports: [
     TModule,

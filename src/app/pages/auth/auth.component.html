@@ -1,8 +1,8 @@
-<div class="grid min-h-full">
+<div class="grid min-h-full max-w-full">
   <div class="col flex align-items-center justify-content-center">
-    <h1><span class="text-primary">INNO</span>MED</h1>
+    <img src="assets/images/innomed.gif" alt="INNOMED GIF" class="max-w-15rem" />
   </div>
-  <div class="col bg-primary-300">
+  <div class="col in-bg-primary">
     <div class="flex justify-content-center align-items-center h-full">
       <form [formGroup]="loginForm" (ngSubmit)="login()">
         <p-card header="Login" [style]="{ width: '400px' }">
@@ -52,7 +52,7 @@
 
           <p-button
             label="Entrar"
-            styleClass="w-full"
+            styleClass="w-full in-bg-primary"
             [disabled]="loginForm.invalid"
             type="submit"
           />
@@ -64,3 +64,4 @@
     </div>
   </div>
 </div>
+
