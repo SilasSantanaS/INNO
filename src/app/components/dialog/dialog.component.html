@@ -1,1 +1,18 @@
-<p>dialog works!</p>
+<p-button
+  (onClick)="showDialog()"
+  icon="pi pi-trash"
+  [rounded]="true"
+  [text]="true"
+  severity="danger"
+/>
+<p-dialog
+  header="Header"
+  [(visible)]="visible"
+  [modal]="true"
+  [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+  [style]="{ width: '50vw' }"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <p>Lorem ipsum dolor sit amet...</p>
+</p-dialog>

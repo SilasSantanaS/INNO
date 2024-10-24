@@ -25,3 +25,7 @@ html, body {
 .p-dropdown .p-dropdown-trigger{
   border-left: 1px solid $in-drop-down-selector-color;
 }
+
+h1, h2, h3, h4 {
+  color: $primary-color;
+}

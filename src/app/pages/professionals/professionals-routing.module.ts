@@ -5,7 +5,7 @@ import { ProfessionalsComponent } from './professionals.component';
 const routes: Routes = [
   {
     path: '',
-    title: 'INNO | Profissionais',
+    title: 'INNO',
     component: ProfessionalsComponent
   },
   {

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-add-professionals',
@@ -7,9 +9,17 @@ import { Router } from '@angular/router';
   styleUrl: './add-professionals.component.scss',
 })
 export class AddProfessionalsComponent implements OnInit {
+  form: FormGroup;
+
   cities: any[] | undefined;
 
-  constructor(private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private messageService: MessageService
+  ) {
+    this.form = this.fb.group({});
+  }
 
   ngOnInit(): void {
     this.cities = [
@@ -27,6 +37,12 @@ export class AddProfessionalsComponent implements OnInit {
   }
 
   save(): void {
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Êxito',
+      detail: 'Profissional cadastrado com sucesso.',
+    });
+
     this.router.navigate(['./professionals']);
   }
 }

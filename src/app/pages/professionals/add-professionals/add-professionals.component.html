@@ -1,13 +1,9 @@
 <div class="grid">
   <div class="col-9">
-    <h2 class="in-text-primary">Profissional de Saúde</h2>
+    <h2>Profissional de Saúde</h2>
     <app-bread-crumb class="mb-4 m-2"></app-bread-crumb>
-  </div>
-</div>
 
-<form>
-  <div class="grid">
-    <div class="col-9">
+    <form [formGroup]="form" (ngSubmit)="save()">
       <p-card
         header="Dados básicos"
         subheader="Informe os dados do profissional de saúde"
@@ -39,7 +35,11 @@
           <div class="col">
             <div class="flex flex-column gap-2">
               <label for="cnpj-cpf">RG</label>
-              <p-inputMask mask="99.999.999-9" id="cnpj-cpf" placeholder="36.281.140-4" />
+              <p-inputMask
+                mask="99.999.999-9"
+                id="cnpj-cpf"
+                placeholder="36.281.140-4"
+              />
             </div>
           </div>
 
@@ -50,24 +50,77 @@
             </div>
           </div>
 
-          <div class="col">
-            <div class="flex flex-column gap-2">
-              <label>Função</label>
-              <p-dropdown
-                class="flex w-50rem"
-                [options]="cities"
-                optionLabel="name"
-                placeholder="Clínico Geral"
-              />
-            </div>
-          </div>
+          <!-- <div class="col">
+                <div class="flex flex-column gap-2">
+                  <label>Função</label>
+                  <p-dropdown
+                    class="flex w-50rem"
+                    [options]="cities"
+                    optionLabel="name"
+                    placeholder="Clínico Geral"
+                  />
+                </div>
+              </div> -->
         </div>
 
         <p-divider align="left" type="solid">
           <b>Endereço e contatos</b>
         </p-divider>
+
+        <!-- address and contacts -->
+        <div class="grid">
+          <div class="col">
+            <div class="flex flex-column gap-2">
+              <label>CEP</label>
+              <p-inputMask mask="99999-999" placeholder="55196-015" />
+            </div>
+          </div>
+          <div class="col">
+            <div class="flex flex-column gap-2">
+              <label>Estado</label>
+              <p-dropdown
+                class="flex w-50rem"
+                [options]="cities"
+                optionLabel="name"
+                placeholder="Rio de Janeiro"
+              />
+            </div>
+          </div>
+          <div class="col">
+            <div class="flex flex-column gap-2">
+              <label>Cidade</label>
+              <p-dropdown
+                class="flex w-50rem"
+                [options]="cities"
+                optionLabel="name"
+                placeholder="Rio de Janeiro"
+              />
+            </div>
+          </div>
+          <div class="col">
+            <div class="flex flex-column gap-2">
+              <label>Bairro</label>
+              <p-dropdown
+                class="flex w-50rem"
+                [options]="cities"
+                optionLabel="name"
+                placeholder="Copacabana"
+              />
+            </div>
+          </div>
+        </div>
+        <p-button
+          type="submit"
+          icon="pi pi-save"
+          label="Cadastrar"
+          class="mt-4 flex justify-content-end"
+        />
       </p-card>
-    </div>
+    </form>
+  </div>
+
+  <!-- Card com imagem de profissinal -->
+  <div class="col-3">
     <div class="col-3">
       <p-card
         header="Jorge de Sousa Cabral"
@@ -95,7 +148,7 @@
       </p-card>
     </div>
   </div>
-</form>
+</div>
 
 <!-- <form class="grid flex" (ngSubmit)="save()">
   <div class="col-12">
