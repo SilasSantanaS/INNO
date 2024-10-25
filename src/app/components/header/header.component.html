@@ -4,7 +4,10 @@
   </ng-template>
 
   <ng-template pTemplate="end">
-    <input type="text" pInputText placeholder="Pesquisar" class="mr-2" />
+    <p-iconField iconPosition="right" class="mr-2">
+      <p-inputIcon styleClass="pi pi-search" />
+      <input type="text" pInputText placeholder="Pesquisar" />
+    </p-iconField>
 
     <p-button icon="pi pi-sign-out" (onClick)="logout()" />
   </ng-template>

@@ -1,6 +1,7 @@
 <div class="grid">
   <div class="col-9">
     <h2>Profissional de Saúde</h2>
+    <app-spinner [isLoading]="isLoading"></app-spinner>
     <app-bread-crumb class="mb-4 m-2"></app-bread-crumb>
 
     <form [formGroup]="form" (ngSubmit)="save()">

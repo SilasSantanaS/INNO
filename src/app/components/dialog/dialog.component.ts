@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Button } from 'primeng/button';
 
 @Component({
   selector: 'app-dialog',
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
 })
 export class DialogComponent {
   visible: boolean = false;
+
+  @Input()
+  icon: string = 'pi pi-plus-circle';
+
+  @Input()
+  severity: Button["severity"] = 'primary';
 
   showDialog() {
     this.visible = true;

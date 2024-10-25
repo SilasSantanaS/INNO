@@ -10,8 +10,8 @@ import { MessageService } from 'primeng/api';
 })
 export class AddProfessionalsComponent implements OnInit {
   form: FormGroup;
-
   cities: any[] | undefined;
+  isLoading: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -37,12 +37,18 @@ export class AddProfessionalsComponent implements OnInit {
   }
 
   save(): void {
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Êxito',
-      detail: 'Profissional cadastrado com sucesso.',
-    });
+    this.isLoading = true;
 
-    this.router.navigate(['./professionals']);
+    setTimeout(() => {
+      this.isLoading = false;
+
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Êxito',
+        detail: 'Profissional cadastrado com sucesso.',
+      });
+
+      this.router.navigate(['./professionals']);
+    }, 3000);
   }
 }
