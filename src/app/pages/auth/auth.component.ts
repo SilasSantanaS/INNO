@@ -10,6 +10,8 @@ import { MessageService } from 'primeng/api';
   styleUrl: './auth.component.scss',
 })
 export class AuthComponent {
+  isLoading: boolean = false;
+
   loginForm = this.fb.group({
     email: ['', Validators.required, Validators.email],
     password: ['', Validators.required],
@@ -36,8 +38,14 @@ export class AuthComponent {
     this.authService.getUserByEmail(email as string).subscribe(
       (response) => {
         if (response.length > 0 && response[0].password == password) {
-          sessionStorage.setItem('email', email as string);
-          this.router.navigate(['/']);
+          this.isLoading = true;
+
+          setTimeout(() => {
+            this.isLoading = false;
+
+            sessionStorage.setItem('email', email as string);
+            this.router.navigate(['/']);
+          }, 3000);
         } else {
           this.messageService.add({
             severity: 'error',

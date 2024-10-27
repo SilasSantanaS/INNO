@@ -1,7 +1,8 @@
+<app-spinner [isLoading]="isLoading"></app-spinner>
+
 <div class="grid">
   <div class="col-9">
     <h2>Profissional de Saúde</h2>
-    <app-spinner [isLoading]="isLoading"></app-spinner>
     <app-bread-crumb class="mb-4 m-2"></app-bread-crumb>
 
     <form [formGroup]="form" (ngSubmit)="save()">
@@ -10,7 +11,7 @@
         subheader="Informe os dados do profissional de saúde"
       >
         <div class="grid">
-          <div class="col">
+          <div class="col-3">
             <div class="flex flex-column gap-2">
               <label for="username">Nome Completo</label>
               <input
@@ -22,7 +23,7 @@
             </div>
           </div>
 
-          <div class="col">
+          <div class="col-3">
             <div class="flex flex-column gap-2">
               <label for="cnpj-cpf">CPF</label>
               <p-inputMask
@@ -33,7 +34,7 @@
             </div>
           </div>
 
-          <div class="col">
+          <div class="col-3">
             <div class="flex flex-column gap-2">
               <label for="cnpj-cpf">RG</label>
               <p-inputMask
@@ -44,24 +45,53 @@
             </div>
           </div>
 
-          <div class="col">
+          <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Registro Profissional</label>
-              <input pInputText id="cnpj-cpf" />
+              <input pInputText placeholder="856824" />
+            </div>
+          </div>
+        </div>
+
+        <!-- line 02 -->
+        <div class="grid">
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Função</label>
+              <p-dropdown
+                class="flex"
+                [options]="cities"
+                optionLabel="name"
+                placeholder="Psicologia"
+              />
             </div>
           </div>
 
-          <!-- <div class="col">
-                <div class="flex flex-column gap-2">
-                  <label>Função</label>
-                  <p-dropdown
-                    class="flex w-50rem"
-                    [options]="cities"
-                    optionLabel="name"
-                    placeholder="Clínico Geral"
-                  />
-                </div>
-              </div> -->
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Especialidade</label>
+              <input pInputText placeholder="Odontologia" />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Escolaridade</label>
+              <p-dropdown
+                class="flex"
+                [options]="cities"
+                optionLabel="name"
+                placeholder="Superior Completo"
+              />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Formação</label>
+              <input pInputText placeholder="Odontologia" />
+            </div>
+          </div>
         </div>
 
         <p-divider align="left" type="solid">
@@ -70,13 +100,13 @@
 
         <!-- address and contacts -->
         <div class="grid">
-          <div class="col">
+          <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>CEP</label>
               <p-inputMask mask="99999-999" placeholder="55196-015" />
             </div>
           </div>
-          <div class="col">
+          <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Estado</label>
               <p-dropdown
@@ -87,7 +117,7 @@
               />
             </div>
           </div>
-          <div class="col">
+          <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Cidade</label>
               <p-dropdown
@@ -98,7 +128,7 @@
               />
             </div>
           </div>
-          <div class="col">
+          <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Bairro</label>
               <p-dropdown
@@ -110,6 +140,31 @@
             </div>
           </div>
         </div>
+
+        <!-- address and contacts line 2 -->
+        <div class="grid">
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Logradouro</label>
+              <input pInputText placeholder="Odontologia" />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Número</label>
+              <p-inputNumber inputId="integeronly" placeholder="54" />
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="flex flex-column gap-2">
+              <label>Complemento</label>
+              <input pInputText placeholder="Odontologia" />
+            </div>
+          </div>
+        </div>
+
         <p-button
           type="submit"
           icon="pi pi-save"

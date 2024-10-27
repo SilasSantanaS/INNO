@@ -5,7 +5,7 @@ import { AnalysisComponent } from './analysis.component';
 const routes: Routes = [
   {
     path: '',
-    title: 'INNO | Análise',
+    title: 'INNO',
     component: AnalysisComponent
   }
 ];

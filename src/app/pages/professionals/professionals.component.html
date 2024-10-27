@@ -7,14 +7,21 @@
   </div>
   <div class="col-6 bg-danger">
     <div class="flex justify-content-end">
-      <p-button label="Cadastrar" icon="pi pi-plus" size="small" (onClick)="create()" />
       <p-button
+        label="Cadastrar"
+        icon="pi pi-plus"
+        size="small"
+        (onClick)="create()"
+      />
+      <p-button
+        (click)="fileInput.click()"
         label="Importar XLS de Profissionais"
         icon="pi pi-file-excel"
         size="small"
         [outlined]="true"
         class="ml-2"
       />
+      <input #fileInput type="file" style="display: none" />
     </div>
   </div>
 

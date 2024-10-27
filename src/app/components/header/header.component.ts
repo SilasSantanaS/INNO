@@ -20,8 +20,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.items = [
       {
-        label: 'Home',
-        icon: 'pi pi-home',
+        label: 'Dashboard',
+        icon: 'pi pi-th-large',
         routerLink: ['/']
       },
       {

@@ -10,7 +10,7 @@ export class DialogComponent {
   visible: boolean = false;
 
   @Input()
-  icon: string = 'pi pi-plus-circle';
+  icon: string = 'pi pi-user-edit';
 
   @Input()
   severity: Button["severity"] = 'primary';

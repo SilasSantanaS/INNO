@@ -1,6 +1,8 @@
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { UploadEvent } from 'primeng/fileupload';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-professionals',
@@ -17,6 +19,7 @@ export class ProfessionalsComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -27,6 +30,14 @@ export class ProfessionalsComponent implements OnInit {
       { name: 'Istanbul', code: 'IST' },
       { name: 'Paris', code: 'PRS' },
     ];
+  }
+
+  onUpload(event: UploadEvent) {
+    this.messageService.add({
+      severity: 'info',
+      summary: 'Success',
+      detail: 'File Uploaded with Basic Mode',
+    });
   }
 
   create(): void {

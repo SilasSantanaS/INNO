@@ -5,7 +5,7 @@ import { CalendarComponent } from './calendar.component';
 const routes: Routes = [
   {
     path: '',
-    title: 'INNO | Agenda',
+    title: 'INNO',
     component: CalendarComponent
   }
 ];

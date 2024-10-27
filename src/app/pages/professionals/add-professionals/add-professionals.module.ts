@@ -7,6 +7,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputMaskModule } from 'primeng/inputmask';
 import { ReactiveFormsModule } from '@angular/forms';
+import { InputNumberModule } from 'primeng/inputnumber';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { SpinnerModule } from '../../../components/spinner/spinner.module';
 import { AddProfessionalsRoutingModule } from './add-professionals-routing.module';
@@ -26,6 +27,7 @@ import { AddProfessionalsComponent } from './add-professionals.component';
     InputTextModule,
     InputMaskModule,
     BreadCrumbModule,
+    InputNumberModule,
     ReactiveFormsModule,
     ProgressSpinnerModule,
     AddProfessionalsRoutingModule
