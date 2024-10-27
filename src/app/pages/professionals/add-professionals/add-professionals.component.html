@@ -2,7 +2,7 @@
 
 <div class="grid">
   <div class="col-9">
-    <h2>Profissional de Saúde</h2>
+    <h2 class="-mb-4">Profissional de Saúde</h2>
     <app-bread-crumb class="mb-4 m-2"></app-bread-crumb>
 
     <form [formGroup]="form" (ngSubmit)="save()">
@@ -13,7 +13,7 @@
         <div class="grid">
           <div class="col-3">
             <div class="flex flex-column gap-2">
-              <label for="username">Nome Completo</label>
+              <label for="username">Nome completo</label>
               <input
                 type="text"
                 pInputText
@@ -47,8 +47,13 @@
 
           <div class="col-3">
             <div class="flex flex-column gap-2">
-              <label>Registro Profissional</label>
-              <input pInputText placeholder="856824" />
+              <label>Data de nascimento</label>
+              <p-calendar
+                placeholder="12/04/2012"
+                [iconDisplay]="'input'"
+                [showIcon]="true"
+                inputId="icondisplay"
+              />
             </div>
           </div>
         </div>
@@ -57,12 +62,19 @@
         <div class="grid">
           <div class="col-3">
             <div class="flex flex-column gap-2">
+              <label>Registro profissional</label>
+              <input pInputText placeholder="856824" />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
               <label>Função</label>
               <p-dropdown
                 class="flex"
                 [options]="cities"
                 optionLabel="name"
-                placeholder="Psicologia"
+                placeholder="Psicóloga"
               />
             </div>
           </div>
@@ -85,11 +97,30 @@
               />
             </div>
           </div>
+        </div>
 
+        <div class="grid">
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Formação</label>
-              <input pInputText placeholder="Odontologia" />
+              <input pInputText placeholder="Psicologia" />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Telefone fixo</label>
+              <p-inputMask mask="(99) 9999-9999" placeholder="(21) 8574-5236" />
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="flex flex-column gap-2">
+              <label>Celular</label>
+              <p-inputMask
+                mask="(99) 99999-9999"
+                placeholder="(21) 98574-5236"
+              />
             </div>
           </div>
         </div>
@@ -146,7 +177,7 @@
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Logradouro</label>
-              <input pInputText placeholder="Odontologia" />
+              <input pInputText placeholder="Av. Gentúlio Vargas" />
             </div>
           </div>
 
@@ -160,7 +191,73 @@
           <div class="col-6">
             <div class="flex flex-column gap-2">
               <label>Complemento</label>
-              <input pInputText placeholder="Odontologia" />
+              <input pInputText placeholder="3° Prédio, Térreo" />
+            </div>
+          </div>
+        </div>
+
+        <!-- tecnical data -->
+
+        <p-divider align="left" type="solid">
+          <b>Dados de contratação</b>
+        </p-divider>
+
+        <div class="grid">
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Data de contratação</label>
+              <p-calendar
+                placeholder="12/04/2012"
+                [(ngModel)]="date1"
+                [iconDisplay]="'input'"
+                [showIcon]="true"
+                inputId="icondisplay"
+              />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Tipo de contrato</label>
+              <p-dropdown
+                class="flex w-50rem"
+                [options]="cities"
+                optionLabel="name"
+                placeholder="PJ"
+              />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Data de pagamento</label>
+              <p-calendar
+                placeholder="12/04/2012"
+                [iconDisplay]="'input'"
+                [showIcon]="true"
+                inputId="icondisplay"
+              />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Modelo de recebimento</label>
+              <p-dropdown
+                class="flex w-50rem"
+                [options]="cities"
+                optionLabel="name"
+                placeholder="Diária"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="col-6">
+            <div class="flex flex-column gap-2">
+              <label>Dados de pagamento</label>
+              <input pInputText placeholder="c/c 45456" />
             </div>
           </div>
         </div>
@@ -205,174 +302,3 @@
     </div>
   </div>
 </div>
-
-<!-- <form class="grid flex" (ngSubmit)="save()">
-  <div class="col-12">
-    <h3>Dados Básicos</h3>
-    <div class="grid">
-      <div class="col-3">
-        <div class="flex flex-column gap-2">
-          <label for="username">Nome Completo</label>
-          <input pInputText id="username" aria-describedby="username-help" />
-        </div>
-      </div>
-
-      <div class="col-3">
-        <div class="flex flex-column gap-2">
-          <label for="cnpj-cpf">N° CNPJ/CPF</label>
-          <input pInputText id="cnpj-cpf" aria-describedby="cnpj-cpf-help" />
-        </div>
-      </div>
-
-      <div class="col-3">
-        <div class="flex flex-column gap-2">
-          <label for="rg">N° RG</label>
-          <input pInputText id="rg" aria-describedby="rg-help" />
-        </div>
-      </div>
-
-      <div class="col-3">
-        <div class="flex flex-column gap-2">
-          <label for="registro-profissional">N° Registro Profissional</label>
-          <input pInputText id="registro-profissional" aria-describedby="registro-profissional-help" />
-        </div>
-      </div>
-
-      <div class="col-3">
-        <div class="flex flex-column gap-2">
-          <label for="funcao">Função</label>
-          <input pInputText id="funcao" aria-describedby="funcao-help" />
-        </div>
-      </div>
-
-      <div class="col-3">
-        <div class="flex flex-column gap-2">
-          <label for="especialidade">Especialidade</label>
-          <input pInputText id="especialidade" aria-describedby="especialidade-help" />
-        </div>
-      </div>
-
-      <div class="col-3">
-        <div class="flex flex-column gap-2">
-          <label for="data-contratacao">Data de contratação</label>
-          <input pInputText id="data-contratacao" aria-describedby="data-contratacao-help" />
-        </div>
-      </div>
-
-      <div class="col-3">
-        <div class="flex flex-column gap-2">
-          <label for="escolaridade">Escolaridade</label>
-          <input pInputText id="escolaridade" aria-describedby="escolaridade-help" />
-        </div>
-      </div>
-
-      <div class="col-3">
-        <div class="flex flex-column gap-2">
-          <label for="formacao">Formação</label>
-          <input pInputText id="formacao" aria-describedby="formacao-help" />
-        </div>
-      </div>
-
-      <div class="col-3">
-        <div class="flex flex-column gap-2">
-          <label for="data-nascimento">Data de nascimento</label>
-          <input pInputText id="data-nascimento" aria-describedby="data-nascimento-help" />
-        </div>
-      </div>
-
-      <div class="col-3">
-        <div class="flex flex-column gap-2">
-          <label for="tipo-contrato">Tipo de Contrato</label>
-          <input pInputText id="tipo-contrato" aria-describedby="tipo-contrato-help" />
-        </div>
-      </div>
-
-      <div class="col-3">
-        <div class="flex flex-column gap-2">
-          <label for="data-pagamento">Data de Pagamento</label>
-          <input pInputText id="data-pagamento" aria-describedby="data-pagamento-help" />
-        </div>
-      </div>
-
-      <div class="col-3">
-        <div class="flex flex-column gap-2">
-          <label for="modelo-recebimento">Modelo de Recebimento</label>
-          <input pInputText id="modelo-recebimento" aria-describedby="modelo-recebimento-help" />
-        </div>
-      </div>
-
-      <div class="col-3">
-        <div class="flex flex-column gap-2">
-          <label for="dados-pagamento">Dados de Pagamento</label>
-          <input pInputText id="dados-pagamento" aria-describedby="dados-pagamento-help" />
-        </div>
-      </div>
-
-      <div class="col-3">
-        <div class="flex flex-column gap-2">
-          <label for="numero-celular">Numero de Celular</label>
-          <input pInputText id="numero-celular" aria-describedby="numero-celular-help" />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-12">
-    <h3>Endereço</h3>
-    <div class="grid">
-      <div class="col-3">
-        <div class="flex flex-column gap-2">
-          <label for="cep">CEP (Se houver)</label>
-          <input pInputText id="cep" aria-describedby="cep-help" />
-        </div>
-      </div>
-
-      <div class="col-3">
-        <div class="flex flex-column gap-2">
-          <label for="estado">Estado</label>
-          <input pInputText id="estado" aria-describedby="estado-help" />
-        </div>
-      </div>
-
-      <div class="col-3">
-        <div class="flex flex-column gap-2">
-          <label for="cidade">Cidade</label>
-          <input pInputText id="cidade" aria-describedby="cidade-help" />
-        </div>
-      </div>
-
-      <div class="col-3">
-        <div class="flex flex-column gap-2">
-          <label for="bairro">Bairro</label>
-          <input pInputText id="bairro" aria-describedby="bairro-help" />
-        </div>
-      </div>
-
-      <div class="col-3">
-        <div class="flex flex-column gap-2">
-          <label for="logradouro">Logradouro</label>
-          <input pInputText id="logradouro" aria-describedby="logradouro-help" />
-        </div>
-      </div>
-
-      <div class="col-2">
-        <div class="flex flex-column gap-2">
-          <label for="numero">Nº</label>
-          <input pInputText id="numero" aria-describedby="numero-help" />
-        </div>
-      </div>
-
-      <div class="col-2">
-        <div class="flex flex-column gap-2">
-          <label for="complemento">Complemento</label>
-          <input pInputText id="complemento" aria-describedby="complemento-help" />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="mt-4">
-    <p-button type="submit" label="Salvar" class="ml-2" />
-    <p-button label="Cancelar" class="ml-2" [outlined]="true" />
-  </div>
-</form> -->

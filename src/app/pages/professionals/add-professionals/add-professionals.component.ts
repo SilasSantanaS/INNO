@@ -12,6 +12,8 @@ export class AddProfessionalsComponent implements OnInit {
   form: FormGroup;
   cities: any[] | undefined;
   isLoading: boolean = false;
+  date1: Date | undefined;
+  date2: Date | undefined;
 
   constructor(
     private fb: FormBuilder,

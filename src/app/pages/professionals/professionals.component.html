@@ -29,38 +29,40 @@
     [formGroup]="form"
     class="flex w-12 justify-content-between bg-bluegray-50 p-3 mb-4"
   >
-    <div class="w-9 flex justify-content-between">
-      <div class="p-toolbar-group-center">
-        <span class="p-input-icon-right">
-          <i class="pi pi-search"></i>
-          <input
-            pInputText
-            placeholder="Buscar profissional"
-            formControlName="search"
-          />
-        </span>
+    <div class="grid w-full">
+      <div class="col-3">
+        <p-iconField iconPosition="right" class="mr-2">
+          <p-inputIcon styleClass="pi pi-search" />
+          <input type="text" pInputText placeholder="Buscar profissional" />
+        </p-iconField>
       </div>
 
-      <p-dropdown
-        formControlName="selectedCity"
-        [options]="cities"
-        optionLabel="name"
-        placeholder="Todas as especialidades"
-      />
+      <div class="col-3">
+        <p-dropdown
+          formControlName="selectedCity"
+          [options]="cities"
+          optionLabel="name"
+          placeholder="Todas as especialidades"
+        />
+      </div>
 
-      <p-dropdown
-        formControlName="selectedCity"
-        [options]="cities"
-        optionLabel="name"
-        placeholder="Todas as especialidades"
-      />
+      <div class="col-3">
+        <p-dropdown
+          formControlName="selectedCity"
+          [options]="cities"
+          optionLabel="name"
+          placeholder="Todas as especialidades"
+        />
+      </div>
 
-      <p-dropdown
-        formControlName="selectedCity"
-        [options]="cities"
-        optionLabel="name"
-        placeholder="Todas as especialidades"
-      />
+      <div class="col-3">
+        <p-dropdown
+          formControlName="selectedCity"
+          [options]="cities"
+          optionLabel="name"
+          placeholder="Todas as especialidades"
+        />
+      </div>
     </div>
   </form>
 
