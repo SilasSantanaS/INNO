@@ -19,6 +19,7 @@
                 pInputText
                 id="username"
                 placeholder="Jorge de Sousa Cabral"
+                formControlName="name"
               />
             </div>
           </div>
@@ -28,8 +29,8 @@
               <label for="cnpj-cpf">CPF</label>
               <p-inputMask
                 mask="999.999.999-99"
-                id="cnpj-cpf"
                 placeholder="102.334.840-35"
+                formControlName="socialSecurityNumber"
               />
             </div>
           </div>
@@ -41,6 +42,7 @@
                 mask="99.999.999-9"
                 id="cnpj-cpf"
                 placeholder="36.281.140-4"
+                formControlName="nationalId"
               />
             </div>
           </div>
@@ -53,6 +55,7 @@
                 [iconDisplay]="'input'"
                 [showIcon]="true"
                 inputId="icondisplay"
+                formControlName="dateOfBirth"
               />
             </div>
           </div>
@@ -63,7 +66,11 @@
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Registro profissional</label>
-              <input pInputText placeholder="856824" />
+              <input
+                pInputText
+                placeholder="856824"
+                formControlName="professionalLicense"
+              />
             </div>
           </div>
 
@@ -75,6 +82,7 @@
                 [options]="cities"
                 optionLabel="name"
                 placeholder="Psicóloga"
+                formControlName="role"
               />
             </div>
           </div>
@@ -82,7 +90,11 @@
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Especialidade</label>
-              <input pInputText placeholder="Odontologia" />
+              <input
+                pInputText
+                placeholder="Odontologia"
+                formControlName="specialty"
+              />
             </div>
           </div>
 
@@ -94,32 +106,20 @@
                 [options]="cities"
                 optionLabel="name"
                 placeholder="Superior Completo"
+                formControlName="educationLevel"
               />
             </div>
           </div>
         </div>
 
         <div class="grid">
-          <div class="col-3">
-            <div class="flex flex-column gap-2">
-              <label>Formação</label>
-              <input pInputText placeholder="Psicologia" />
-            </div>
-          </div>
-
-          <div class="col-3">
-            <div class="flex flex-column gap-2">
-              <label>Telefone fixo</label>
-              <p-inputMask mask="(99) 9999-9999" placeholder="(21) 8574-5236" />
-            </div>
-          </div>
-
           <div class="col-6">
             <div class="flex flex-column gap-2">
-              <label>Celular</label>
-              <p-inputMask
-                mask="(99) 99999-9999"
-                placeholder="(21) 98574-5236"
+              <label>Formação</label>
+              <input
+                pInputText
+                placeholder="Psicologia"
+                formControlName="academicBackground"
               />
             </div>
           </div>
@@ -134,7 +134,11 @@
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>CEP</label>
-              <p-inputMask mask="99999-999" placeholder="55196-015" />
+              <p-inputMask
+                mask="99999-999"
+                placeholder="55196-015"
+                formControlName="zipCode"
+              />
             </div>
           </div>
           <div class="col-3">
@@ -145,6 +149,7 @@
                 [options]="cities"
                 optionLabel="name"
                 placeholder="Rio de Janeiro"
+                formControlName="state"
               />
             </div>
           </div>
@@ -156,6 +161,7 @@
                 [options]="cities"
                 optionLabel="name"
                 placeholder="Rio de Janeiro"
+                formControlName="city"
               />
             </div>
           </div>
@@ -167,6 +173,7 @@
                 [options]="cities"
                 optionLabel="name"
                 placeholder="Copacabana"
+                formControlName="neighborhood"
               />
             </div>
           </div>
@@ -177,21 +184,57 @@
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Logradouro</label>
-              <input pInputText placeholder="Av. Gentúlio Vargas" />
+              <input
+                pInputText
+                placeholder="Av. Gentúlio Vargas"
+                formControlName="street"
+              />
             </div>
           </div>
 
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Número</label>
-              <p-inputNumber inputId="integeronly" placeholder="54" />
+              <p-inputNumber
+                inputId="integeronly"
+                placeholder="54"
+                formControlName="addressNumber"
+              />
             </div>
           </div>
 
           <div class="col-6">
             <div class="flex flex-column gap-2">
               <label>Complemento</label>
-              <input pInputText placeholder="3° Prédio, Térreo" />
+              <input
+                pInputText
+                placeholder="3° Prédio, Térreo"
+                formControlName="additionalAddressInformation"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Telefone fixo</label>
+              <p-inputMask
+                mask="(99) 9999-9999"
+                placeholder="(21) 8574-5236"
+                formControlName="phone"
+              />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Celular</label>
+              <p-inputMask
+                mask="(99) 99999-9999"
+                placeholder="(21) 98574-5236"
+                formControlName="phone2"
+              />
             </div>
           </div>
         </div>
@@ -212,6 +255,7 @@
                 [iconDisplay]="'input'"
                 [showIcon]="true"
                 inputId="icondisplay"
+                formControlName="dateOfHire"
               />
             </div>
           </div>
@@ -224,6 +268,7 @@
                 [options]="cities"
                 optionLabel="name"
                 placeholder="PJ"
+                formControlName="contractType"
               />
             </div>
           </div>
@@ -236,6 +281,7 @@
                 [iconDisplay]="'input'"
                 [showIcon]="true"
                 inputId="icondisplay"
+                formControlName="paymentDate"
               />
             </div>
           </div>
@@ -248,6 +294,7 @@
                 [options]="cities"
                 optionLabel="name"
                 placeholder="Diária"
+                formControlName="receivingMethod"
               />
             </div>
           </div>
@@ -257,7 +304,11 @@
           <div class="col-6">
             <div class="flex flex-column gap-2">
               <label>Dados de pagamento</label>
-              <input pInputText placeholder="c/c 45456" />
+              <input
+                pInputText
+                placeholder="c/c 45456"
+                formControlName="paymentInformation"
+              />
             </div>
           </div>
         </div>
@@ -267,6 +318,7 @@
           icon="pi pi-save"
           label="Cadastrar"
           class="mt-4 flex justify-content-end"
+          [disabled]="form.invalid"
         />
       </p-card>
     </form>
@@ -290,12 +342,19 @@
         <ng-template pTemplate="footer">
           <div class="flex gap-3 mt-1">
             <p-button
-              label="Documentos"
+              label="Imprimir"
               severity="secondary"
               class="w-full"
               styleClass="w-full"
+              icon="pi pi-print"
+              (onClick)="print()"
             />
-            <p-button label="LinkedIn" class="w-full" styleClass="w-full" />
+            <p-button
+              label="Enviar foto"
+              class="w-full"
+              styleClass="w-full"
+              icon="pi pi-upload"
+            />
           </div>
         </ng-template>
       </p-card>

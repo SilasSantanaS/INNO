@@ -1,5 +1,6 @@
+import { createInjectableType } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 
@@ -20,7 +21,33 @@ export class AddProfessionalsComponent implements OnInit {
     private router: Router,
     private messageService: MessageService
   ) {
-    this.form = this.fb.group({});
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      role: ['', Validators.required],
+      specialty: ['', Validators.required],
+      nationalId: ['', Validators.required],
+      dateOfBirth: ['', Validators.required],
+      educationLevel: ['', Validators.required],
+      academicBackground: ['', Validators.required],
+      professionalLicense: ['', Validators.required],
+      socialSecurityNumber: ['', Validators.required],
+
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      phone: ['', Validators.required],
+      phone2: ['', Validators.required],
+      street: ['', Validators.required],
+      zipCode: ['', Validators.required],
+      neighborhood: ['', Validators.required],
+      addressNumber: ['', Validators.required],
+      additionalAddressInformation: ['', Validators.required],
+
+      dateOfHire: ['', Validators.required],
+      paymentDate: ['', Validators.required],
+      contractType: ['', Validators.required],
+      receivingMethod: ['', Validators.required],
+      paymentInformation: ['', Validators.required],
+    });
   }
 
   ngOnInit(): void {
@@ -36,6 +63,10 @@ export class AddProfessionalsComponent implements OnInit {
       { name: 'Clinico Geral', code: 'CLIN' },
       { name: 'Endocrinologista', code: 'ENDO' },
     ];
+  }
+
+  print(): void {
+    window.print();
   }
 
   save(): void {
