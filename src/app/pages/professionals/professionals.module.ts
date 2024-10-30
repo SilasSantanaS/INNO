@@ -11,6 +11,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { ProfessionalsRoutingModule } from './professionals-routing.module';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TableModule as TModule } from '../../components/table/table.module';
+import { BreadCrumbModule } from '../../components/bread-crumb/bread-crumb.module';
 
 import { ProfessionalsComponent } from './professionals.component';
 
@@ -30,6 +31,7 @@ import { ProfessionalsComponent } from './professionals.component';
     InputIconModule,
     InputTextModule,
     FileUploadModule,
+    BreadCrumbModule,
     ReactiveFormsModule,
     ProfessionalsRoutingModule,
   ]

@@ -9,9 +9,9 @@
     <tr>
       <th>ID</th>
       <th>Nome</th>
+      <th>Função</th>
       <th>Especialidade</th>
-      <th>Unidade</th>
-      <th>Unidade</th>
+      <th>Registro Profissional</th>
       <th>Status</th>
     </tr>
   </ng-template>
@@ -19,10 +19,10 @@
     <tr>
       <td>{{ professional.id }}</td>
       <td>{{ professional.name }}</td>
-      <td>{{ professional.type }}</td>
-      <td>{{ professional.unit }}</td>
-      <td>{{ professional.unit }}</td>
-      <td>{{ professional.status }}</td>
+      <td>{{ professional.role }}</td>
+      <td>{{ professional.specialty }}</td>
+      <td>{{ professional.professionalLicense }}</td>
+      <td>Ativo</td>
       <td>
         <div class="grid justify-content-evenly">
           <app-dialog></app-dialog>

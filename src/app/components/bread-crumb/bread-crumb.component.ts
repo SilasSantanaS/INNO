@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -7,15 +7,11 @@ import { MenuItem } from 'primeng/api';
   styleUrl: './bread-crumb.component.scss',
 })
 export class BreadCrumbComponent implements OnInit {
+  @Input()
   items: MenuItem[] | undefined;
   home: MenuItem | undefined;
 
   ngOnInit() {
-    this.items = [
-      { label: 'Profissionais de Saúde' },
-      { label: 'Cadastrar Novo Profissional' }
-    ];
-
     this.home = { icon: 'pi pi-home', routerLink: '/' };
   }
 }

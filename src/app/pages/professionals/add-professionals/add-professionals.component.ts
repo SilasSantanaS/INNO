@@ -1,8 +1,9 @@
-import { createInjectableType } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
+import { Component, OnInit } from '@angular/core';
+import { MenuItem, MessageService } from 'primeng/api';
+import { IProfessional } from '../../../interfaces/professional';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProfessionalService } from '../../../services/professional.service';
 
 @Component({
   selector: 'app-add-professionals',
@@ -10,6 +11,7 @@ import { MessageService } from 'primeng/api';
   styleUrl: './add-professionals.component.scss',
 })
 export class AddProfessionalsComponent implements OnInit {
+  breadcrumbItems: MenuItem[] = [];
   form: FormGroup;
   cities: any[] | undefined;
   isLoading: boolean = false;
@@ -19,7 +21,8 @@ export class AddProfessionalsComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private professinalService: ProfessionalService
   ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
@@ -51,6 +54,14 @@ export class AddProfessionalsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.breadcrumbItems = [
+      { label: 'Profissionais de Saúde', routerLink: '/professionals' },
+      {
+        label: 'Cadastrar Novo Profissional',
+        routerLink: '/professionals/new',
+      },
+    ];
+
     this.cities = [
       { name: 'Cardiologista', code: 'CARD' },
       { name: 'Pediatra', code: 'PED' },
@@ -71,6 +82,8 @@ export class AddProfessionalsComponent implements OnInit {
 
   save(): void {
     this.isLoading = true;
+    let professional = this.form.value as IProfessional;
+    this.professinalService.CreateProfessinal(professional);
 
     setTimeout(() => {
       this.isLoading = false;

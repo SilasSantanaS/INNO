@@ -2,8 +2,10 @@
 
 <div class="grid">
   <div class="col-9">
-    <h2 class="-mb-4">Profissional de Saúde</h2>
-    <app-bread-crumb class="mb-4 m-2"></app-bread-crumb>
+    <div class="col-6 flex flex-column -ml-2 -mt-2">
+      <h2 class="-mb-1">Profissional de Saúde</h2>
+      <app-bread-crumb class="mb-4" [items]="breadcrumbItems"></app-bread-crumb>
+    </div>
 
     <form [formGroup]="form" (ngSubmit)="save()">
       <p-card
@@ -81,6 +83,7 @@
                 class="flex"
                 [options]="cities"
                 optionLabel="name"
+                optionValue="name"
                 placeholder="Psicóloga"
                 formControlName="role"
               />

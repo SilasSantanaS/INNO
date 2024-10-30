@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Professional } from '../../interfaces/professional';
+import { IProfessional } from '../../interfaces/professional';
 import { ProfessionalService } from '../../services/professional.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { ProfessionalService } from '../../services/professional.service';
   styleUrl: './table.component.scss',
 })
 export class TableComponent implements OnInit {
-  professionals: Professional[] = [];
+  professionals: IProfessional[] = [];
 
   constructor(private professionalService: ProfessionalService) {}
 

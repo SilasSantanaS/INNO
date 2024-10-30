@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
 import { UploadEvent } from 'primeng/fileupload';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './professionals.component.scss',
 })
 export class ProfessionalsComponent implements OnInit {
+  breadcrumbItems: MenuItem[] = [];
   cities: any[] | undefined;
   form = this.fb.group({
     search: [],
@@ -23,6 +24,13 @@ export class ProfessionalsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.breadcrumbItems = [
+      {
+        label: 'Lista de Profissionais de Saúde',
+        routerLink: '/professionals',
+      },
+    ];
+
     this.cities = [
       { name: 'New York', code: 'NY' },
       { name: 'Rome', code: 'RM' },

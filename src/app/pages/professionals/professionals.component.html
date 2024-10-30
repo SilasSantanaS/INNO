@@ -1,9 +1,7 @@
 <div class="grid h-full">
-  <div class="col-6">
-    <div class="flex -mb-4">
-      <h2>Profissionais de Saúde</h2>
-    </div>
-    <p-divider />
+  <div class="col-6 flex flex-column">
+    <h2 class="-mb-1">Profissionais de Saúde</h2>
+    <app-bread-crumb class="mb-4" [items]="breadcrumbItems"></app-bread-crumb>
   </div>
   <div class="col-6 bg-danger">
     <div class="flex justify-content-end">
@@ -42,7 +40,7 @@
           formControlName="selectedCity"
           [options]="cities"
           optionLabel="name"
-          placeholder="Todas as especialidades"
+          placeholder="Todas as funções"
         />
       </div>
 
@@ -60,7 +58,7 @@
           formControlName="selectedCity"
           [options]="cities"
           optionLabel="name"
-          placeholder="Todas as especialidades"
+          placeholder="Todas as localidades"
         />
       </div>
     </div>
