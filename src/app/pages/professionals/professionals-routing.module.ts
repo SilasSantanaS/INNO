@@ -6,16 +6,26 @@ const routes: Routes = [
   {
     path: '',
     title: 'INNO',
-    component: ProfessionalsComponent
+    component: ProfessionalsComponent,
   },
   {
     path: 'new',
-    loadChildren: () => import('./add-professionals/add-professionals.module').then(m => m.AddProfessionalsModule)
-  }
+    loadChildren: () =>
+      import('./add-professionals/add-professionals.module').then(
+        (m) => m.AddProfessionalsModule
+      ),
+  },
+  {
+    path: 'edit/:id',
+    loadChildren: () =>
+      import('./add-professionals/add-professionals.module').then(
+        (m) => m.AddProfessionalsModule
+      ),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ProfessionalsRoutingModule { }
+export class ProfessionalsRoutingModule {}

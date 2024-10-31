@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { IProfessional } from '../../interfaces/professional';
 import { ProfessionalService } from '../../services/professional.service';
@@ -10,9 +11,16 @@ import { ProfessionalService } from '../../services/professional.service';
 export class TableComponent implements OnInit {
   professionals: IProfessional[] = [];
 
-  constructor(private professionalService: ProfessionalService) {}
+  constructor(
+    private router: Router,
+    private professionalService: ProfessionalService
+  ) {}
 
   ngOnInit(): void {
     this.professionals = this.professionalService.GetProfessionals();
+  }
+
+  getItemPage(id: number): void {
+    this.router.navigate([`/professionals/edit/${id}`]);
   }
 }

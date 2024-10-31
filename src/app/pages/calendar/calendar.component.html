@@ -1,1 +1,29 @@
-<p>calendar works!</p>
+<div class="grid">
+  <div class="col-6">
+    <app-bread-crumb class="mb-4" [items]="breadcrumbItems"
+      >Minha Agenda</app-bread-crumb
+    >
+  </div>
+  <div class="col-6 flex justify-content-end align-content-center">
+    <p-button
+      outlined="true"
+      label="Integrar com Google Calendar"
+      icon="pi pi-google"
+      [loading]="loading"
+      (onClick)="load()"
+    />
+  </div>
+</div>
+
+<div class="grid mt-6">
+  <div
+    class="col-9 flex justify-content-center align-content-center surface-100"
+  >
+    <app-scheduler></app-scheduler>
+  </div>
+  <div
+    class="col-3 flex justify-content-center align-content-center surface-50"
+  >
+    Controls
+  </div>
+</div>

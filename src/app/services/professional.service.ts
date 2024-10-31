@@ -36,6 +36,10 @@ export class ProfessionalService {
 
   constructor() {}
 
+  GetProfessionalById(id: number): IProfessional {
+    return this.professionals.find(el => el.id === id)!;
+  }
+
   GetProfessionals(): IProfessional[] {
     return this.professionals;
   }

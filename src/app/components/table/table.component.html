@@ -13,6 +13,7 @@
       <th>Especialidade</th>
       <th>Registro Profissional</th>
       <th>Status</th>
+      <th></th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-professional>
@@ -25,7 +26,12 @@
       <td>Ativo</td>
       <td>
         <div class="grid justify-content-evenly">
-          <app-dialog></app-dialog>
+          <p-button
+            icon="pi pi-user-edit"
+            [rounded]="true"
+            [text]="true"
+            (onClick)="getItemPage(professional.id)"
+          />
           <app-dialog icon="pi pi-trash" severity="danger"></app-dialog>
         </div>
       </td>

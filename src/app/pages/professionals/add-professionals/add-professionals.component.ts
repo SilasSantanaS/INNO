@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
 import { IProfessional } from '../../../interfaces/professional';
@@ -21,6 +21,7 @@ export class AddProfessionalsComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private route: ActivatedRoute,
     private messageService: MessageService,
     private professinalService: ProfessionalService
   ) {
@@ -74,6 +75,14 @@ export class AddProfessionalsComponent implements OnInit {
       { name: 'Clinico Geral', code: 'CLIN' },
       { name: 'Endocrinologista', code: 'ENDO' },
     ];
+
+    const id = this.route.snapshot.paramMap.get('id');
+
+    if (id !== null) {
+      const professional = this.professinalService.GetProfessionalById(+id);
+
+      this.form.patchValue(professional);
+    }
   }
 
   print(): void {
