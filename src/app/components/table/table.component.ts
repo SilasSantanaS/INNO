@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { IProfessional } from '../../interfaces/professional';
 import { ProfessionalService } from '../../services/professional.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-table',
@@ -13,11 +14,22 @@ export class TableComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private messageService: MessageService,
     private professionalService: ProfessionalService
   ) {}
 
   ngOnInit(): void {
-    this.professionals = this.professionalService.GetProfessionals();
+    this.professionals = this.professionalService.getProfessionals();
+  }
+
+  deleteProfessinal(id: number): void {
+    this.professionals = this.professionalService.deleteProfessinal(id);
+
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Êxito',
+      detail: 'Profissional excluído com sucesso.',
+    });
   }
 
   getItemPage(id: number): void {

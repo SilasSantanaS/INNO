@@ -1,11 +1,21 @@
 <app-spinner [isLoading]="isLoading"></app-spinner>
 
 <div class="grid">
+  <div class="col-6 flex flex-column">
+    <app-bread-crumb class="mb-4" [items]="breadcrumbItems"
+      >Profissional de Saúde</app-bread-crumb
+    >
+  </div>
+  <div class="col-6 flex justify-content-end">
+    <p-button
+      label="Imprimir formulário"
+      icon="pi pi-print"
+      (onClick)="print()"
+    />
+  </div>
+</div>
+<div class="grid">
   <div class="col-9">
-    <div class="col-6 flex flex-column -ml-2 -mt-2">
-      <app-bread-crumb class="mb-4" [items]="breadcrumbItems">Profissional de Saúde</app-bread-crumb>
-    </div>
-
     <form [formGroup]="form" (ngSubmit)="save()">
       <p-card
         header="Dados básicos"
@@ -327,7 +337,7 @@
   </div>
 
   <!-- Card com imagem de profissinal -->
-  <div class="col-3">
+  <div class="col-3 p-0">
     <div class="col-3">
       <p-card
         header="Jorge de Sousa Cabral"
@@ -344,12 +354,12 @@
         <ng-template pTemplate="footer">
           <div class="flex gap-3 mt-1">
             <p-button
-              label="Imprimir"
+              label="WhatsApp"
               severity="secondary"
               class="w-full"
               styleClass="w-full"
-              icon="pi pi-print"
-              (onClick)="print()"
+              icon="pi pi-whatsapp"
+              (onClick)="openWhatsApp()"
             />
             <p-button
               label="Enviar foto"

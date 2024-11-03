@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Button } from 'primeng/button';
 
 @Component({
@@ -8,25 +8,27 @@ import { Button } from 'primeng/button';
 })
 export class DialogComponent {
   visible: boolean = false;
+  loading: boolean = false;
 
-  @Input()
-  title: string = '';
+  @Input() title: string = '';
+  @Input() description: string = '';
+  @Input() icon: string = 'pi pi-user-edit';
+  @Input() severity: Button['severity'] = 'primary';
 
-  @Input()
-  description: string = '';
-
-  @Input()
-  icon: string = 'pi pi-user-edit';
-
-  @Input()
-  severity: Button['severity'] = 'primary';
+  @Output() confirm = new EventEmitter<void>();
 
   showDialog() {
     this.visible = true;
   }
 
-  confirm(): void {
-    this.visible = false;
+  onConfirm(): void {
+    this.loading = true;
+
+    setTimeout(() => {
+      this.confirm.emit();
+      this.loading = false;
+      this.visible = false;
+    }, 4000);
   }
 
   cancel(): void {

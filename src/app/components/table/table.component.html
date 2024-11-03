@@ -37,6 +37,7 @@
             severity="danger"
             title="Realmente deseja excluir este profissional?"
             [description]="'Profissinal de Saúde: ' + professional.name"
+            (confirm)="deleteProfessinal(professional.id)"
           ></app-dialog>
         </div>
       </td>

@@ -84,11 +84,22 @@ export class AddProfessionalsComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
 
     if (id !== null) {
-      const professional = this.professinalService.GetProfessionalById(+id);
+      const professional = this.professinalService.getProfessionalById(+id);
       this.form.patchValue(professional);
 
       this.btnTitle = 'Editar';
     }
+  }
+
+  openWhatsApp() {
+    const phoneNumber = '5521980900860';
+    const message =
+      'Olá, profissional de saúde! Tudo bem? Seja bem vindo(a) ao sistema digital INNOMED.';
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+
+    window.open(url, '_blank');
   }
 
   print(): void {
@@ -98,7 +109,7 @@ export class AddProfessionalsComponent implements OnInit {
   save(): void {
     this.isLoading = true;
     let professional = this.form.value as IProfessional;
-    this.professinalService.CreateProfessinal(professional);
+    this.professinalService.createProfessinal(professional);
 
     setTimeout(() => {
       this.isLoading = false;

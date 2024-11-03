@@ -16,7 +16,9 @@
 >
   <p>{{ description }}</p>
   <div class="flex justify-content-end gap-2">
-    <p-button outlined="true" (onClick)="cancel()">Cancelar</p-button>
-    <p-button (onClick)="confirm()">Confirmar</p-button>
+    <p-button label="Cancelar" outlined="true" (onClick)="cancel()" />
+    <div class="card flex justify-content-center gap-3">
+      <p-button label="Confirmar" [loading]="loading" (onClick)="onConfirm()" />
+    </div>
   </div>
 </p-dialog>

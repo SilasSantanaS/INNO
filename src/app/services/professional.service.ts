@@ -36,19 +36,25 @@ export class ProfessionalService {
 
   constructor() {}
 
-  GetProfessionalById(id: number): IProfessional {
-    return this.professionals.find(el => el.id === id)!;
+  getProfessionalById(id: number): IProfessional {
+    return this.professionals.find((el) => el.id === id)!;
   }
 
-  GetProfessionals(): IProfessional[] {
+  getProfessionals(): IProfessional[] {
     return this.professionals;
   }
 
-  CreateProfessinal(professinal: IProfessional): IProfessional {
+  createProfessinal(professinal: IProfessional): IProfessional {
     professinal.id = this.professionals.length + 1;
 
     this.professionals.push(professinal);
 
     return professinal;
+  }
+
+  deleteProfessinal(id: number): IProfessional[] {
+    this.professionals = this.professionals.filter((x) => x.id != id);
+
+    return this.professionals;
   }
 }
