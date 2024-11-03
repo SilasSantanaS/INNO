@@ -32,7 +32,12 @@
             [text]="true"
             (onClick)="getItemPage(professional.id)"
           />
-          <app-dialog icon="pi pi-trash" severity="danger"></app-dialog>
+          <app-dialog
+            icon="pi pi-trash"
+            severity="danger"
+            title="Realmente deseja excluir este profissional?"
+            [description]="'Profissinal de Saúde: ' + professional.name"
+          ></app-dialog>
         </div>
       </td>
     </tr>

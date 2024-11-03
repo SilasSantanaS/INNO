@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { MenubarModule } from 'primeng/menubar';
+import { TooltipModule } from 'primeng/tooltip';
 import { InputTextModule } from 'primeng/inputtext';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
@@ -18,6 +19,7 @@ import { HeaderComponent } from './header.component';
     CommonModule,
     ButtonModule,
     MenubarModule,
+    TooltipModule,
     InputTextModule,
     InputIconModule,
     IconFieldModule

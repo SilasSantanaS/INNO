@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ProfessionalsComponent implements OnInit {
   breadcrumbItems: MenuItem[] = [];
+  isLoading: boolean = false;
   cities: any[] | undefined;
   form = this.fb.group({
     search: [],

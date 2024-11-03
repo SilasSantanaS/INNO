@@ -13,10 +13,11 @@ import { ProfessionalService } from '../../../services/professional.service';
 export class AddProfessionalsComponent implements OnInit {
   breadcrumbItems: MenuItem[] = [];
   form: FormGroup;
-  cities: any[] | undefined;
-  isLoading: boolean = false;
   date1: Date | undefined;
   date2: Date | undefined;
+  cities: any[] | undefined;
+  isLoading: boolean = false;
+  btnTitle: string = 'Cadastrar';
 
   constructor(
     private fb: FormBuilder,
@@ -76,12 +77,17 @@ export class AddProfessionalsComponent implements OnInit {
       { name: 'Endocrinologista', code: 'ENDO' },
     ];
 
+    this.configureEditComponent();
+  }
+
+  configureEditComponent() {
     const id = this.route.snapshot.paramMap.get('id');
 
     if (id !== null) {
       const professional = this.professinalService.GetProfessionalById(+id);
-
       this.form.patchValue(professional);
+
+      this.btnTitle = 'Editar';
     }
   }
 

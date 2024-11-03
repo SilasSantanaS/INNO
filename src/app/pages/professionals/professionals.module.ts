@@ -8,6 +8,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { FileUploadModule } from 'primeng/fileupload';
+import { SpinnerModule } from '../../components/spinner/spinner.module';
 import { ProfessionalsRoutingModule } from './professionals-routing.module';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TableModule as TModule } from '../../components/table/table.module';
@@ -25,6 +26,7 @@ import { ProfessionalsComponent } from './professionals.component';
     CommonModule,
     ButtonModule,
     DividerModule,
+    SpinnerModule,
     DropdownModule,
     InputTextModule,
     IconFieldModule,
