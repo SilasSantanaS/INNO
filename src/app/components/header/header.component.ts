@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
       {
         label: 'Dashboard',
         icon: 'pi pi-th-large',
-        routerLink: ['/']
+        routerLink: ['dashboard']
       },
       {
         label: 'Agenda',

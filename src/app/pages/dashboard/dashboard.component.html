@@ -1,0 +1,30 @@
+<div class="grid">
+  <div class="col-6">
+    <app-bread-crumb class="mb-4" [items]="breadcrumbItems"
+      >Meu Dashboard</app-bread-crumb
+    >
+  </div>
+  <div class="col-6 flex justify-content-end align-content-center"></div>
+</div>
+
+<div class="grid mt-6 flex justify-content-between h-22rem">
+  <div class="col-6 flex justify-content-center align-content-center">
+    <p-card
+      header="Novo pacientes"
+      subheader="Pacientes cadastrados na última semana"
+      class="w-full"
+    >
+    </p-card>
+  </div>
+  <div class="col-6 flex justify-content-center align-items-center">
+    <p-card header="Pacientes por especialidades" class="w-6">
+      <p-chart type="pie" [data]="data" [options]="options" class="w-full h-6rem"></p-chart>
+    </p-card>
+  </div>
+</div>
+
+<div class="grid mt-6 flex justify-content-between h-22rem">
+  <div class="col-4 flex justify-content-center align-content-center"></div>
+  <div class="col-4 flex justify-content-center align-content-center"></div>
+  <div class="col-4 flex justify-content-center align-content-center"></div>
+</div>

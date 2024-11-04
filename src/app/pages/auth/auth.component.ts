@@ -44,7 +44,7 @@ export class AuthComponent {
             this.isLoading = false;
 
             sessionStorage.setItem('email', email as string);
-            this.router.navigate(['/']);
+            this.router.navigate(['/dashboard']);
           }, 3000);
         } else {
           this.messageService.add({

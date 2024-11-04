@@ -27,7 +27,7 @@ export class ProfessionalsComponent implements OnInit {
   ngOnInit(): void {
     this.breadcrumbItems = [
       {
-        label: 'Lista de Profissionais de Saúde',
+        label: 'Ver profissionais de saúde',
         routerLink: '/professionals',
       },
     ];

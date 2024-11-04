@@ -1,20 +1,24 @@
 import { NgModule } from '@angular/core';
+import { CardModule } from 'primeng/card';
+import { ChartModule } from 'primeng/chart';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
-import { AnalysisRoutingModule } from './analysis-routing.module';
+import { DashboardRoutingModule } from './dashboard-routing.module';
 import { BreadCrumbModule } from '../../components/bread-crumb/bread-crumb.module';
 
-import { AnalysisComponent } from './analysis.component';
+import { DashboardComponent } from './dashboard.component';
 
 @NgModule({
   declarations: [
-    AnalysisComponent
+    DashboardComponent
   ],
   imports: [
+    CardModule,
+    ChartModule,
     CommonModule,
     ButtonModule,
     BreadCrumbModule,
-    AnalysisRoutingModule
+    DashboardRoutingModule
   ]
 })
-export class AnalysisModule { }
+export class DashboardModule { }
