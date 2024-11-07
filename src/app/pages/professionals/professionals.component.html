@@ -1,7 +1,9 @@
 <app-spinner [isLoading]="isLoading"></app-spinner>
 <div class="grid">
   <div class="col-6 flex flex-column">
-    <app-bread-crumb class="mb-4" [items]="breadcrumbItems">Profissionais de Saúde</app-bread-crumb>
+    <app-bread-crumb class="mb-4" [items]="breadcrumbItems"
+      >Profissionais de Saúde</app-bread-crumb
+    >
   </div>
   <div class="col-6 bg-danger">
     <div class="flex justify-content-end">
@@ -31,34 +33,44 @@
       <div class="col-3">
         <p-iconField iconPosition="right" class="mr-2">
           <p-inputIcon styleClass="pi pi-search" />
-          <input type="text" pInputText placeholder="Buscar profissional" />
+          <input
+            type="text"
+            pInputText
+            placeholder="Buscar profissional"
+            formControlName="search"
+          />
         </p-iconField>
       </div>
 
       <div class="col-3">
         <p-dropdown
-          formControlName="selectedCity"
-          [options]="cities"
-          optionLabel="name"
+          formControlName="role"
+          [options]="roles"
+          optionLabel="label"
+          optionValue="id"
           placeholder="Todas as funções"
         />
       </div>
 
       <div class="col-3">
         <p-dropdown
-          formControlName="selectedCity"
-          [options]="cities"
-          optionLabel="name"
-          placeholder="Todas as especialidades"
+          formControlName="state"
+          [options]="states"
+          optionLabel="nome"
+          optionValue="sigla"
+          placeholder="Todas os estados"
+          (onChange)="loadCities()"
         />
       </div>
 
       <div class="col-3">
         <p-dropdown
-          formControlName="selectedCity"
+          class="flex w-50rem"
           [options]="cities"
-          optionLabel="name"
-          placeholder="Todas as localidades"
+          optionLabel="nome"
+          optionValue="nome"
+          formControlName="city"
+          placeholder="Todas as cidades"
         />
       </div>
     </div>

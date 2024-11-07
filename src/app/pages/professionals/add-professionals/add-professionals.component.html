@@ -29,7 +29,6 @@
                 type="text"
                 pInputText
                 id="username"
-                placeholder="Jorge de Sousa Cabral"
                 formControlName="name"
               />
             </div>
@@ -40,7 +39,6 @@
               <label for="cnpj-cpf">CPF</label>
               <p-inputMask
                 mask="999.999.999-99"
-                placeholder="102.334.840-35"
                 formControlName="socialSecurityNumber"
               />
             </div>
@@ -52,7 +50,6 @@
               <p-inputMask
                 mask="99.999.999-9"
                 id="cnpj-cpf"
-                placeholder="36.281.140-4"
                 formControlName="nationalId"
               />
             </div>
@@ -62,7 +59,6 @@
             <div class="flex flex-column gap-2">
               <label>Data de nascimento</label>
               <p-calendar
-                placeholder="12/04/2012"
                 [iconDisplay]="'input'"
                 [showIcon]="true"
                 inputId="icondisplay"
@@ -77,11 +73,7 @@
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Registro profissional</label>
-              <input
-                pInputText
-                placeholder="856824"
-                formControlName="professionalLicense"
-              />
+              <input pInputText formControlName="professionalLicense" />
             </div>
           </div>
 
@@ -90,10 +82,9 @@
               <label>Função</label>
               <p-dropdown
                 class="flex"
-                [options]="cities"
-                optionLabel="name"
-                optionValue="name"
-                placeholder="Psicóloga"
+                [options]="roles"
+                optionLabel="label"
+                optionValue="id"
                 formControlName="role"
               />
             </div>
@@ -102,11 +93,7 @@
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Especialidade</label>
-              <input
-                pInputText
-                placeholder="Odontologia"
-                formControlName="specialty"
-              />
+              <input pInputText formControlName="specialty" />
             </div>
           </div>
 
@@ -115,9 +102,9 @@
               <label>Escolaridade</label>
               <p-dropdown
                 class="flex"
-                [options]="cities"
-                optionLabel="name"
-                placeholder="Superior Completo"
+                [options]="educationalLevels"
+                optionLabel="label"
+                optionValue="id"
                 formControlName="educationLevel"
               />
             </div>
@@ -128,11 +115,7 @@
           <div class="col-6">
             <div class="flex flex-column gap-2">
               <label>Formação</label>
-              <input
-                pInputText
-                placeholder="Psicologia"
-                formControlName="academicBackground"
-              />
+              <input pInputText formControlName="academicBackground" />
             </div>
           </div>
         </div>
@@ -148,8 +131,8 @@
               <label>CEP</label>
               <p-inputMask
                 mask="99999-999"
-                placeholder="55196-015"
                 formControlName="zipCode"
+                (onBlur)="getAddressByZipCode()"
               />
             </div>
           </div>
@@ -158,10 +141,11 @@
               <label>Estado</label>
               <p-dropdown
                 class="flex w-50rem"
-                [options]="cities"
-                optionLabel="name"
-                placeholder="Rio de Janeiro"
+                [options]="states"
+                optionLabel="nome"
+                optionValue="sigla"
                 formControlName="state"
+                (onChange)="loadCities()"
               />
             </div>
           </div>
@@ -171,8 +155,8 @@
               <p-dropdown
                 class="flex w-50rem"
                 [options]="cities"
-                optionLabel="name"
-                placeholder="Rio de Janeiro"
+                optionLabel="nome"
+                optionValue="nome"
                 formControlName="city"
               />
             </div>
@@ -180,13 +164,7 @@
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Bairro</label>
-              <p-dropdown
-                class="flex w-50rem"
-                [options]="cities"
-                optionLabel="name"
-                placeholder="Copacabana"
-                formControlName="neighborhood"
-              />
+              <input pInputText formControlName="neighborhood" />
             </div>
           </div>
         </div>
@@ -196,11 +174,7 @@
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Logradouro</label>
-              <input
-                pInputText
-                placeholder="Av. Gentúlio Vargas"
-                formControlName="street"
-              />
+              <input pInputText formControlName="street" />
             </div>
           </div>
 
@@ -209,7 +183,6 @@
               <label>Número</label>
               <p-inputNumber
                 inputId="integeronly"
-                placeholder="54"
                 formControlName="addressNumber"
               />
             </div>
@@ -220,7 +193,6 @@
               <label>Complemento</label>
               <input
                 pInputText
-                placeholder="3° Prédio, Térreo"
                 formControlName="additionalAddressInformation"
               />
             </div>
@@ -231,22 +203,14 @@
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Telefone fixo</label>
-              <p-inputMask
-                mask="(99) 9999-9999"
-                placeholder="(21) 8574-5236"
-                formControlName="phone"
-              />
+              <p-inputMask mask="(99) 9999-9999" formControlName="phone" />
             </div>
           </div>
 
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Celular</label>
-              <p-inputMask
-                mask="(99) 99999-9999"
-                placeholder="(21) 98574-5236"
-                formControlName="phone2"
-              />
+              <p-inputMask mask="(99) 99999-9999" formControlName="phone2" />
             </div>
           </div>
         </div>
@@ -262,7 +226,6 @@
             <div class="flex flex-column gap-2">
               <label>Data de contratação</label>
               <p-calendar
-                placeholder="12/04/2012"
                 [(ngModel)]="date1"
                 [iconDisplay]="'input'"
                 [showIcon]="true"
@@ -277,9 +240,9 @@
               <label>Tipo de contrato</label>
               <p-dropdown
                 class="flex w-50rem"
-                [options]="cities"
-                optionLabel="name"
-                placeholder="PJ"
+                [options]="contractTypes"
+                optionLabel="label"
+                optionValue="id"
                 formControlName="contractType"
               />
             </div>
@@ -289,7 +252,6 @@
             <div class="flex flex-column gap-2">
               <label>Data de pagamento</label>
               <p-calendar
-                placeholder="12/04/2012"
                 [iconDisplay]="'input'"
                 [showIcon]="true"
                 inputId="icondisplay"
@@ -303,9 +265,9 @@
               <label>Modelo de recebimento</label>
               <p-dropdown
                 class="flex w-50rem"
-                [options]="cities"
-                optionLabel="name"
-                placeholder="Diária"
+                [options]="receivingMethod"
+                optionLabel="label"
+                optionValue="id"
                 formControlName="receivingMethod"
               />
             </div>
@@ -316,11 +278,7 @@
           <div class="col-6">
             <div class="flex flex-column gap-2">
               <label>Dados de pagamento</label>
-              <input
-                pInputText
-                placeholder="c/c 45456"
-                formControlName="paymentInformation"
-              />
+              <input pInputText formControlName="paymentInformation" />
             </div>
           </div>
         </div>
@@ -363,7 +321,7 @@
             />
             <p-button
               label="Enviar foto"
-              class="w-full"
+              class="w-full text-primary"
               styleClass="w-full"
               icon="pi pi-upload"
             />

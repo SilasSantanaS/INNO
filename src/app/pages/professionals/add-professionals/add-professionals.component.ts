@@ -1,9 +1,19 @@
-import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { IViaCep } from '../../../interfaces/viacep';
 import { MenuItem, MessageService } from 'primeng/api';
-import { IProfessional } from '../../../interfaces/professional';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LocationService } from '../../../services/location.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfessionalService } from '../../../services/professional.service';
+import {
+  ContractType,
+  EducationLevel,
+  IProfessional,
+  ReceivingMethod,
+  Role,
+} from '../../../interfaces/professional';
+import { IState } from '../../../interfaces/state';
+import { ICity } from '../../../interfaces/city';
 
 @Component({
   selector: 'app-add-professionals',
@@ -11,19 +21,129 @@ import { ProfessionalService } from '../../../services/professional.service';
   styleUrl: './add-professionals.component.scss',
 })
 export class AddProfessionalsComponent implements OnInit {
-  breadcrumbItems: MenuItem[] = [];
   form: FormGroup;
   date1: Date | undefined;
   date2: Date | undefined;
-  cities: any[] | undefined;
   isLoading: boolean = false;
   btnTitle: string = 'Cadastrar';
+  cities: ICity[] = [];
+  states: IState[] = [];
+  breadcrumbItems: MenuItem[] = [];
+
+  readonly receivingMethod = [
+    {
+      id: ReceivingMethod.Daily,
+      label: 'Diária',
+    },
+    {
+      id: ReceivingMethod.Monthly,
+      label: 'Fixo Mensal',
+    },
+    {
+      id: ReceivingMethod.Hourly,
+      label: 'Por Hora',
+    },
+  ];
+
+  readonly contractTypes = [
+    {
+      id: ContractType.CNPJ,
+      label: 'CNPJ',
+    },
+    {
+      id: ContractType.CLT,
+      label: 'CLT',
+    },
+    {
+      id: ContractType.RPA,
+      label: 'RPA',
+    },
+    {
+      id: ContractType.FreeLancer,
+      label: 'Free Lancer',
+    },
+  ];
+
+  readonly roles = [
+    {
+      id: Role.Psychologist,
+      label: 'Psicólogo',
+    },
+    {
+      id: Role.SpeechTherapist,
+      label: 'Fonodiólogo',
+    },
+    {
+      id: Role.OccupationalTherapist,
+      label: 'Terapeuta Ocupacional',
+    },
+    {
+      id: Role.Pedagogue,
+      label: 'Pedagogo',
+    },
+    {
+      id: Role.Physiotherapist,
+      label: 'Fisioterapeuta',
+    },
+    {
+      id: Role.TherapeuticCompanion,
+      label: 'Acompanhante Terapeutico',
+    },
+    {
+      id: Role.Psychomotrician,
+      label: 'Psicomotricista',
+    },
+    {
+      id: Role.Psychiatrist,
+      label: 'Psiquiatra',
+    },
+    {
+      id: Role.Others,
+      label: 'Outros',
+    },
+  ];
+
+  readonly educationalLevels = [
+    {
+      id: EducationLevel.BasicUncompleted,
+      label: 'Fundamental incompleto',
+    },
+    {
+      id: EducationLevel.BasicCompleted,
+      label: 'Fundamental completo',
+    },
+    {
+      id: EducationLevel.HighSchoolUncompleted,
+      label: 'Médio incompleto',
+    },
+    {
+      id: EducationLevel.HighSchoolCompleted,
+      label: 'Médio completo',
+    },
+    {
+      id: EducationLevel.CollegeUncompleted,
+      label: 'Superior incompleto',
+    },
+    {
+      id: EducationLevel.CollegeCompleted,
+      label: 'Superior completo',
+    },
+    {
+      id: EducationLevel.MastersUncompleted,
+      label: 'Pós-superior incompleto',
+    },
+    {
+      id: EducationLevel.MastersCompleted,
+      label: 'Pós-superior completo',
+    },
+  ];
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
     private messageService: MessageService,
+    private locationService: LocationService,
     private professinalService: ProfessionalService
   ) {
     this.form = this.fb.group({
@@ -44,7 +164,7 @@ export class AddProfessionalsComponent implements OnInit {
       street: ['', Validators.required],
       zipCode: ['', Validators.required],
       neighborhood: ['', Validators.required],
-      addressNumber: ['', Validators.required],
+      addressNumber: [undefined, Validators.required],
       additionalAddressInformation: ['', Validators.required],
 
       dateOfHire: ['', Validators.required],
@@ -64,23 +184,35 @@ export class AddProfessionalsComponent implements OnInit {
       },
     ];
 
-    this.cities = [
-      { name: 'Cardiologista', code: 'CARD' },
-      { name: 'Pediatra', code: 'PED' },
-      { name: 'Dermatologista', code: 'DERM' },
-      { name: 'Neurologista', code: 'NEURO' },
-      { name: 'Oftalmologista', code: 'OFT' },
-      { name: 'Ortopedista', code: 'ORTO' },
-      { name: 'Ginecologista', code: 'GINE' },
-      { name: 'Psiquiatra', code: 'PSIQ' },
-      { name: 'Clinico Geral', code: 'CLIN' },
-      { name: 'Endocrinologista', code: 'ENDO' },
-    ];
-
+    this.loadStates();
     this.configureEditComponent();
   }
 
-  configureEditComponent() {
+  loadStates(): void {
+    this.locationService.listStates().subscribe({
+      next: (response: IState[]) => {
+        this.states = response;
+      },
+      error: (error: any) => {
+        console.error('Erro ao carregar estados:', error);
+      },
+    });
+  }
+
+  loadCities(): void {
+    const uf = this.form.controls['state'].value;
+
+    this.locationService.listCities(uf).subscribe({
+      next: (response: ICity[]) => {
+        this.cities = response;
+      },
+      error: (error: any) => {
+        console.error('Erro ao carregar cidades:', error);
+      },
+    });
+  }
+
+  configureEditComponent(): void {
     const id = this.route.snapshot.paramMap.get('id');
 
     if (id !== null) {
@@ -122,5 +254,32 @@ export class AddProfessionalsComponent implements OnInit {
 
       this.router.navigate(['./professionals']);
     }, 3000);
+  }
+
+  getAddressByZipCode(): void {
+    let zipCode = this.form.controls['zipCode'].value;
+    zipCode = zipCode.replace(/\D/g, '');
+
+    if (!!zipCode) {
+      let validateZipCode = /^[0-9]{8}$/;
+
+      validateZipCode.test(zipCode);
+    }
+
+    this.locationService
+      .getAddressByZipCode(zipCode)
+      .subscribe((response: IViaCep) => {
+        this.form.patchValue({
+          state: response.uf,
+          street: response.logradouro,
+          neighborhood: response.bairro,
+        });
+
+        this.loadCities();
+
+        this.form.patchValue({
+          city: response.localidade,
+        });
+      });
   }
 }

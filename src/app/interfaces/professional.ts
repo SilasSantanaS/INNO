@@ -26,3 +26,39 @@ export interface IProfessional {
   receivingMethod: string;
   paymentInformation: string;
 }
+
+export enum ReceivingMethod {
+  Hourly,
+  Daily,
+  Monthly
+}
+
+export enum ContractType {
+  CNPJ,
+  CLT,
+  RPA,
+  FreeLancer,
+}
+
+export enum EducationLevel {
+  BasicCompleted,
+  BasicUncompleted,
+  HighSchoolCompleted,
+  HighSchoolUncompleted,
+  CollegeCompleted,
+  CollegeUncompleted,
+  MastersCompleted,
+  MastersUncompleted,
+}
+
+export enum Role {
+  Psychologist,
+  SpeechTherapist,
+  OccupationalTherapist,
+  Pedagogue,
+  Physiotherapist,
+  TherapeuticCompanion,
+  Psychomotrician,
+  Psychiatrist,
+  Others,
+}

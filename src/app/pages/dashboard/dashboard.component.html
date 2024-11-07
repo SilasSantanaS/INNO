@@ -7,8 +7,8 @@
   <div class="col-6 flex justify-content-end align-content-center"></div>
 </div>
 
-<div class="grid mt-6 flex justify-content-between h-22rem">
-  <div class="col-6 flex justify-content-center align-content-center">
+<div class="grid mt-5 flex justify-content-between h-40rem">
+  <div class="col-6 flex justify-content-center align-content-center h-full">
     <p-card
       header="Novo pacientes"
       subheader="Pacientes cadastrados na última semana"
@@ -17,8 +17,21 @@
     </p-card>
   </div>
   <div class="col-6 flex justify-content-center align-items-center">
-    <p-card header="Pacientes por especialidades" class="w-6">
-      <p-chart type="pie" [data]="data" [options]="options" class="w-full h-6rem"></p-chart>
+    <p-card
+      header="Por especialidades"
+      subheader="Ver pacientes recentes por especialidades"
+      class="w-full justify-content-center"
+    >
+      <div class="flex justify-content-center">
+        <div class="w-6">
+          <p-chart
+            type="pie"
+            [data]="data"
+            [options]="options"
+            class="w-10 h-15rem"
+          ></p-chart>
+        </div>
+      </div>
     </p-card>
   </div>
 </div>
