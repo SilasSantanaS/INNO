@@ -177,9 +177,9 @@ export class AddProfessionalsComponent implements OnInit {
 
   ngOnInit(): void {
     this.breadcrumbItems = [
-      { label: 'Profissionais de Saúde', routerLink: '/professionals' },
+      { label: 'Ver profissionais de saúde', routerLink: '/professionals' },
       {
-        label: 'Cadastrar Novo Profissional',
+        label: 'Cadastrar novo profissional',
         routerLink: '/professionals/new',
       },
     ];
