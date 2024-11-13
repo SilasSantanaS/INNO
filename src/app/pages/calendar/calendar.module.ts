@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
+import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
+import { TabViewModule } from 'primeng/tabview';
 import { CalendarRoutingModule } from './calendar-routing.module';
 import { SchedulerModule } from '../../components/scheduler/scheduler.module';
 import { BreadCrumbModule } from '../../components/bread-crumb/bread-crumb.module';
@@ -12,8 +14,10 @@ import { CalendarComponent } from './calendar.component';
     CalendarComponent
   ],
   imports: [
-    CommonModule,
+    CardModule,
     ButtonModule,
+    CommonModule,
+    TabViewModule,
     SchedulerModule,
     BreadCrumbModule,
     CalendarRoutingModule

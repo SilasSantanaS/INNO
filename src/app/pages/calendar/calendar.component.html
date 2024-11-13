@@ -15,15 +15,19 @@
   </div>
 </div>
 
-<div class="grid mt-6">
-  <div
-    class="col-9 flex justify-content-center align-content-center surface-100"
-  >
+<div class="grid mt-6 h-screen">
+  <div class="col-9 flex align-content-center">
     <app-scheduler></app-scheduler>
   </div>
-  <div
-    class="col-3 flex justify-content-center align-content-center surface-50"
-  >
-    Controls
+  <div class="col-3 flex justify-content-center align-content-center">
+    <p-card [style]="{ width: '360px' }">
+      <p-tabView>
+        <p-tabPanel *ngFor="let tab of tabs" [header]="tab.title">
+          <p>
+            {{ tab.content }}
+          </p>
+        </p-tabPanel>
+      </p-tabView>
+    </p-card>
   </div>
 </div>

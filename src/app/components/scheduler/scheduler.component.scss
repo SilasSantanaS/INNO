@@ -1,0 +1,72 @@
+::ng-deep {
+  .fc {
+    background-color: #ffffff;
+    border-radius: 15px;
+    border: 2px solid transparent;
+    background-image: linear-gradient(to bottom, #f1f1f1, #ffffff);
+    padding: 20px;
+    position: relative;
+  }
+
+  .fc::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 15px;
+    border: 4px solid #7256F3;
+    z-index: -1;
+  }
+
+  .fc .fc-header-toolbar {
+    border-bottom: none;
+    box-shadow: none;
+    text-align: center;
+  }
+
+  .fc .fc-daygrid-day-number {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #7256F3;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    border-radius: 50%;
+    padding: 8px 12px;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .fc .fc-daygrid-day-number:hover {
+    background-color: #7256F3;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  .fc .fc-daygrid-day {
+    background-color: #ffffff;
+    border: none;
+    text-align: center;
+  }
+
+  .fc .fc-daygrid-day:hover {
+    background-color: #f1f1f1;
+    border-color: #007ad9;
+    cursor: pointer;
+  }
+
+  .fc .fc-daygrid-week-number {
+    background-color: #f9f9f9;
+    padding: 5px;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .fc-scrollgrid-sync-inner {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
