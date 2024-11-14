@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import { CalendarOptions } from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
 
 @Component({
@@ -9,6 +9,9 @@ import interactionPlugin from '@fullcalendar/interaction';
   styleUrl: './scheduler.component.scss',
 })
 export class SchedulerComponent {
+  appointmentDate: string = 'aa';
+  visible: boolean = false;
+
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     plugins: [dayGridPlugin, interactionPlugin],
@@ -20,7 +23,12 @@ export class SchedulerComponent {
     ],
   };
 
+  showDialog() {
+    this.visible = true;
+  }
+
   handleDateClick(arg: any) {
-    alert('date click! ' + arg.dateStr);
+    this.appointmentDate = arg.dateStr;
+    this.visible = true;
   }
 }

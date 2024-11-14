@@ -1,3 +1,35 @@
+<p-dialog
+  header="Agendar Consulta"
+  [(visible)]="visible"
+  [modal]="true"
+  [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+  [style]="{ width: '50vw' }"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <div class="grid flex justify-content-end w-full mt-1">
+    <div class="col-6">
+      {{ appointmentDate | date : "fullDate" }}
+    </div>
+    <div class="col-6 flex justify-content-end">
+      <p-iconField iconPosition="right" class="">
+        <p-inputIcon styleClass="pi pi-search" />
+        <input
+          type="text"
+          pInputText
+          placeholder="Buscar paciente"
+          formControlName="search"
+        />
+      </p-iconField>
+    </div>
+  </div>
+
+  <div class="grid w-full">
+    <p-divider align="left" type="solid" class="w-full">
+      <b>Dados do paciente</b>
+    </p-divider>
+  </div>
+</p-dialog>
 <full-calendar
   [options]="calendarOptions"
   style="width: 1100px"
