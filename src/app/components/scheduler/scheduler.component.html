@@ -9,10 +9,10 @@
 >
   <div class="grid flex justify-content-end w-full mt-1">
     <div class="col-6">
-      {{ appointmentDate | date : "fullDate" }}
+      <h4>{{ appointmentDate | date : "fullDate" }}</h4>
     </div>
     <div class="col-6 flex justify-content-end">
-      <p-iconField iconPosition="right" class="">
+      <p-iconField iconPosition="right" class="mt-2">
         <p-inputIcon styleClass="pi pi-search" />
         <input
           type="text"
@@ -28,6 +28,76 @@
     <p-divider align="left" type="solid" class="w-full">
       <b>Dados do paciente</b>
     </p-divider>
+  </div>
+
+  <div class="grid">
+    <div class="col-4">
+      <div class="flex flex-column gap-2">
+        <label for="username">Nome completo</label>
+        <input
+          type="text"
+          pInputText
+          id="username"
+          formControlName="name"
+          disabled="true"
+        />
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="flex flex-column gap-2">
+        <label for="cnpj-cpf">CPF</label>
+        <p-inputMask
+          mask="999.999.999-99"
+          formControlName="socialSecurityNumber"
+          disabled="true"
+        />
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="flex flex-column gap-2">
+        <label>Data de nascimento</label>
+        <p-calendar
+          [iconDisplay]="'input'"
+          [showIcon]="true"
+          inputId="icondisplay"
+          formControlName="dateOfBirth"
+          disabled="true"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="col-4">
+      <div class="flex flex-column gap-2">
+        <label>CEP</label>
+        <p-inputMask
+          mask="99999-999"
+          formControlName="zipCode"
+          disabled="true"
+        />
+      </div>
+    </div>
+
+    <div class="col-8">
+      <div class="flex flex-column gap-2">
+        <label>Endereço</label>
+        <input
+          pInputText
+          formControlName="additionalAddressInformation"
+          disabled="true"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-content-end gap-2 mt-5">
+    <p-button label="Cancelar" outlined="true" (onClick)="cancel()" />
+    <div class="card flex justify-content-center gap-3">
+      <p-button label="Agendar" [loading]="loading" (onClick)="onConfirm()" />
+    </div>
   </div>
 </p-dialog>
 <full-calendar

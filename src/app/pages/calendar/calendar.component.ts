@@ -20,8 +20,8 @@ export class CalendarComponent implements OnInit {
     ];
 
     this.tabs = [
-      { title: 'Pacientes', content: 'Tab 1 Content' },
-      { title: 'Outros', content: 'Tab 2 Content' },
+      { title: 'Hoje', content: 'Tab 1 Content' },
+      { title: 'Amanhã', content: 'Tab 2 Content' },
     ];
   }
 
