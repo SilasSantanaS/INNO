@@ -1,3 +1,5 @@
+import { IPayload } from './payload';
+
 export interface IProfessional {
   id: number;
   name: string;
@@ -27,10 +29,12 @@ export interface IProfessional {
   paymentInformation: string;
 }
 
+export interface IProfessinals extends IPayload<IProfessional> {}
+
 export enum ReceivingMethod {
   Hourly,
   Daily,
-  Monthly
+  Monthly,
 }
 
 export enum ContractType {

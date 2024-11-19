@@ -90,6 +90,61 @@
     </div>
   </div>
 
+  <div class="grid w-full">
+    <p-divider align="left" type="solid" class="w-full">
+      <b>Dados do profissional</b>
+    </p-divider>
+  </div>
+
+  <div class="grid">
+    <div
+      class="col-3 flex justify-content-center align-content-center surface-50"
+    >
+      IMAGE
+    </div>
+    <div class="col-9">
+      <div class="grid w-full">
+        <div class="col-6">
+          <div class="flex flex-column gap-2">
+            <label for="username">Nome completo</label>
+            <input
+              type="text"
+              pInputText
+              id="username"
+              formControlName="name"
+              disabled="true"
+            />
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="flex flex-column gap-2">
+            <label>Registro profissional</label>
+            <input
+              pInputText
+              formControlName="professionalLicense"
+              disabled="true"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="grid w-full">
+        <div class="col-6">
+          <div class="flex flex-column gap-2">
+            <label>Função</label>
+            <input pInputText formControlName="role" disabled="true" />
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="flex flex-column gap-2">
+            <label>Especialidade</label>
+            <input pInputText formControlName="specialty" disabled="true" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="flex justify-content-end gap-2 mt-5">
     <p-button label="Cancelar" outlined="true" (onClick)="cancel()" />
     <div class="card flex justify-content-center gap-3">

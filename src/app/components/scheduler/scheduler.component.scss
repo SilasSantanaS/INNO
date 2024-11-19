@@ -134,3 +134,16 @@
     transform: translate(-50%, -50%);
   }
 }
+
+// Dialog scrollbar
+::ng-deep {
+  .p-dialog .p-dialog-content {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .p-dialog .p-dialog-content::-webkit-scrollbar {
+    display: none;
+  }
+}
+// Dialog scrollbar

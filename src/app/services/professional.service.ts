@@ -1,6 +1,14 @@
 import { Injectable } from '@angular/core';
 import { IProfessional } from '../interfaces/professional';
 
+export interface IGetProfessionalsParams {
+	search?: string;
+	Inactive?: boolean;
+	tenantId?: number;
+	page?: number;
+	pageLimit?: number;
+}
+
 @Injectable({
   providedIn: 'root',
 })
