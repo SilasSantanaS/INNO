@@ -3,6 +3,7 @@ import { MessageService } from 'primeng/api';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { CalendarOptions } from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
+import { ProfessionalService } from '../../services/professional.service';
 
 @Component({
   selector: 'app-scheduler',
@@ -10,9 +11,12 @@ import interactionPlugin from '@fullcalendar/interaction';
   styleUrl: './scheduler.component.scss',
 })
 export class SchedulerComponent {
+  selectedCountry: any;
   loading: boolean = false;
   visible: boolean = false;
   appointmentDate: string = '';
+  countries: any[] | undefined;
+  filteredCountries: any[] | undefined;
 
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
@@ -26,7 +30,10 @@ export class SchedulerComponent {
     ],
   };
 
-  constructor(private messageService: MessageService) {}
+  constructor(
+    private messageService: MessageService,
+    private professionalService: ProfessionalService
+  ) {}
 
   showDialog() {
     this.visible = true;

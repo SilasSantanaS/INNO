@@ -9,6 +9,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FullCalendarModule } from '@fullcalendar/angular';
 
 import { SchedulerComponent } from './scheduler.component';
@@ -26,6 +27,7 @@ import { SchedulerComponent } from './scheduler.component';
     IconFieldModule,
     InputIconModule,
     InputMaskModule,
+    AutoCompleteModule,
     FullCalendarModule,
   ],
   exports: [SchedulerComponent],

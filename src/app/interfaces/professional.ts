@@ -20,7 +20,7 @@ export interface IProfessional {
   addressNumber: string;
   additionalAddressInformation: string;
 
-  dateOfHire: string;
+  dateOfHire: Date;
   paymentDate: string;
   contractType: string;
   receivingMethod: string;

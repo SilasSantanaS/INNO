@@ -148,7 +148,7 @@ export class AddProfessionalsComponent implements OnInit {
   ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
-      role: ['', Validators.required],
+      role: [, Validators.required],
       specialty: ['', Validators.required],
       nationalId: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
@@ -186,6 +186,7 @@ export class AddProfessionalsComponent implements OnInit {
 
     this.loadStates();
     this.configureEditComponent();
+    this.getAddressByZipCode();
   }
 
   loadStates(): void {
@@ -215,12 +216,14 @@ export class AddProfessionalsComponent implements OnInit {
   configureEditComponent(): void {
     const id = this.route.snapshot.paramMap.get('id');
 
-    if (id !== null) {
-      const professional = this.professinalService.getProfessionalById(+id);
-      this.form.patchValue(professional);
-
-      this.btnTitle = 'Editar';
+    if (!id) {
+      return;
     }
+
+    const professional = this.professinalService.getProfessionalById(+id);
+    this.form.patchValue(professional);
+
+    this.btnTitle = 'Editar';
   }
 
   openWhatsApp() {

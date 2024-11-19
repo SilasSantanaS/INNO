@@ -12,15 +12,12 @@
       <h4>{{ appointmentDate | date : "fullDate" }}</h4>
     </div>
     <div class="col-6 flex justify-content-end">
-      <p-iconField iconPosition="right" class="mt-2">
-        <p-inputIcon styleClass="pi pi-search" />
-        <input
-          type="text"
-          pInputText
-          placeholder="Buscar paciente"
-          formControlName="search"
-        />
-      </p-iconField>
+      <!-- <p-autoComplete
+        [(ngModel)]="selectedCountry"
+        [suggestions]="filteredCountries"
+        (completeMethod)="filterCountry($event)"
+        optionLabel="name"
+      /> -->
     </div>
   </div>
 
