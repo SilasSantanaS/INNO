@@ -1,11 +1,11 @@
 export interface IPayload<ResultType = any[]> {
-	metadata: Metadata;
-	result: ResultType[];
+  metadata: Metadata;
+  result: ResultType[];
 }
 
 export interface Metadata {
-	page: number;
-	pageLimit: number;
-	count: number;
-	totalItems?: number;
+  page: number;
+  pageLimit: number;
+  count: number;
+  totalItems?: number;
 }
