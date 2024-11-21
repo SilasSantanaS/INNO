@@ -10,14 +10,6 @@
   <app-stepper>
     <ng-container patient>
       <div class="flex flex-column w-full px-3">
-        <!-- <div class="flex justify-content-end mb-2">
-          <p-button
-            label="Pesquisar paciente"
-            icon="pi pi-search"
-            iconPos="right"
-            text="true"
-          />
-        </div> -->
         <div class="grid">
           <div class="col-4">
             <div class="flex flex-column gap-2">
@@ -93,74 +85,136 @@
         </div>
       </div>
     </ng-container>
+    <ng-container professional>
+      <div class="flex flex-column w-full px-3">
+        <div class="grid">
+          <div class="col-4">
+            <div class="flex flex-column gap-2">
+              <label for="username">Nome completo</label>
+              <input
+                type="text"
+                pInputText
+                id="username"
+                formControlName="name"
+                disabled="true"
+                placeholder="Marcela Gomes Leal"
+              />
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="flex flex-column gap-2">
+              <label for="cnpj-cpf">CPF</label>
+              <p-inputMask
+                mask="999.999.999-99"
+                formControlName="socialSecurityNumber"
+                disabled="true"
+                placeholder="123.456.789-00"
+              />
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="flex flex-column gap-2">
+              <label>Registro profissional</label>
+              <input
+                pInputText
+                formControlName=""
+                disabled="true"
+                placeholder="123456789"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="col-6">
+            <div class="flex flex-column gap-2">
+              <label>Função</label>
+              <input
+                pInputText
+                formControlName="zipCode"
+                disabled="true"
+                placeholder="Psicólogo"
+              />
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="flex flex-column gap-2">
+              <label>Especialidade</label>
+              <input
+                pInputText
+                formControlName="additionalAddressInformation"
+                disabled="true"
+                placeholder="Psicologia Clínica"
+              />
+              <div class="flex justify-content-end">
+                <p-button
+                  label="Pesquisar profissinal"
+                  icon="pi pi-search"
+                  iconPos="right"
+                  text="true"
+                  size="small"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container appointment>
+      <div class="flex flex-column justify-content-center w-full px-3">
+        <div class="grid justify-content-center">
+          <div class="col-4">
+            <div class="flex flex-column gap-2">
+              <label>Data da consulta</label>
+              <p-calendar
+                [iconDisplay]="'input'"
+                [showIcon]="true"
+                inputId="icondisplay"
+                formControlName="dateOfBirth"
+                disabled="true"
+                placeholder="21-10-1992"
+              />
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="flex flex-column gap-2">
+              <label>Horário da consulta</label>
+              <p-calendar
+                [iconDisplay]="'input'"
+                [showIcon]="true"
+                [timeOnly]="true"
+                inputId="templatedisplay"
+              >
+                <ng-template
+                  pTemplate="inputicon"
+                  let-clickCallBack="clickCallBack"
+                >
+                  <i
+                    class="pi pi-clock pointer-events-none"
+                    (click)="clickCallBack($event)"
+                  ></i>
+                </ng-template>
+              </p-calendar>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-content-center mt-3">
+          <p-button
+            label="Confirmar consulta"
+            [loading]="loading"
+            (onClick)="onConfirm()"
+          />
+        </div>
+        <small class="mt-4 text-center"
+          >O paciente Bruno Macedo será agendado com a profissional Marcela Leal
+          para 25/11/2024 às 15h45.</small
+        >
+      </div>
+    </ng-container>
   </app-stepper>
-  <!-- <div class="grid flex w-full mt-1">
-    <div class="col-6">
-      <h4>{{ appointmentDate | date : "fullDate" }}</h4>
-    </div>
-  </div>
-
-  <div class="grid w-full">
-    <p-divider align="left" type="solid" class="w-full">
-      <b>Dados do profissional</b>
-    </p-divider>
-  </div>
-
-  <div class="grid">
-    <div
-      class="col-3 flex justify-content-center align-content-center surface-50"
-    >
-      IMAGE
-    </div>
-    <div class="col-9">
-      <div class="grid w-full">
-        <div class="col-6">
-          <div class="flex flex-column gap-2">
-            <label for="username">Nome completo</label>
-            <input
-              type="text"
-              pInputText
-              id="username"
-              formControlName="name"
-              disabled="true"
-            />
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="flex flex-column gap-2">
-            <label>Registro profissional</label>
-            <input
-              pInputText
-              formControlName="professionalLicense"
-              disabled="true"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div class="grid w-full">
-        <div class="col-6">
-          <div class="flex flex-column gap-2">
-            <label>Função</label>
-            <input pInputText formControlName="role" disabled="true" />
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="flex flex-column gap-2">
-            <label>Especialidade</label>
-            <input pInputText formControlName="specialty" disabled="true" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="flex justify-content-end gap-2 mt-5">
-    <p-button label="Cancelar" outlined="true" (onClick)="cancel()" />
-    <div class="card flex justify-content-center gap-3">
-      <p-button label="Agendar" [loading]="loading" (onClick)="onConfirm()" />
-    </div>
-  </div> -->
 </p-dialog>
 <full-calendar
   [options]="calendarOptions"

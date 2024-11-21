@@ -78,7 +78,7 @@
 
   .fc .fc-daygrid-day {
     background-color: #ffffff;
-    border: none;
+    border: 1px solid #dcdcdc;
     text-align: center;
     transition: background-color 0.2s ease;
   }
@@ -90,7 +90,7 @@
 
   .fc .fc-daygrid-day.fc-day-today {
     background-color: #f0f4ff;
-    box-shadow: 0 0 10px rgba(114, 86, 243, 0.2);
+    border: 1px dashed #7256F3;
   }
 
   .fc .fc-daygrid-week-number {
@@ -135,15 +135,15 @@
   }
 }
 
-// Dialog scrollbar
 ::ng-deep {
-  .p-dialog .p-dialog-content {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+  .fc .fc-daygrid-day.fc-day-sun {
+    background-color: #fbe9e9;
+    color: #d32f2f;
   }
 
-  .p-dialog .p-dialog-content::-webkit-scrollbar {
-    display: none;
+  .fc .fc-daygrid-day.fc-day-sun:hover {
+    background-color: #f8d7d7;
+    cursor: pointer;
   }
 }
-// Dialog scrollbar
+
