@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { Component, OnInit } from '@angular/core';
 import { IProfessional } from '../../interfaces/professional';
 import { ProfessionalService } from '../../services/professional.service';
-import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-table',

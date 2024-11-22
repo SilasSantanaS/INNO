@@ -14,6 +14,8 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FullCalendarModule } from '@fullcalendar/angular';
 
 import { SchedulerComponent } from './scheduler.component';
+import { DialogsModule } from '../../pages/home/dialogs/dialogs.module';
+import { SearchPatientDialogModule } from "../../pages/home/dialogs/search-patient-dialog/search-patient-dialog.module";
 
 @NgModule({
   declarations: [SchedulerComponent],
@@ -21,6 +23,7 @@ import { SchedulerComponent } from './scheduler.component';
     CommonModule,
     ButtonModule,
     DialogModule,
+    DialogsModule,
     StepperModule,
     DividerModule,
     CalendarModule,
@@ -31,7 +34,8 @@ import { SchedulerComponent } from './scheduler.component';
     InputMaskModule,
     AutoCompleteModule,
     FullCalendarModule,
-  ],
+    SearchPatientDialogModule
+],
   exports: [SchedulerComponent],
 })
 export class SchedulerModule {}
