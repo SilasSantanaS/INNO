@@ -1,0 +1,33 @@
+<p-dataView #dv [value]="products" class="bg-primary">
+  <ng-template pTemplate="list" let-products>
+    <div class="grid grid-nogutter">
+      <div
+        class="col-12"
+        *ngFor="let item of products; let first = first"
+        class="col-12"
+      >
+        <div
+          class="flex flex-column sm:flex-row sm:align-items-center p-4 gap-3"
+          [ngClass]="{ 'border-top-1 surface-border': !first }"
+        >
+          <div
+            class="flex flex-column md:flex-row justify-content-between md:align-items-center flex-1 gap-4"
+          >
+            <div
+              class="flex flex-row md:flex-column justify-content-between align-items-start gap-2"
+            >
+              <div>
+                <span class="font-medium text-secondary text-sm">{{
+                  item.category
+                }}</span>
+                <div class="text-lg font-medium text-900 mt-2">
+                  {{ item.name }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-dataView>

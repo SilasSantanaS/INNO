@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { CalendarOptions } from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ProfessionalService } from '../../services/professional.service';
 
 @Component({
@@ -13,10 +13,12 @@ import { ProfessionalService } from '../../services/professional.service';
 export class SchedulerComponent {
   selectedCountry: any;
   loading: boolean = false;
-  visible: boolean = false;
   appointmentDate: string = '';
   countries: any[] | undefined;
   filteredCountries: any[] | undefined;
+
+  @Input() visible: boolean = false;
+  @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
@@ -35,13 +37,8 @@ export class SchedulerComponent {
     private professionalService: ProfessionalService
   ) {}
 
-  showDialog() {
-    this.visible = true;
-  }
-
   handleDateClick(arg: any) {
     this.appointmentDate = arg.dateStr;
-    this.visible = true;
   }
 
   onConfirm(): void {
@@ -61,5 +58,9 @@ export class SchedulerComponent {
 
   cancel(): void {
     this.visible = false;
+  }
+
+  hideDialog() {
+    this.visibleChange.emit(false);
   }
 }

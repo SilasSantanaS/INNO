@@ -43,14 +43,14 @@
         <tr>
           <th>ID</th>
           <th>Nome</th>
-          <th>Função</th>
+          <th>CPF</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-professional>
         <tr>
           <td>{{ professional.id }}</td>
           <td>{{ professional.name }}</td>
-          <td>{{ professional.role }}</td>
+          <td>{{ professional.socialSecurityNumber }}</td>
         </tr>
       </ng-template>
     </p-table>

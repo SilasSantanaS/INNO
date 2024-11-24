@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { Component, OnInit } from '@angular/core';
+import { IProfessional } from '../../interfaces/professional';
+import { ProfessionalService } from '../../services/professional.service';
 
 @Component({
   selector: 'app-calendar',
@@ -7,9 +9,14 @@ import { MenuItem } from 'primeng/api';
   styleUrl: './calendar.component.scss',
 })
 export class CalendarComponent implements OnInit {
+  isLoading: boolean = false;
+  showSchedulerDialog: boolean = false;
   tabs: { title: string; content: string }[] = [];
+  professionals: IProfessional[] = [];
   breadcrumbItems: MenuItem[] = [];
   loading: boolean = false;
+
+  constructor(private professionalService: ProfessionalService) {}
 
   ngOnInit(): void {
     this.breadcrumbItems = [
@@ -20,9 +27,31 @@ export class CalendarComponent implements OnInit {
     ];
 
     this.tabs = [
-      { title: 'Hoje', content: 'Tab 1 Content' },
-      { title: 'Amanhã', content: 'Tab 2 Content' },
+      { title: 'Agendados', content: 'Tab 1 Content' },
+      { title: 'Disponíveis', content: 'Tab 2 Content' },
     ];
+
+    this.loadProfessionals();
+  }
+
+  scheduleAppointment(): void {
+    this.showSchedulerDialog = true;
+  }
+
+  onDialogClose(): void {
+    this.showSchedulerDialog = false;
+  }
+
+  getCalendarByProfessional(): void {
+    this.isLoading = true;
+
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000);
+  }
+
+  loadProfessionals() {
+    this.professionals = this.professionalService.getProfessionals();
   }
 
   load() {

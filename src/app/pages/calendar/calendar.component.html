@@ -1,3 +1,5 @@
+<app-spinner [isLoading]="isLoading"></app-spinner>
+
 <div class="grid">
   <div class="col-6">
     <app-bread-crumb class="mb-4" [items]="breadcrumbItems"
@@ -15,17 +17,41 @@
   </div>
 </div>
 
+<div class="grid mt-5">
+  <div class="col-4">
+    <div class="flex flex-column gap-2">
+      <label>Filtrar agenda por profissional</label>
+      <p-dropdown
+        class="flex"
+        [options]="professionals"
+        optionLabel="name"
+        optionValue="id"
+        formControlName="role"
+        placeholder="Todos os professionais"
+        (onChange)="getCalendarByProfessional()"
+      />
+    </div>
+  </div>
+</div>
+
 <div class="grid mt-4 h-screen">
   <div class="col-9 flex align-content-center">
-    <app-scheduler></app-scheduler>
+    <app-scheduler
+      [visible]="showSchedulerDialog"
+      (visibleChange)="onDialogClose()"
+    ></app-scheduler>
   </div>
   <div class="col-3 flex justify-content-center align-content-center">
     <p-card [style]="{ width: '360px' }">
       <p-tabView>
         <p-tabPanel *ngFor="let tab of tabs" [header]="tab.title">
-          <p>
-            {{ tab.content }}
-          </p>
+          <div class="grid flex justify-content-center">
+            <app-data-view></app-data-view>
+            <p-button
+              label="Agendar consulta"
+              (onClick)="scheduleAppointment()"
+            />
+          </div>
         </p-tabPanel>
       </p-tabView>
     </p-card>
