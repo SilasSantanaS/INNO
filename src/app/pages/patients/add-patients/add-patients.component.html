@@ -1,1 +1,65 @@
-<p>add-patients works!</p>
+<app-spinner [isLoading]="isLoading"></app-spinner>
+
+<div class="grid">
+  <div class="col-6 flex flex-column">
+    <app-bread-crumb class="mb-4" [items]="breadcrumbItems"
+      >Paciente</app-bread-crumb
+    >
+  </div>
+  <div class="col-6 flex justify-content-end">
+    <p-button label="Imprimir" icon="pi pi-print" />
+  </div>
+</div>
+
+<div class="grid">
+  <div class="col-9">
+    <form [formGroup]="form">
+      <p-card header="Dados básicos" subheader="Informe os dados do paciente">
+        <div class="grid">
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label for="username">Nome completo</label>
+              <input
+                type="text"
+                pInputText
+                id="username"
+                formControlName="name"
+              />
+            </div>
+          </div>
+        </div>
+
+        <p-divider align="left" type="solid">
+          <b>Endereço e contatos</b>
+        </p-divider>
+
+        <p-divider align="left" type="solid">
+          <b>Documentos e anexos</b>
+        </p-divider>
+      </p-card>
+    </form>
+  </div>
+
+  <div class="col-3 p-0">
+    <div class="col-3">
+      <p-card
+        header="Histórico de consultas"
+        subheader="Consultas e diagnósticos"
+        [style]="{ width: '360px' }"
+      >
+        <ng-template pTemplate="header"> </ng-template>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <ng-template pTemplate="footer">
+          <div class="flex gap-3 mt-1">
+            <p-button
+              label="Ver mais"
+              class="w-full text-primary"
+              styleClass="w-full"
+              icon="pi pi-plus"
+            />
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+</div>
