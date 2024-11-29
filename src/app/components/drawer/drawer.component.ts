@@ -13,10 +13,14 @@ export class DrawerComponent {
   sidebarVisible: boolean = false;
 
   items: MenuItem[] = [
-    { label: 'Dashboard', icon: 'pi pi-home', route: '/dashboard' },
+    { label: 'Dashboard', icon: 'pi pi-th-large', route: '/dashboard' },
     { label: 'Análise', icon: 'pi pi-chart-line', route: '/analysis' },
     { label: 'Pacientes', icon: 'pi pi-users', route: '/patients' },
-    { label: 'Profissionais', icon: 'pi pi-user-plus', route: '/professionals' },
+    {
+      label: 'Profissionais',
+      icon: 'pi pi-user-plus',
+      route: '/professionals',
+    },
     { label: 'Notificações', icon: 'pi pi-comments', route: '' },
     { label: 'Agenda', icon: 'pi pi-calendar', route: '/calendar' },
     { label: 'Configurações', icon: 'pi pi-cog', route: '' },

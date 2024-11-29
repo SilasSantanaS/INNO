@@ -24,4 +24,8 @@ export class PatientsComponent implements OnInit {
   create(): void {
     this.router.navigate(['patients/new']);
   }
+
+  dashboard(): void {
+    this.router.navigate(['patients/dashboard']);
+  }
 }

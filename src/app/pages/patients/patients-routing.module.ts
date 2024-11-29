@@ -15,6 +15,13 @@ const routes: Routes = [
         (m) => m.AddPatientsModule
       ),
   },
+  {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('./dash-patients/dash-patients.module').then(
+        (m) => m.DashPatientsModule
+      ),
+  },
 ];
 
 @NgModule({
