@@ -3,7 +3,7 @@
 <div class="grid">
   <div class="col-6 flex flex-column">
     <app-bread-crumb class="mb-4" [items]="breadcrumbItems"
-      >Paciente</app-bread-crumb
+      >Novo Paciente</app-bread-crumb
     >
   </div>
   <div class="col-6 flex justify-content-end">
@@ -27,15 +27,194 @@
               />
             </div>
           </div>
+
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>CPF</label>
+              <p-inputMask mask="999.999.999-99" />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label for="cnpj-cpf">RG</label>
+              <p-inputMask mask="99.999.999-9" />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Data de nascimento</label>
+              <p-calendar
+                [iconDisplay]="'input'"
+                [showIcon]="true"
+                inputId="icondisplay"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>N° Certidão de nascimento</label>
+              <input pInputText />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Nome da mãe</label>
+              <input pInputText />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Nome do pai</label>
+              <input pInputText />
+            </div>
+          </div>
+        </div>
+
+        <p-divider align="left" type="solid">
+          <b>Plano de Saúde e adicionais</b>
+        </p-divider>
+
+        <div class="grid">
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>N° carteirinha (Plano de Saúde)</label>
+              <p-inputNumber
+                mode="decimal"
+                inputId="withoutgrouping"
+                [useGrouping]="false"
+              />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label for="username">Nome do plano</label>
+              <input type="text" pInputText />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Tipo do plano</label>
+              <p-dropdown
+                class="flex w-50rem"
+                [options]=""
+                optionLabel="label"
+                optionValue="id"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="col-6">
+            <div class="flex flex-column gap-2">
+              <label>Orientações parentais</label>
+              <textarea rows="5" cols="30" pInputTextarea></textarea>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="flex flex-column gap-2">
+              <label>Informações adicionais</label>
+              <textarea rows="5" cols="30" pInputTextarea></textarea>
+            </div>
+          </div>
         </div>
 
         <p-divider align="left" type="solid">
           <b>Endereço e contatos</b>
         </p-divider>
 
+        <div class="grid">
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>CEP</label>
+              <p-inputMask mask="99999-999" />
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Estado</label>
+              <p-dropdown
+                class="flex w-50rem"
+                optionLabel="nome"
+                optionValue="sigla"
+              />
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Cidade</label>
+              <p-dropdown
+                class="flex w-50rem"
+                [options]=""
+                optionLabel="nome"
+                optionValue="nome"
+              />
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Bairro</label>
+              <input pInputText />
+            </div>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Logradouro</label>
+              <input pInputText />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Número</label>
+              <p-inputNumber inputId="integeronly" />
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="flex flex-column gap-2">
+              <label>Complemento</label>
+              <input pInputText />
+            </div>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Celular</label>
+              <p-inputMask mask="(99) 99999-9999" />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>E-mail</label>
+              <input pInputText />
+            </div>
+          </div>
+        </div>
+
         <p-divider align="left" type="solid">
           <b>Documentos e anexos</b>
         </p-divider>
+
+        <div class="grid flex justify-content-start">
+          <app-file-upload></app-file-upload>
+        </div>
       </p-card>
     </form>
   </div>
