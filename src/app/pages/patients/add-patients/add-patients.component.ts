@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class AddPatientsComponent implements OnInit {
   form: FormGroup;
   isLoading: boolean = false;
+  btnTitle: string = 'Cadastrar';
   breadcrumbItems: MenuItem[] = [];
 
   constructor(private fb: FormBuilder) {

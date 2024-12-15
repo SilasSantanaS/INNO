@@ -14,7 +14,7 @@ export class DashPatientsComponent implements OnInit {
     this.breadcrumbItems = [
       { label: 'Ver todos os pacientes cadastrados', routerLink: '/patients' },
       {
-        label: 'Dashboard de paciente',
+        label: 'Dashboard do paciente',
         routerLink: '/patients/dashboard',
       },
     ];

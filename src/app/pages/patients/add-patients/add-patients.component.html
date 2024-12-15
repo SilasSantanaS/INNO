@@ -215,6 +215,14 @@
         <div class="grid flex justify-content-start">
           <app-file-upload></app-file-upload>
         </div>
+
+        <p-button
+          type="submit"
+          icon="pi pi-save"
+          [label]="btnTitle"
+          class="mt-4 flex justify-content-end"
+          [disabled]="form.invalid"
+        />
       </p-card>
     </form>
   </div>

@@ -24,10 +24,10 @@ export class AddProfessionalsComponent implements OnInit {
   form: FormGroup;
   date1: Date | undefined;
   date2: Date | undefined;
-  isLoading: boolean = false;
-  btnTitle: string = 'Cadastrar';
   cities: ICity[] = [];
   states: IState[] = [];
+  isLoading: boolean = false;
+  btnTitle: string = 'Cadastrar';
   breadcrumbItems: MenuItem[] = [];
 
   readonly receivingMethod = [

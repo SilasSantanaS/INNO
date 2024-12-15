@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ProfessionalService } from '../services/professional.service';
-import { ProfessionalsStore } from '../stores/professionals.store';
 import { IProfessional } from '../interfaces/professional';
+import { ProfessionalsStore } from '../stores/professionals.store';
+import { ProfessionalService } from '../services/professional.service';
 
 @Injectable({
   providedIn: 'root',
