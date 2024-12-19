@@ -13,7 +13,7 @@
 
 <div class="grid">
   <div class="col-9">
-    <form [formGroup]="form">
+    <form [formGroup]="form" (ngSubmit)="save()">
       <p-card header="Dados básicos" subheader="Informe os dados do paciente">
         <div class="grid">
           <div class="col-3">
@@ -31,14 +31,17 @@
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>CPF</label>
-              <p-inputMask mask="999.999.999-99" />
+              <p-inputMask
+                mask="999.999.999-99"
+                formControlName="socialSecurityNumber"
+              />
             </div>
           </div>
 
           <div class="col-3">
             <div class="flex flex-column gap-2">
-              <label for="cnpj-cpf">RG</label>
-              <p-inputMask mask="99.999.999-9" />
+              <label>RG</label>
+              <p-inputMask mask="99.999.999-9" formControlName="nationalId" />
             </div>
           </div>
 
@@ -49,6 +52,7 @@
                 [iconDisplay]="'input'"
                 [showIcon]="true"
                 inputId="icondisplay"
+                formControlName="dateOfBirth"
               />
             </div>
           </div>
@@ -58,21 +62,24 @@
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>N° Certidão de nascimento</label>
-              <input pInputText />
+              <p-inputMask
+                mask="9999.9999.9999.9999.9999.9999.9999.99"
+                formControlName="birthCertificateNumber"
+              />
             </div>
           </div>
 
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Nome da mãe</label>
-              <input pInputText />
+              <input pInputText formControlName="motherName" />
             </div>
           </div>
 
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Nome do pai</label>
-              <input pInputText />
+              <input pInputText formControlName="fatherName" />
             </div>
           </div>
         </div>
@@ -85,10 +92,9 @@
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>N° carteirinha (Plano de Saúde)</label>
-              <p-inputNumber
-                mode="decimal"
-                inputId="withoutgrouping"
-                [useGrouping]="false"
+              <p-inputMask
+                mask="999999999/99"
+                formControlName="healthPlanNumber"
               />
             </div>
           </div>
@@ -96,7 +102,7 @@
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label for="username">Nome do plano</label>
-              <input type="text" pInputText />
+              <input type="text" pInputText formControlName="healthPlanName" />
             </div>
           </div>
 
@@ -105,9 +111,10 @@
               <label>Tipo do plano</label>
               <p-dropdown
                 class="flex w-50rem"
-                [options]=""
+                [options]="healthPlanTypes"
                 optionLabel="label"
                 optionValue="id"
+                formControlName="healthPlanType"
               />
             </div>
           </div>
@@ -137,7 +144,11 @@
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>CEP</label>
-              <p-inputMask mask="99999-999" />
+              <p-inputMask
+                mask="99999-999"
+                formControlName="zipCode"
+                (onBlur)="getAddressByZipCode()"
+              />
             </div>
           </div>
           <div class="col-3">
@@ -145,8 +156,11 @@
               <label>Estado</label>
               <p-dropdown
                 class="flex w-50rem"
+                [options]="states"
                 optionLabel="nome"
                 optionValue="sigla"
+                formControlName="state"
+                (onChange)="loadCities()"
               />
             </div>
           </div>
@@ -155,16 +169,17 @@
               <label>Cidade</label>
               <p-dropdown
                 class="flex w-50rem"
-                [options]=""
+                [options]="cities"
                 optionLabel="nome"
                 optionValue="nome"
+                formControlName="city"
               />
             </div>
           </div>
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Bairro</label>
-              <input pInputText />
+              <input pInputText formControlName="neighborhood" />
             </div>
           </div>
         </div>
@@ -173,21 +188,27 @@
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Logradouro</label>
-              <input pInputText />
+              <input pInputText formControlName="street" />
             </div>
           </div>
 
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Número</label>
-              <p-inputNumber inputId="integeronly" />
+              <p-inputNumber
+                inputId="integeronly"
+                formControlName="addressNumber"
+              />
             </div>
           </div>
 
           <div class="col-6">
             <div class="flex flex-column gap-2">
               <label>Complemento</label>
-              <input pInputText />
+              <input
+                pInputText
+                formControlName="additionalAddressInformation"
+              />
             </div>
           </div>
         </div>
@@ -196,14 +217,14 @@
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>Celular</label>
-              <p-inputMask mask="(99) 99999-9999" />
+              <p-inputMask mask="(99) 99999-9999" formControlName="phone" />
             </div>
           </div>
 
           <div class="col-3">
             <div class="flex flex-column gap-2">
               <label>E-mail</label>
-              <input pInputText />
+              <input pInputText formControlName="email" />
             </div>
           </div>
         </div>
@@ -212,9 +233,9 @@
           <b>Documentos e anexos</b>
         </p-divider>
 
-        <div class="grid flex justify-content-start">
+        <!-- <div class="grid flex justify-content-start">
           <app-file-upload></app-file-upload>
-        </div>
+        </div> -->
 
         <p-button
           type="submit"

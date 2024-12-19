@@ -1,17 +1,49 @@
 import { Injectable } from '@angular/core';
-import { IGetPatientsParams, PatientsService } from '../services/patients.service';
 import { PatientsStore } from '../stores/patients.store';
+import {
+  IGetPatientsParams,
+  PatientsService,
+} from '../services/patients.service';
+import { IPatient } from '../interfaces/patient';
+import { BehaviorSubject, distinctUntilChanged, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PatientsFacade {
+  private readonly _filter = new BehaviorSubject<IGetPatientsParams>({});
+  readonly filter$ = this._filter.asObservable().pipe(distinctUntilChanged());
+
   constructor(
     private patientsStore: PatientsStore,
     private patiensService: PatientsService
   ) {}
 
-  getPatients(queryParams?: IGetPatientsParams) {
+  getPatients(queryParams?: IGetPatientsParams) {}
 
+  getPatientById(id: IPatient['id']) {
+    return this.patiensService.getPatient(id);
+  }
+
+  newPatient(patient: IPatient) {
+    return this.patiensService
+      .newPatient(patient)
+      .pipe(tap((patient) => this.patientsStore.updatePatient(patient)));
+  }
+
+  updatePatient(id: IPatient['id'], patient: IPatient) {
+    return this.patiensService
+      .editPatient(id, patient)
+      .pipe(tap(() => this.patientsStore.updatePatient(patient)));
+  }
+
+  deletePatient(patient: IPatient) {
+    return this.patiensService
+      .deletePatient(patient.id)
+      .pipe(tap(() => this.patientsStore.deletePatient(patient)));
+  }
+
+  filterPatients(filter: IGetPatientsParams) {
+    this._filter.next({ ...this._filter.value, ...filter });
   }
 }

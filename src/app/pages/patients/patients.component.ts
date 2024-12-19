@@ -1,6 +1,7 @@
 import { MenuItem } from 'primeng/api';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { PatientsFacade } from '../../facades/patients.facade';
 
 @Component({
   selector: 'app-patients',
