@@ -15,4 +15,58 @@
       (onClick)="dashboard()"
     />
   </div>
+
+  <form
+    [formGroup]="form"
+    class="flex w-12 justify-content-between bg-bluegray-50 p-3 mb-4 mt-4"
+  >
+    <div class="grid w-full">
+      <div class="col-3">
+        <p-iconField iconPosition="right" class="mr-2">
+          <p-inputIcon styleClass="pi pi-search" />
+          <input
+            type="text"
+            pInputText
+            placeholder="Buscar paciente"
+            formControlName="search"
+          />
+        </p-iconField>
+      </div>
+
+      <div class="col-3">
+        <p-dropdown
+          formControlName="role"
+          [options]=""
+          optionLabel="label"
+          optionValue="id"
+          placeholder="Todos os planos de saúde"
+        />
+      </div>
+
+      <div class="col-3">
+        <p-dropdown
+          formControlName="state"
+          [options]=""
+          optionLabel="nome"
+          optionValue="sigla"
+          placeholder="Todos os tipos de plano"
+        />
+      </div>
+
+      <div class="col-3">
+        <p-dropdown
+          class="flex w-50rem"
+          [options]=""
+          optionLabel="nome"
+          optionValue="nome"
+          formControlName="city"
+          placeholder="Todos itens"
+        />
+      </div>
+    </div>
+  </form>
+
+  <div class="w-full">
+    <app-table></app-table>
+  </div>
 </div>

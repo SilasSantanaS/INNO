@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { BadgeModule } from 'primeng/badge';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { MenubarModule } from 'primeng/menubar';
@@ -15,6 +16,7 @@ import { HeaderComponent } from './header.component';
     HeaderComponent
   ],
   imports: [
+    BadgeModule,
     DrawerModule,
     CommonModule,
     ButtonModule,

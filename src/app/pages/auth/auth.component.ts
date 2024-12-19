@@ -10,6 +10,7 @@ import { MessageService } from 'primeng/api';
   styleUrl: './auth.component.scss',
 })
 export class AuthComponent {
+  checked: boolean = false;
   isLoading: boolean = false;
 
   loginForm = this.fb.group({

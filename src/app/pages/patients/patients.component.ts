@@ -1,7 +1,7 @@
 import { MenuItem } from 'primeng/api';
 import { Router } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { PatientsFacade } from '../../facades/patients.facade';
 
 @Component({
   selector: 'app-patients',
@@ -10,8 +10,14 @@ import { PatientsFacade } from '../../facades/patients.facade';
 })
 export class PatientsComponent implements OnInit {
   breadcrumbItems: MenuItem[] = [];
+  form = this.fb.group({
+    role: [],
+    search: [],
+    state: [''],
+    city: [''],
+  });
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.breadcrumbItems = [
