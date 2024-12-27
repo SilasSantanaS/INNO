@@ -1,5 +1,5 @@
 <p-table
-  [value]="professionals"
+  [value]="data"
   [paginator]="true"
   [rows]="10"
   [tableStyle]="{ 'min-width': '50rem' }"
@@ -7,37 +7,28 @@
 >
   <ng-template pTemplate="header">
     <tr>
-      <th>ID</th>
-      <th>Nome</th>
-      <th>Função</th>
-      <th>Especialidade</th>
-      <th>Registro Profissional</th>
-      <th>Status</th>
+      <th *ngFor="let column of columns">{{ column.header }}</th>
       <th></th>
+      <!-- <th>actions</th>  -->
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-professional>
+  <ng-template pTemplate="body" let-rowData>
     <tr>
-      <td>{{ professional.id }}</td>
-      <td>{{ professional.name }}</td>
-      <td>{{ professional.role }}</td>
-      <td>{{ professional.specialty }}</td>
-      <td>{{ professional.professionalLicense }}</td>
-      <td>Ativo</td>
+      <td *ngFor="let column of columns">{{ rowData[column.field] }}</td>
       <td>
         <div class="grid justify-content-evenly">
           <p-button
             icon="pi pi-user-edit"
             [rounded]="true"
             [text]="true"
-            (onClick)="getItemPage(professional.id)"
-          />
+            (onClick)="editItem(rowData)"
+          ></p-button>
           <app-dialog
             icon="pi pi-trash"
             severity="danger"
-            title="Realmente deseja excluir este profissional?"
-            [description]="'Profissinal de Saúde: ' + professional.name"
-            (confirm)="deleteProfessinal(professional.id)"
+            title="Confirmar exclusão?"
+            [description]="rowData.name"
+            (confirm)="deleteItem(rowData)"
           ></app-dialog>
         </div>
       </td>

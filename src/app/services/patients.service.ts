@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IPatient } from '../interfaces/patient';
+import { IPatient, IPatients } from '../interfaces/patient';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 export interface IGetPatientsParams {
@@ -16,7 +16,7 @@ export class PatientsService {
   constructor(private readonly _http: HttpClient) {}
 
   getPatients(queryParams?: IGetPatientsParams) {
-    return this._http.get<IPatient>('patients', {
+    return this._http.get<IPatients>('patients', {
       params: queryParams as HttpParams,
     });
   }

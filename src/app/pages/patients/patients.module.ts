@@ -5,9 +5,9 @@ import { DropdownModule } from 'primeng/dropdown';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
-import { TableModule } from '../../components/table/table.module';
+import { ReactiveFormsModule } from '@angular/forms';
 import { PatientsRoutingModule } from './patients-routing.module';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { TableModule as TModule } from '../../components/table/table.module';
 import { BreadCrumbModule } from '../../components/bread-crumb/bread-crumb.module';
 
 import { PatientsComponent } from './patients.component';
@@ -15,7 +15,7 @@ import { PatientsComponent } from './patients.component';
 @NgModule({
   declarations: [PatientsComponent],
   imports: [
-    TableModule,
+    TModule,
     CommonModule,
     ButtonModule,
     DropdownModule,

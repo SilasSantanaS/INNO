@@ -22,12 +22,12 @@ export class HeaderComponent implements OnInit {
       {
         label: 'Dashboard',
         icon: 'pi pi-th-large',
-        routerLink: ['dashboard']
+        routerLink: ['dashboard'],
       },
       {
         label: 'Agenda',
         icon: 'pi pi-calendar-plus',
-        routerLink: ['calendar']
+        routerLink: ['calendar'],
       },
       {
         label: 'Pacientes',
@@ -37,12 +37,17 @@ export class HeaderComponent implements OnInit {
       {
         label: 'Profissionais',
         icon: 'pi pi-user-plus',
-        routerLink: ['professionals']
+        routerLink: ['professionals'],
+      },
+      {
+        label: 'Planos de Saúde',
+        icon: 'pi pi-heart',
+        routerLink: ['health-plans'],
       },
       {
         label: 'Análise',
         icon: 'pi pi-chart-bar',
-        routerLink: ['analysis']
+        routerLink: ['analysis'],
       },
     ];
   }

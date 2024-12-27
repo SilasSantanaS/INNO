@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IPatient, IPatients } from '../interfaces/patient';
 
@@ -12,18 +13,21 @@ export const INITIAL_STATE: IPatientsState = {
   result: [],
 };
 
+@Injectable({
+  providedIn: 'root',
+})
 export class PatientsStore {
   private _patientsState = new BehaviorSubject<IPatientsState>(INITIAL_STATE);
   readonly patientsState$ = this._patientsState.asObservable();
 
   constructor() {}
 
-  updatePatients(patiens: IPatientsState) {
+  updatePatients(patients: IPatientsState) {
     const state = this._patientsState.value;
 
     const data = {
       ...state,
-      ...patiens,
+      ...patients,
     };
 
     this._patientsState.next(data);

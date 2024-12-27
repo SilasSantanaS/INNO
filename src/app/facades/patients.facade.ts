@@ -19,7 +19,11 @@ export class PatientsFacade {
     private patiensService: PatientsService
   ) {}
 
-  getPatients(queryParams?: IGetPatientsParams) {}
+  getPatients(queryParams?: IGetPatientsParams) {
+    return this.patiensService
+      .getPatients(queryParams)
+      .pipe(tap((patients) => this.patientsStore.updatePatients(patients)));
+  }
 
   getPatientById(id: IPatient['id']) {
     return this.patiensService.getPatient(id);

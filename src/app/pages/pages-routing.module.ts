@@ -42,6 +42,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('./analysis/analysis.module').then((m) => m.AnalysisModule),
       },
+      {
+        path: 'health-plans',
+        loadChildren: () =>
+          import('./health-plans/health-plans.module').then(
+            (m) => m.HealthPlansModule
+          ),
+      },
     ],
   },
   {

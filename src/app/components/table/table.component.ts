@@ -1,38 +1,21 @@
-import { Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
-import { Component, OnInit } from '@angular/core';
-import { IProfessional } from '../../interfaces/professional';
-import { ProfessionalService } from '../../services/professional.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
 })
-export class TableComponent implements OnInit {
-  professionals: IProfessional[] = [];
+export class TableComponent {
+  @Input() data: any[] = [];
+  @Output() edit = new EventEmitter<any>();
+  @Output() delete = new EventEmitter<any>();
+  @Input() columns: { field: string; header: string }[] = [];
 
-  constructor(
-    private router: Router,
-    private messageService: MessageService,
-    private professionalService: ProfessionalService
-  ) {}
-
-  ngOnInit(): void {
-    this.professionals = this.professionalService.getProfessionals();
+  editItem(item: any): void {
+    this.edit.emit(item);
   }
 
-  deleteProfessinal(id: number): void {
-    this.professionals = this.professionalService.deleteProfessinal(id);
-
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Êxito',
-      detail: 'Profissional excluído com sucesso.',
-    });
-  }
-
-  getItemPage(id: number): void {
-    this.router.navigate([`/professionals/edit/${id}`]);
+  deleteItem(item: any): void {
+    this.delete.emit(item);
   }
 }

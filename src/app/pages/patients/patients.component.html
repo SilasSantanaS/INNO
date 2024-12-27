@@ -67,6 +67,6 @@
   </form>
 
   <div class="w-full">
-    <app-table></app-table>
+    <app-table [data]="(patients$! | async)!" [columns]="columns"></app-table>
   </div>
 </div>
