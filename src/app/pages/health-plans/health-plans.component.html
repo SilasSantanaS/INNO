@@ -5,6 +5,32 @@
     >
   </div>
   <div class="col-6 flex justify-content-end align-content-center">
-    <p-button label="Cadastrar" icon="pi pi-plus" (onClick)="create()"/>
+    <p-button label="Cadastrar" icon="pi pi-plus" (onClick)="create()" />
+  </div>
+
+  <form
+    [formGroup]="form"
+    class="flex w-12 justify-content-between bg-bluegray-50 p-3 mb-4 mt-4"
+  >
+    <div class="grid w-full flex justify-content-end">
+      <div class="col-2">
+        <p-iconField iconPosition="right" class="mr-2">
+          <p-inputIcon styleClass="pi pi-search" />
+          <input
+            type="text"
+            pInputText
+            placeholder="Buscar plano de saúde"
+            formControlName="search"
+          />
+        </p-iconField>
+      </div>
+    </div>
+  </form>
+
+  <div class="w-full">
+    <app-table
+      [columns]="columns"
+      [data]="(healthPlans$! | async)!"
+    ></app-table>
   </div>
 </div>

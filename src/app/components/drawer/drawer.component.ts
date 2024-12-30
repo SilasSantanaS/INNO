@@ -24,7 +24,7 @@ export class DrawerComponent {
     { label: 'Agenda', icon: 'pi pi-calendar', route: '/calendar' },
     { label: 'Planos de Saúde', icon: 'pi pi-heart', route: '/health-plans' },
     { label: 'Notificações', icon: 'pi pi-comments', route: '' },
-    { label: 'Configurações', icon: 'pi pi-cog', route: '' },
+    { label: 'Configurações', icon: 'pi pi-cog', route: '/settings' },
   ];
 
   closeCallback(e: Event): void {

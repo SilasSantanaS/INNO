@@ -15,6 +15,6 @@ export class HealthPlansFacade {
   ) {}
 
   getHealthPlans(queryParams?: IGetHealthPlansParams) {
-    this.healthPlansService.getHealthPlans(queryParams);
+    return this.healthPlansService.getHealthPlans(queryParams);
   }
 }
