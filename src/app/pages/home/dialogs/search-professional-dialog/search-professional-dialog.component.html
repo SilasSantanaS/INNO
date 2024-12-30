@@ -1,0 +1,58 @@
+<p-button
+  label="Pesquisar profissional"
+  icon="pi pi-search"
+  iconPos="right"
+  text="true"
+  size="small"
+  (onClick)="showDialog()"
+/>
+<p-dialog
+  header="Pesquisar profissional"
+  [(visible)]="visible"
+  [modal]="true"
+  [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+  [style]="{ width: '50vw', height: '100vh' }"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <div class="grid">
+    <div class="col-8">
+      <p-iconField iconPosition="right" class="mr-2">
+        <p-inputIcon styleClass="pi pi-search" />
+        <input
+          type="text"
+          pInputText
+          placeholder="Pesquise por nome, CPF, RG, etc.."
+          formControlName="search"
+        />
+      </p-iconField>
+    </div>
+  </div>
+
+  <h4>12 resultados encontrados</h4>
+
+  <div class="grid mt-2">
+    <p-table
+      [value]="professionals"
+      [paginator]="true"
+      [rows]="2"
+      [tableStyle]="{ 'min-width': '45.5rem' }"
+      styleClass="p-datatable-striped"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>CPF</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-professional>
+        <tr>
+          <td>{{ professional.id }}</td>
+          <td>{{ professional.name }}</td>
+          <td>{{ professional.socialSecurityNumber }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</p-dialog>
