@@ -22,5 +22,6 @@ import { SearchProfessionalDialogComponent } from './search-professional-dialog.
     InputIconModule,
     ReactiveFormsModule,
   ],
+  exports: [SearchProfessionalDialogComponent],
 })
 export class SearchProfessionalDialogModule {}

@@ -23,6 +23,7 @@ export class DrawerComponent {
     },
     { label: 'Agenda', icon: 'pi pi-calendar', route: '/calendar' },
     { label: 'Planos de Saúde', icon: 'pi pi-heart', route: '/health-plans' },
+    { label: 'Usuários', icon: 'pi pi-user-minus', route: '/users' },
     { label: 'Notificações', icon: 'pi pi-comments', route: '' },
     { label: 'Configurações', icon: 'pi pi-cog', route: '/settings' },
   ];

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { PagesComponent } from './pages.component';
 import { authGuard } from '../guards/auth.guard';
+import { PagesComponent } from './pages.component';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -48,6 +48,11 @@ const routes: Routes = [
           import('./health-plans/health-plans.module').then(
             (m) => m.HealthPlansModule
           ),
+      },
+      {
+        path: 'users',
+        loadChildren: () =>
+          import('./users/users.module').then((m) => m.UsersModule),
       },
       {
         path: 'settings',

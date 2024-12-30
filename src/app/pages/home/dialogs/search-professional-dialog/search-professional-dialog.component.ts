@@ -5,19 +5,19 @@ import { ProfessionalService } from '../../../../services/professional.service';
 @Component({
   selector: 'app-search-professional-dialog',
   templateUrl: './search-professional-dialog.component.html',
-  styleUrl: './search-professional-dialog.component.scss'
+  styleUrl: './search-professional-dialog.component.scss',
 })
 export class SearchProfessionalDialogComponent implements OnInit {
   visible: boolean = false;
-    professionals: IProfessional[] = [];
+  professionals: IProfessional[] = [];
 
-    constructor(private professionalService: ProfessionalService) {}
+  constructor(private professionalService: ProfessionalService) {}
 
-    ngOnInit(): void {
-      this.professionals = this.professionalService.getProfessionals();
-    }
+  ngOnInit(): void {
+    this.professionals = this.professionalService.getProfessionals();
+  }
 
-    showDialog() {
-      this.visible = true;
-    }
+  showDialog() {
+    this.visible = true;
+  }
 }

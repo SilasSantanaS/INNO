@@ -9,6 +9,7 @@ import { SpinnerModule } from '../../components/spinner/spinner.module';
 import { DataViewModule } from '../../components/data-view/data-view.module';
 import { SchedulerModule } from '../../components/scheduler/scheduler.module';
 import { BreadCrumbModule } from '../../components/bread-crumb/bread-crumb.module';
+import { SearchProfessionalDialogModule } from '../home/dialogs/search-professional-dialog/search-professional-dialog.module';
 
 import { CalendarComponent } from './calendar.component';
 
@@ -26,7 +27,8 @@ import { CalendarComponent } from './calendar.component';
     DataViewModule,
     SchedulerModule,
     BreadCrumbModule,
-    CalendarRoutingModule
+    CalendarRoutingModule,
+    SearchProfessionalDialogModule
   ],
   exports: [
   ]
