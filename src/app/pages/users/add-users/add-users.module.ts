@@ -2,27 +2,29 @@ import { NgModule } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
-import { CalendarModule } from 'primeng/calendar';
+import { PasswordModule } from 'primeng/password';
 import { DropdownModule } from 'primeng/dropdown';
-import { InputTextModule } from 'primeng/inputtext';
+import { CalendarModule } from 'primeng/calendar';
 import { InputMaskModule } from 'primeng/inputmask';
+import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddUsersRoutingModule } from './add-users-routing.module';
 import { SpinnerModule } from '../../../components/spinner/spinner.module';
-import { AddHealthPlansRoutingModule } from './add-health-plans-routing.module';
 import { BreadCrumbModule } from '../../../components/bread-crumb/bread-crumb.module';
 
-import { AddHealthPlansComponent } from './add-health-plans.component';
+import { AddUsersComponent } from './add-users.component';
 
 @NgModule({
-  declarations: [AddHealthPlansComponent],
+  declarations: [AddUsersComponent],
   imports: [
     CardModule,
     FormsModule,
     CommonModule,
     ButtonModule,
     SpinnerModule,
+    PasswordModule,
     DropdownModule,
     CalendarModule,
     InputTextModule,
@@ -31,7 +33,7 @@ import { AddHealthPlansComponent } from './add-health-plans.component';
     InputNumberModule,
     ReactiveFormsModule,
     ProgressSpinnerModule,
-    AddHealthPlansRoutingModule,
+    AddUsersRoutingModule,
   ],
 })
-export class AddHealthPlansModule {}
+export class AddUsersModule {}

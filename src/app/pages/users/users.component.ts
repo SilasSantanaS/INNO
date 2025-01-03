@@ -1,4 +1,5 @@
 import { MenuItem } from 'primeng/api';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class UsersComponent implements OnInit {
   breadcrumbItems: MenuItem[] = [];
 
+  constructor(private router: Router) {}
+
   ngOnInit(): void {
     this.breadcrumbItems = [
       {
@@ -16,5 +19,9 @@ export class UsersComponent implements OnInit {
         routerLink: '/users',
       },
     ];
+  }
+
+  create(): void {
+    this.router.navigate(['users/new']);
   }
 }
