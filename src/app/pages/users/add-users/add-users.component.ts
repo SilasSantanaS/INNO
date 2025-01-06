@@ -1,8 +1,10 @@
 import { Router } from '@angular/router';
 import { IUser } from '../../../interfaces/user';
 import { Component, OnInit } from '@angular/core';
+import { UserRole } from '../../../enums/user-role';
 import { MenuItem, MessageService } from 'primeng/api';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Status } from '../../../enums/status';
 
 @Component({
   selector: 'app-add-users',
@@ -14,6 +16,36 @@ export class AddUsersComponent implements OnInit {
   isLoading: boolean = false;
   breadcrumbItems: MenuItem[] = [];
 
+  readonly statuses = [
+    {
+      id: Status.Active,
+      label: 'Ativo',
+    },
+    {
+      id: Status.Inactive,
+      label: 'Inativo',
+    },
+  ];
+
+  readonly userRoles = [
+    {
+      id: UserRole.Admin,
+      label: 'Administrardor',
+    },
+    {
+      id: UserRole.Receptionist,
+      label: 'Recepcionista',
+    },
+    {
+      id: UserRole.Professional,
+      label: 'Profissional de Saúde',
+    },
+    {
+      id: UserRole.Patient,
+      label: 'Paciente',
+    },
+  ];
+
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -21,6 +53,11 @@ export class AddUsersComponent implements OnInit {
   ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
+      email: ['', Validators.required],
+      phone: ['', Validators.required],
+      status: ['', Validators.required],
+      password: ['', Validators.required],
+      userRole: ['', Validators.required],
     });
   }
 
