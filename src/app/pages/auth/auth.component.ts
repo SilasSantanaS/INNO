@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-auth',
