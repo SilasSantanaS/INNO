@@ -16,33 +16,33 @@ export class PatientsFacade {
 
   constructor(
     private patientsStore: PatientsStore,
-    private patiensService: PatientsService
+    private patientsService: PatientsService
   ) {}
 
   getPatients(queryParams?: IGetPatientsParams) {
-    return this.patiensService
+    return this.patientsService
       .getPatients(queryParams)
       .pipe(tap((patients) => this.patientsStore.updatePatients(patients)));
   }
 
   getPatientById(id: IPatient['id']) {
-    return this.patiensService.getPatient(id);
+    return this.patientsService.getPatient(id);
   }
 
   newPatient(patient: IPatient) {
-    return this.patiensService
+    return this.patientsService
       .newPatient(patient)
       .pipe(tap((patient) => this.patientsStore.updatePatient(patient)));
   }
 
   updatePatient(id: IPatient['id'], patient: IPatient) {
-    return this.patiensService
+    return this.patientsService
       .editPatient(id, patient)
       .pipe(tap(() => this.patientsStore.updatePatient(patient)));
   }
 
   deletePatient(patient: IPatient) {
-    return this.patiensService
+    return this.patientsService
       .deletePatient(patient.id)
       .pipe(tap(() => this.patientsStore.deletePatient(patient)));
   }

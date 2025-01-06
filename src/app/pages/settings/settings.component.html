@@ -12,7 +12,17 @@
 <div class="mt-4">
   <p-tabView>
     <p-tabPanel header="API's">
-      <p>Lorem ipsum dolor sit amet...</p>
+      <p-accordion [activeIndex]="0">
+        <p-accordionTab header="Google Agenda">
+          <p>Lorem ipsum dolor sit amet...</p>
+        </p-accordionTab>
+        <p-accordionTab header="WhatsApp">
+          <p>
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+            accusantium...
+          </p>
+        </p-accordionTab>
+      </p-accordion>
     </p-tabPanel>
     <p-tabPanel header="Header II">
       <p>
