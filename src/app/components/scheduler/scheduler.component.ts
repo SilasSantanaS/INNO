@@ -1,9 +1,16 @@
+import listPlugin from '@fullcalendar/list';
 import { MessageService } from 'primeng/api';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import { CalendarOptions } from '@fullcalendar/core';
+import timeGridPlugin from '@fullcalendar/timegrid';
+
+import {
+  CalendarOptions,
+  DateSelectArg,
+  EventApi,
+  EventClickArg,
+} from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ProfessionalService } from '../../services/professional.service';
 
 @Component({
   selector: 'app-scheduler',
@@ -15,7 +22,9 @@ export class SchedulerComponent {
   loading: boolean = false;
   appointmentDate: string = '';
   countries: any[] | undefined;
+  currentEvents: EventApi[] = [];
   filteredCountries: any[] | undefined;
+  eventListDialogVisible: boolean = false;
 
   @Input() visible: boolean = false;
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -23,21 +32,58 @@ export class SchedulerComponent {
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     locale: 'pt-br',
-    plugins: [dayGridPlugin, interactionPlugin],
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
+    },
+    plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
+    eventsSet: this.handleEvents.bind(this),
+    select: this.handleDateSelect.bind(this),
+    eventClick: this.handleEventClick.bind(this),
     dateClick: (arg) => this.handleDateClick(arg),
     events: [
-      { title: 'Consulta Carlos Faria', date: '2024-11-01' },
-      { title: 'Consulta Daniella Dias', date: '2024-11-05' },
-      { title: 'Consulta Michael Torres', date: '2024-11-28' },
+      { title: 'Consulta Carlos Faria', date: '2025-01-10' },
+      { title: 'Consulta Daniella Dias', date: '2025-01-15' },
+      { title: 'Consulta Michael Torres', date: '2025-01-28' },
     ],
   };
 
-  constructor(
-    private messageService: MessageService,
-    private professionalService: ProfessionalService
-  ) {}
+  constructor(private messageService: MessageService) {}
+
+  handleDateSelect(selectInfo: DateSelectArg) {
+    const title = prompt('Please enter a new title for your event');
+    const calendarApi = selectInfo.view.calendar;
+
+    calendarApi.unselect(); // clear date selection
+
+    if (title) {
+      calendarApi.addEvent({
+        id: '',
+        title,
+        start: selectInfo.startStr,
+        end: selectInfo.endStr,
+        allDay: selectInfo.allDay,
+      });
+    }
+  }
+
+  handleEventClick(clickInfo: EventClickArg) {
+    if (
+      confirm(
+        `Are you sure you want to delete the event '${clickInfo.event.title}'`
+      )
+    ) {
+      clickInfo.event.remove();
+    }
+  }
+
+  handleEvents(events: EventApi[]) {
+    this.currentEvents = events;
+  }
 
   handleDateClick(arg: any) {
+    this.eventListDialogVisible = true;
     this.appointmentDate = arg.dateStr;
   }
 

@@ -211,6 +211,22 @@
     </ng-container>
   </app-stepper>
 </p-dialog>
+
+<p-dialog
+  header="Consultas agendadas"
+  [(visible)]="eventListDialogVisible"
+  [modal]="true"
+  [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+  [style]="{ width: '50vw' }"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <span class="p-text-secondary block mb-5"
+    >Veja todas as consultas agendadas:
+    {{ appointmentDate | date : "fullDate" }}</span
+  >
+</p-dialog>
+
 <full-calendar
   [options]="calendarOptions"
   style="width: 1100px"
