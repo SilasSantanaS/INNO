@@ -1,4 +1,5 @@
 import { MenuItem } from 'primeng/api';
+import { Router } from '@angular/router';
 import { Sidebar } from 'primeng/sidebar';
 import { Component, ViewChild } from '@angular/core';
 
@@ -10,6 +11,7 @@ import { Component, ViewChild } from '@angular/core';
 export class DrawerComponent {
   @ViewChild('sidebarRef') sidebarRef!: Sidebar;
 
+  isLoading: boolean = false;
   sidebarVisible: boolean = false;
 
   items: MenuItem[] = [
@@ -28,7 +30,18 @@ export class DrawerComponent {
     { label: 'Configurações', icon: 'pi pi-cog', route: '/settings' },
   ];
 
+  constructor(private router: Router) {}
+
   closeCallback(e: Event): void {
     this.sidebarRef.close(e);
+  }
+
+  showUserProfile(): void {
+    this.isLoading = true;
+
+    setTimeout(() => {
+      this.isLoading = false;
+      this.router.navigate(['profile']);
+    }, 3000);
   }
 }

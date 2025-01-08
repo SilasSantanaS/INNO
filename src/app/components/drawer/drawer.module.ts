@@ -7,9 +7,9 @@ import { RippleModule } from 'primeng/ripple';
 import { AvatarModule } from 'primeng/avatar';
 import { RouterModule } from '@angular/router';
 import { StyleClassModule } from 'primeng/styleclass';
+import { SpinnerModule } from '../spinner/spinner.module';
 
 import { DrawerComponent } from './drawer.component';
-
 
 @NgModule({
   declarations: [
@@ -21,6 +21,7 @@ import { DrawerComponent } from './drawer.component';
     ButtonModule,
     RippleModule,
     AvatarModule,
+    SpinnerModule,
     SidebarModule,
     StyleClassModule
   ],

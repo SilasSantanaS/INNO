@@ -8,32 +8,31 @@
   </div>
 </div>
 
-<div class="grid bg-primary">
+<div class="grid">
   <div class="col-6">
-    <p-card header="Ficha de cadastro: Fernanda Batista">
+    <p-card header="Ficha de cadastro: Fernando Batista">
       <div class="gird flex">
         <div class="col-4 flex justify-content-center align-content-center">
-          <p-avatar
-            image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-            styleClass="mr-2"
-            size="xlarge"
-            shape="circle"
-            class="pt-6"
+          <p-image
+            src="https://a.storyblok.com/f/191576/1200x800/12d0d08ce3/change_background_color_before_.webp"
+            alt="Image"
+            width="250"
           />
         </div>
         <div class="col-8">
-          <p>Fernanda Batista Cardoso Nunes, 17 anos</p>
+          <p class="font-bold">Fernando Batista Cardoso Nunes, 17 anos</p>
           <p>Carla Batista Nunes | Roberto Cardoso Souza</p>
           <p>Rua das Flores, 123, Jardim Sol, São Paulo, SP, 01234-567</p>
-          <p>9876543210 - Ouro Familiar</p>
+          <p class="font-bold">987.65432.10 - Ouro Familiar</p>
         </div>
+      </div>
+      <div class="flex justify-content-center">
+        <p-button label="Ver mais" (onClick)="showMore()" />
       </div>
     </p-card>
   </div>
   <div class="col-6 h-full">
-    <p-card header="Pendências">
-      <p class="m-0">Lorem ipsum dolor sit amet...</p>
-    </p-card>
+    <p-card header="Pendências"> </p-card>
   </div>
 </div>
 
@@ -45,7 +44,23 @@
   </div>
   <div class="col-6">
     <p-card header="Histórico">
-      <p class="m-0">Lorem ipsum dolor sit amet...</p>
+      <p-scroller
+        [items]="items"
+        [itemSize]="50"
+        scrollHeight="200px"
+        styleClass=""
+        [style]="{ width: '100%', height: '200px' }"
+      >
+        <ng-template pTemplate="item" let-item let-options="options">
+          <div
+            class="flex align-items-center p-2"
+            [ngClass]="{ 'surface-ground': options.odd }"
+            style="height: 50px"
+          >
+            {{ item }}
+          </div>
+        </ng-template>
+      </p-scroller>
     </p-card>
   </div>
 </div>

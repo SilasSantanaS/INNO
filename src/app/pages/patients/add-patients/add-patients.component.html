@@ -251,6 +251,39 @@
   <div class="col-3 p-0">
     <div class="col-3">
       <p-card
+        header="Fernando Batista"
+        subheader="Carla Batista Nunes"
+        [style]="{ width: '360px' }"
+      >
+        <ng-template pTemplate="header">
+          <img
+            alt="Card"
+            src="https://a.storyblok.com/f/191576/1200x800/12d0d08ce3/change_background_color_before_.webp"
+          />
+        </ng-template>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <ng-template pTemplate="footer">
+          <div class="flex gap-3 mt-1">
+            <p-button
+              label="WhatsApp"
+              severity="secondary"
+              class="w-full"
+              styleClass="w-full"
+              icon="pi pi-whatsapp"
+            />
+            <p-button
+              label="Enviar foto"
+              class="w-full text-primary"
+              styleClass="w-full"
+              icon="pi pi-upload"
+            />
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+
+    <div class="col-3">
+      <p-card
         header="Histórico de consultas"
         subheader="Consultas e diagnósticos"
         [style]="{ width: '360px' }"
