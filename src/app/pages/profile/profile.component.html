@@ -5,6 +5,44 @@
     >
   </div>
   <div class="col-6 flex justify-content-end align-content-center">
-    <p-button label="PowerBI" icon="pi pi-microsoft" />
+    <!-- <p-button label="PowerBI" icon="pi pi-microsoft" /> -->
+  </div>
+
+  <div class="grid w-full">
+    <div class="col-4">
+      <div class="flex justify-content-center">
+        <p-image
+          src="https://a.storyblok.com/f/191576/1200x800/12d0d08ce3/change_background_color_before_.webp"
+          alt="Image"
+          width="400"
+        />
+      </div>
+
+      <p-divider align="left" type="solid">
+        <b>Sobre</b>
+      </p-divider>
+
+      <p class="text-xl">Profissional de Saúde</p>
+      <p>Cadastrado no sistema em 25 de outubro de 2021</p>
+    </div>
+
+    <div class="col-8">
+      <div class="flex align-items-center gap-3">
+        <p class="text-2xl font-bold">Cristiane Xavier</p>
+        <p>Rio de Janeiro, RJ</p>
+      </div>
+      <p class="-mt-3 mb-4 text-xl font-bold text-primary">Psicóloga</p>
+
+      <!-- <p>Avaliação geral</p>
+      <div class="flex align-items-center gap-2 -mt-5">
+        <p class="font-bold text-2xl">9,6</p>
+        <p-rating [(ngModel)]="value" [cancel]="false" />
+      </div> -->
+
+      <div class="flex mt-4 gap-2">
+        <p-button label="Mudar senha" />
+        <p-button label="Excluir conta" [outlined]="true" />
+      </div>
+    </div>
   </div>
 </div>

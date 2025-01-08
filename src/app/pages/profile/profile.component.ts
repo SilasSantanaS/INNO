@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './profile.component.scss',
 })
 export class ProfileComponent implements OnInit {
+  value: number = 5;
   breadcrumbItems: MenuItem[] = [];
 
   ngOnInit(): void {
