@@ -1,0 +1,97 @@
+<app-spinner [isLoading]="isLoading"></app-spinner>
+
+<div class="grid">
+  <div class="col-6">
+    <app-bread-crumb class="mb-4" [items]="breadcrumbItems"
+      >Novo Tenant</app-bread-crumb
+    >
+  </div>
+  <div class="col-6 flex justify-content-end align-content-center">
+    <!-- <p-button label="MAIS" icon="pi pi-plus" /> -->
+  </div>
+</div>
+
+<div class="grid">
+  <div class="col-9">
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <p-card header="Tenant" subheader="Informe os dados do tenant">
+        <div class="grid">
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label for="username">Razão social</label>
+              <input type="text" pInputText formControlName="name" />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label for="">Fantasia</label>
+              <input type="text" pInputText formControlName="nickname" />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Plano</label>
+              <p-dropdown
+                [options]="tiers"
+                class="flex w-50rem"
+                optionLabel="label"
+                optionValue="id"
+                formControlName="tier"
+              />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="flex flex-column gap-2">
+              <label>Status</label>
+              <p-dropdown
+                [options]="statuses"
+                class="flex w-50rem"
+                optionLabel="label"
+                optionValue="id"
+                formControlName="status"
+              />
+            </div>
+          </div>
+        </div>
+
+        <p-button
+          type="submit"
+          icon="pi pi-save"
+          label="Cadastrar"
+          class="mt-4 flex justify-content-end"
+          [disabled]="!form.valid"
+        />
+      </p-card>
+    </form>
+  </div>
+
+  <div class="col-3 p-0">
+    <div class="col-3">
+      <p-card
+        header="Clínica Visão"
+        subheader="Lorem ipsum dolor sit amet..."
+        [style]="{ width: '360px' }"
+      >
+        <ng-template pTemplate="header">
+          <img
+            alt="Card"
+            src="https://clinicavisao.com.br/wp-content/uploads/2021/12/logo-clinica-visao.png"
+          />
+        </ng-template>
+        <ng-template pTemplate="footer">
+          <div class="flex gap-3 mt-1">
+            <p-button
+              label="Enviar imagem"
+              class="w-full text-primary"
+              styleClass="w-full"
+              icon="pi pi-upload"
+            />
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+</div>
