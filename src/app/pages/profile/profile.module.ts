@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { DividerModule } from 'primeng/divider';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { BreadCrumbModule } from '../../components/bread-crumb/bread-crumb.module';
+import { ResetPasswordDialogModule } from "../home/dialogs/reset-password-dialog/reset-password-dialog.module";
 
 import { ProfileComponent } from './profile.component';
 
@@ -22,7 +23,8 @@ import { ProfileComponent } from './profile.component';
     RatingModule,
     DividerModule,
     BreadCrumbModule,
-    ProfileRoutingModule
-  ]
+    ProfileRoutingModule,
+    ResetPasswordDialogModule
+]
 })
 export class ProfileModule { }

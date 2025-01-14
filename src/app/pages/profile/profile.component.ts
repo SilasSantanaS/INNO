@@ -1,5 +1,5 @@
-import { MenuItem } from 'primeng/api';
 import { Component, OnInit } from '@angular/core';
+import { MenuItem, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-profile',
@@ -8,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
   value: number = 5;
+  isLoading: boolean = false;
   breadcrumbItems: MenuItem[] = [];
+
+  constructor(private messageService: MessageService) {}
 
   ngOnInit(): void {
     this.breadcrumbItems = [
@@ -17,5 +20,19 @@ export class ProfileComponent implements OnInit {
         routerLink: '/profile',
       },
     ];
+  }
+
+  removeAccount(): void {
+    this.isLoading = true;
+
+    setTimeout(() => {
+      this.isLoading = false;
+
+      this.messageService.add({
+        severity: 'info',
+        summary: 'Nota',
+        detail: 'Sua conta será excluída em até 72 horas.',
+      });
+    }, 1000);
   }
 }

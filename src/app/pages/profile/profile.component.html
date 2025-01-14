@@ -40,8 +40,13 @@
       </div> -->
 
       <div class="flex mt-4 gap-2">
-        <p-button label="Mudar senha" />
-        <p-button label="Excluir conta" [outlined]="true" />
+        <app-reset-password-dialog />
+        <p-button
+          label="Excluir conta"
+          [outlined]="true"
+          [loading]="isLoading"
+          (onClick)="removeAccount()"
+        />
       </div>
     </div>
   </div>

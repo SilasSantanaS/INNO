@@ -12,6 +12,17 @@
     <i class="pi pi-bell text-1xl" pBadge value="3"></i>
 
     <p-button
+      showDelay="700"
+      hideDelay="300"
+      icon="pi pi-cog"
+      rounded="true"
+      severity="primary"
+      text="true"
+      size="large"
+      (onClick)="op.toggle($event)"
+    />
+
+    <p-button
       pTooltip="Sair"
       showDelay="700"
       hideDelay="300"
@@ -24,3 +35,31 @@
     />
   </ng-template>
 </p-menubar>
+
+<p-overlayPanel #op>
+  <div class="flex flex-column gap-3 w-15rem">
+    <div>
+      <ul class="list-none p-0 m-0 flex flex-column gap-3">
+        <li
+          *ngFor="let member of members"
+          class="flex align-items-center gap-2"
+        >
+          <img
+            [src]="
+              'https://primefaces.org/cdn/primeng/images/demo/avatar/' +
+              member.image
+            "
+            style="width: 32px"
+          />
+          <div>
+            <span class="font-medium">{{ member.name }}</span>
+            <div class="text-sm text-color-secondary">{{ member.email }}</div>
+          </div>
+          <div
+            class="flex align-items-center gap-2 text-color-secondary ml-auto text-sm"
+          ></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</p-overlayPanel>
