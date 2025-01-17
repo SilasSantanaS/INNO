@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { MenuItem } from 'primeng/api';
 import { Tier } from '../../enums/tier';
 import { Router } from '@angular/router';
@@ -6,6 +6,8 @@ import { Status } from '../../enums/status';
 import { FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ITenant } from '../../interfaces/tenant';
+import { TenantsFacade } from '../../facades/tenants.facade';
+import { INITIAL_STATE, ITenantsState } from '../../stores/tenants.store';
 
 @Component({
   selector: 'app-tenants',
@@ -14,7 +16,15 @@ import { ITenant } from '../../interfaces/tenant';
 })
 export class TenantsComponent implements OnInit {
   breadcrumbItems: MenuItem[] = [];
-  tenants$!: Observable<ITenant[]>;
+  metadata: ITenantsState['metadata'] = INITIAL_STATE.metadata;
+
+  readonly filter$ = this.tenantsFacade.filter$;
+  readonly tenants$ = this.tenantsFacade.tenantsState$.pipe(
+    map((res) => {
+      this.metadata = res.metadata;
+      return res.result;
+    })
+  );
 
   columns = [
     { field: 'id', header: 'ID' },
@@ -56,7 +66,11 @@ export class TenantsComponent implements OnInit {
     status: [],
   });
 
-  constructor(private router: Router, private fb: FormBuilder) {}
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private tenantsFacade: TenantsFacade
+  ) {}
 
   ngOnInit(): void {
     this.breadcrumbItems = [
@@ -65,6 +79,8 @@ export class TenantsComponent implements OnInit {
         routerLink: '/tenants',
       },
     ];
+
+    console.log(this.tenants$);
   }
 
   create(): void {
