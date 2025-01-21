@@ -1,8 +1,9 @@
-import { Router } from '@angular/router';
 import { Tier } from '../../../enums/tier';
 import { Status } from '../../../enums/status';
 import { Component, OnInit } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TenantsFacade } from '../../../facades/tenants.facade';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -13,6 +14,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AddTenantsComponent implements OnInit {
   form: FormGroup;
   isLoading: boolean = false;
+  btnTitle: string = 'Cadastrar';
   breadcrumbItems: MenuItem[] = [];
 
   readonly statuses = [
@@ -44,6 +46,8 @@ export class AddTenantsComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private tenantsFacade: TenantsFacade,
     private messageService: MessageService
   ) {
     this.form = this.fb.group({
@@ -65,6 +69,22 @@ export class AddTenantsComponent implements OnInit {
         routerLink: '/tenants/new',
       },
     ];
+
+    this.configureEditComponent();
+  }
+
+  configureEditComponent(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+
+    if (!id) {
+      return;
+    }
+
+    const tenant = this.tenantsFacade.getTenantById(+id);
+
+    this.form.patchValue(tenant);
+
+    this.btnTitle = 'Editar';
   }
 
   save(): void {

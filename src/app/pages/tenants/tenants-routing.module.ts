@@ -16,6 +16,14 @@ const routes: Routes = [
         (m) => m.AddTenantsModule
       ),
   },
+  {
+    path: 'edit/:id',
+    title: 'INNO',
+    loadChildren: () =>
+      import('./add-tenants/add-tenants.module').then(
+        (m) => m.AddTenantsModule
+      ),
+  },
 ];
 
 @NgModule({

@@ -86,4 +86,12 @@ export class TenantsComponent implements OnInit {
   create(): void {
     this.router.navigate(['tenants/new']);
   }
+
+  editTenant(tenant: ITenant): void {
+    this.router.navigate([`tenants/edit/${tenant.id}`]);
+  }
+
+  deleteTenant(tenant: ITenant): void {
+
+  }
 }

@@ -61,6 +61,8 @@
     <app-table
       [columns]="columns"
       [data]="(tenants$! | async)!"
+      (edit)="editTenant($event)"
+      (delete)="deleteTenant($event)"
     ></app-table>
   </div>
 </div>
