@@ -57,6 +57,11 @@
     </div>
   </form>
 
+  <!-- <ng-template *ngIf="(tenants$ | async)?.length != 0">
+    <h1>NEHUM ITEM</h1>
+  </ng-template> -->
+  <!-- <h1>{{ (tenants$ | async)?.length }}</h1> -->
+
   <div class="w-full">
     <app-table
       [columns]="columns"
@@ -66,4 +71,3 @@
     ></app-table>
   </div>
 </div>
-

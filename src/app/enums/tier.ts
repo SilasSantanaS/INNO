@@ -1,5 +1,5 @@
 export enum Tier {
-  Starter,
-  Pro,
-  Premium,
+  Starter = 0,
+  Pro = 1,
+  Enterprise = 2,
 }

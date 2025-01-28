@@ -1,6 +1,7 @@
 import { Tier } from '../../../enums/tier';
 import { Status } from '../../../enums/status';
 import { Component, OnInit } from '@angular/core';
+import { ITenant } from '../../../interfaces/tenant';
 import { MenuItem, MessageService } from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TenantsFacade } from '../../../facades/tenants.facade';
@@ -38,8 +39,8 @@ export class AddTenantsComponent implements OnInit {
       label: 'Pro',
     },
     {
-      id: Tier.Premium,
-      label: 'Premium',
+      id: Tier.Enterprise,
+      label: 'Enterprise',
     },
   ];
 
@@ -52,9 +53,9 @@ export class AddTenantsComponent implements OnInit {
   ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
-      tier: ['', Validators.required],
       status: ['', Validators.required],
-      nickname: ['', Validators.required],
+      pricingTierId: ['', Validators.required],
+      corporateName: ['', Validators.required],
     });
   }
 
@@ -74,32 +75,56 @@ export class AddTenantsComponent implements OnInit {
   }
 
   configureEditComponent(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    this.route.paramMap.subscribe((params) => {
+      const id = params.get('id');
 
-    if (!id) {
-      return;
-    }
+      if (id) {
+        this.tenantsFacade.getTenantById(+id).subscribe((tenant) => {
+          this.form.patchValue({
+            ...tenant,
+            status: tenant.inactivatedAt ? Status.Inactive : Status.Active,
+          });
+        });
 
-    const tenant = this.tenantsFacade.getTenantById(+id);
-
-    this.form.patchValue(tenant);
-
-    this.btnTitle = 'Editar';
+        this.btnTitle = 'Editar';
+      }
+    });
   }
 
   save(): void {
     this.isLoading = true;
+    const tenant = { ...this.form.value } as ITenant;
 
-    setTimeout(() => {
-      this.isLoading = false;
+    this.route.paramMap.subscribe((params) => {
+      const tenantId = params.get('id');
 
-      this.messageService.add({
-        severity: 'success',
-        summary: 'Êxito',
-        detail: 'Tenant cadastrado com sucesso.',
+      if (tenantId) {
+        this.tenantsFacade.updateTenant(+tenantId, tenant).subscribe(() => {
+          this.isLoading = false;
+
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Êxito',
+            detail: 'Tenant editado com sucesso.',
+          });
+
+          this.router.navigate(['tenants']);
+        });
+
+        return;
+      }
+
+      this.tenantsFacade.newTenant(tenant).subscribe(() => {
+        this.isLoading = false;
+
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Êxito',
+          detail: 'Tenant cadastrado com sucesso.',
+        });
+
+        this.router.navigate(['tenants']);
       });
-
-      this.router.navigate(['tenants']);
-    }, 3000);
+    });
   }
 }

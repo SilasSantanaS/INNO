@@ -19,30 +19,24 @@ export class TenantsService {
   constructor(private readonly _http: HttpClient) {}
 
   getTenants(queryParams?: IGetTenantsParams) {
-    let result = this._http.get<ITenants>(`${this.baseUrl}/tenants`, {
+    return this._http.get<ITenants>(`${this.baseUrl}/tenants`, {
       params: queryParams as HttpParams,
     });
-
-    result.subscribe((data) => {
-      console.log(data);
-    });
-
-    return result;
   }
 
   getTenant(id: ITenant['id']) {
-    return this._http.get<ITenant>(`tenants/${id}`);
+    return this._http.get<ITenant>(`${this.baseUrl}/tenants/${id}`);
   }
 
   newTenant(tenant: ITenant) {
-    return this._http.post<ITenant>('tenants', tenant);
+    return this._http.post<ITenant>(`${this.baseUrl}/tenants`, tenant);
   }
 
   editTenant(id: ITenant['id'], tenant: ITenant) {
-    return this._http.put<ITenant>(`tenants/${id}`, tenant);
+    return this._http.put<ITenant>(`${this.baseUrl}/tenants/${id}`, tenant);
   }
 
   deleteTenant(id: ITenant['id']) {
-    return this._http.delete<ITenant>(`tenants/${id}`);
+    return this._http.delete<ITenant>(`${this.baseUrl}/tenants/${id}`);
   }
 }

@@ -1,11 +1,11 @@
-import { map, Observable } from 'rxjs';
-import { MenuItem } from 'primeng/api';
+import { map } from 'rxjs';
 import { Tier } from '../../enums/tier';
 import { Router } from '@angular/router';
 import { Status } from '../../enums/status';
 import { FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ITenant } from '../../interfaces/tenant';
+import { MenuItem, MessageService } from 'primeng/api';
 import { TenantsFacade } from '../../facades/tenants.facade';
 import { INITIAL_STATE, ITenantsState } from '../../stores/tenants.store';
 
@@ -22,15 +22,20 @@ export class TenantsComponent implements OnInit {
   readonly tenants$ = this.tenantsFacade.tenantsState$.pipe(
     map((res) => {
       this.metadata = res.metadata;
-      return res.result;
+
+      return res.result.map((tenant) => ({
+        ...tenant,
+        pricingTierId: Tier[tenant.pricingTierId],
+        status: tenant.inactivatedAt ? 'Inativo' : 'Ativo',
+      }));
     })
   );
 
   columns = [
     { field: 'id', header: 'ID' },
+    { field: 'corporateName', header: 'Razão social' },
     { field: 'name', header: 'Fanstasia' },
-    { field: 'email', header: 'Razão social' },
-    { field: 'userRole', header: 'Plano' },
+    { field: 'pricingTierId', header: 'Plano' },
     { field: 'status', header: 'Status' },
   ];
 
@@ -55,8 +60,8 @@ export class TenantsComponent implements OnInit {
       label: 'Pro',
     },
     {
-      id: Tier.Premium,
-      label: 'Premium',
+      id: Tier.Enterprise,
+      label: 'Enterprise',
     },
   ];
 
@@ -69,7 +74,8 @@ export class TenantsComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private tenantsFacade: TenantsFacade
+    private tenantsFacade: TenantsFacade,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -79,8 +85,6 @@ export class TenantsComponent implements OnInit {
         routerLink: '/tenants',
       },
     ];
-
-    console.log(this.tenants$);
   }
 
   create(): void {
@@ -92,6 +96,12 @@ export class TenantsComponent implements OnInit {
   }
 
   deleteTenant(tenant: ITenant): void {
-
+    this.tenantsFacade.deleteTenant(tenant).subscribe(() => {
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Êxito',
+        detail: `Tenant excluído com sucesso.`,
+      });
+    });
   }
 }
