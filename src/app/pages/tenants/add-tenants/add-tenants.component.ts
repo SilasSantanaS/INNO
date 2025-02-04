@@ -71,10 +71,10 @@ export class AddTenantsComponent implements OnInit {
       },
     ];
 
-    this.configureEditComponent();
+    this.editComponentSettings();
   }
 
-  configureEditComponent(): void {
+  editComponentSettings(): void {
     this.route.paramMap.subscribe((params) => {
       const id = params.get('id');
 

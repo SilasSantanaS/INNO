@@ -1,7 +1,7 @@
 import { IPayload } from './payload';
 
 export interface IUser {
-  id: string;
+  id: number;
   fullName: string;
   email: string;
   password: string;

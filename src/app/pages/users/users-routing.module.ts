@@ -13,6 +13,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./add-users/add-users.module').then((m) => m.AddUsersModule),
   },
+  {
+    path: 'edit/:id',
+    loadChildren: () =>
+      import('./add-users/add-users.module').then((m) => m.AddUsersModule),
+  },
 ];
 
 @NgModule({

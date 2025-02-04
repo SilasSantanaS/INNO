@@ -60,7 +60,8 @@
   <div class="w-full">
     <app-table
       [columns]="columns"
-      [data]="(healthPlans$! | async)!"
+      [data]="(users$! | async)!"
+      (edit)="editUser($event)"
     ></app-table>
   </div>
 </div>

@@ -57,11 +57,11 @@
             <div class="flex flex-column gap-2">
               <label>Perfil</label>
               <p-dropdown
-                [options]="userRoles"
+                [options]="profiles"
                 class="flex w-50rem"
                 optionLabel="label"
                 optionValue="id"
-                formControlName="userRole"
+                formControlName="profileId"
               />
             </div>
           </div>
@@ -83,7 +83,7 @@
         <p-button
           type="submit"
           icon="pi pi-save"
-          label="Cadastrar"
+          [label]="btnTitle"
           class="mt-4 flex justify-content-end"
           [disabled]="!form.valid"
         />

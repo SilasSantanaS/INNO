@@ -1,12 +1,13 @@
-import { Observable } from 'rxjs';
+import { map } from 'rxjs';
 import { MenuItem } from 'primeng/api';
 import { Router } from '@angular/router';
 import { Status } from '../../enums/status';
 import { FormBuilder } from '@angular/forms';
-import { UserRole } from '../../enums/user-role';
+import { IUser } from '../../interfaces/user';
+import { Profile } from '../../enums/profile';
 import { Component, OnInit } from '@angular/core';
 import { UsersFacade } from '../../facades/users.facade';
-import { IHealthPlan } from '../../interfaces/health-plan';
+import { INITIAL_STATE, IUsersState } from '../../stores/users.store';
 
 @Component({
   selector: 'app-users',
@@ -15,7 +16,18 @@ import { IHealthPlan } from '../../interfaces/health-plan';
 })
 export class UsersComponent implements OnInit {
   breadcrumbItems: MenuItem[] = [];
-  healthPlans$!: Observable<IHealthPlan[]>;
+  metadata: IUsersState['metadata'] = INITIAL_STATE.metadata;
+
+  readonly filter$ = this.usersFacade.filter$;
+  readonly users$ = this.usersFacade.usersState$.pipe(
+    map((res) => {
+      this.metadata = res.metadata;
+
+      return res.result.map((user) => ({
+        ...user,
+      }));
+    })
+  );
 
   columns = [
     { field: 'id', header: 'ID' },
@@ -38,19 +50,19 @@ export class UsersComponent implements OnInit {
 
   readonly userRoles = [
     {
-      id: UserRole.Admin,
+      id: Profile.Admin,
       label: 'Administrardor',
     },
     {
-      id: UserRole.Receptionist,
+      id: Profile.Receptionist,
       label: 'Recepcionista',
     },
     {
-      id: UserRole.Professional,
+      id: Profile.Professional,
       label: 'Profissional de Saúde',
     },
     {
-      id: UserRole.Patient,
+      id: Profile.Patient,
       label: 'Paciente',
     },
   ];
@@ -78,5 +90,9 @@ export class UsersComponent implements OnInit {
 
   create(): void {
     this.router.navigate(['users/new']);
+  }
+
+  editUser(user: IUser): void {
+    this.router.navigate([`users/edit/${user.id}`]);
   }
 }

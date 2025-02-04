@@ -18,6 +18,7 @@ export const INITIAL_STATE: IUsersState = {
 })
 export class UsersStore {
   private _usersState = new BehaviorSubject<IUsersState>(INITIAL_STATE);
+  readonly usersState$ = this._usersState.asObservable();
 
   constructor() {}
 

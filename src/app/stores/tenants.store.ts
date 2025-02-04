@@ -1,5 +1,5 @@
-import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ITenant, ITenants } from '../interfaces/tenant';
 
 export interface ITenantsState extends ITenants {}

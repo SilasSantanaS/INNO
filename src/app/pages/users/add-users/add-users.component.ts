@@ -1,10 +1,11 @@
-import { Router } from '@angular/router';
+import { Status } from '../../../enums/status';
 import { IUser } from '../../../interfaces/user';
 import { Component, OnInit } from '@angular/core';
-import { UserRole } from '../../../enums/user-role';
+import { Profile } from '../../../enums/profile';
 import { MenuItem, MessageService } from 'primeng/api';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UsersFacade } from '../../../facades/users.facade';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Status } from '../../../enums/status';
 
 @Component({
   selector: 'app-add-users',
@@ -14,6 +15,7 @@ import { Status } from '../../../enums/status';
 export class AddUsersComponent implements OnInit {
   form: FormGroup;
   isLoading: boolean = false;
+  btnTitle: string = 'Cadastrar';
   breadcrumbItems: MenuItem[] = [];
 
   readonly statuses = [
@@ -27,21 +29,21 @@ export class AddUsersComponent implements OnInit {
     },
   ];
 
-  readonly userRoles = [
+  readonly profiles = [
     {
-      id: UserRole.Admin,
+      id: Profile.Admin,
       label: 'Administrardor',
     },
     {
-      id: UserRole.Receptionist,
+      id: Profile.Receptionist,
       label: 'Recepcionista',
     },
     {
-      id: UserRole.Professional,
+      id: Profile.Professional,
       label: 'Profissional de Saúde',
     },
     {
-      id: UserRole.Patient,
+      id: Profile.Patient,
       label: 'Paciente',
     },
   ];
@@ -49,6 +51,8 @@ export class AddUsersComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private usersFacade: UsersFacade,
     private messageService: MessageService
   ) {
     this.form = this.fb.group({
@@ -57,7 +61,7 @@ export class AddUsersComponent implements OnInit {
       phone: ['', Validators.required],
       status: ['', Validators.required],
       password: ['', Validators.required],
-      userRole: ['', Validators.required],
+      profileId: ['', Validators.required],
     });
   }
 
@@ -72,14 +76,15 @@ export class AddUsersComponent implements OnInit {
         routerLink: '/users/new',
       },
     ];
+
+    this.editComponentSettings();
   }
 
   save(): void {
     this.isLoading = true;
-    let healthPlan = this.form.value as IUser;
-    //this.professinalService.createProfessinal(professional);
+    const user = { ...this.form.value } as IUser;
 
-    setTimeout(() => {
+    this.usersFacade.newUser(user).subscribe(() => {
       this.isLoading = false;
 
       this.messageService.add({
@@ -89,6 +94,24 @@ export class AddUsersComponent implements OnInit {
       });
 
       this.router.navigate(['./users']);
-    }, 3000);
+    });
+  }
+
+  editComponentSettings(): void {
+    this.route.paramMap.subscribe((params) => {
+      const id = params.get('id');
+
+      if (id) {
+        this.usersFacade.getUserById(+id).subscribe((user) => {
+          this.form.patchValue({
+            ...user,
+            password: '*********',
+          });
+        });
+
+        this.btnTitle = 'Editar';
+        this.form.get('password')?.disable();
+      }
+    });
   }
 }
