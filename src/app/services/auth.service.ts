@@ -1,23 +1,48 @@
-import { Observable } from 'rxjs';
+import { Observable, shareReplay } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { IUser } from '../interfaces/user';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment.prod';
 
+export interface ILoginBody {
+  email: IUser['email'];
+  password: IUser['password'];
+  rememberMe?: boolean;
+}
+
+export interface IRefreshTokenBody {
+  accessToken: string;
+  refreshToken: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  //private baseUrl: string = environment.apiBaseUrl;
-  private baseUrl: string = 'http://localhost:3000';
+  private baseUrl: string = environment.apiBaseUrl;
+  //private baseUrl: string = 'http://localhost:3000';
 
-  constructor(private http: HttpClient) {}
+  constructor(private _http: HttpClient) {}
+
+  login(body: ILoginBody) {
+    return this._http
+      .post<IUser>(`${this.baseUrl}/auth/login`, body)
+      .pipe(shareReplay());
+  }
+
+  refreshToken(body: IRefreshTokenBody) {
+    return this._http.post<IUser>('auth/refresh', body);
+  }
+
+  revokeToken(id: IUser['id']) {
+    return this._http.post(`auth/revoke/${id}`, null).pipe(shareReplay());
+  }
 
   registerUser(user: IUser) {
-    return this.http.post(`${this.baseUrl}/users`, user);
+    return this._http.post(`${this.baseUrl}/users`, user);
   }
 
   getUserByEmail(email: string): Observable<IUser[]> {
-    return this.http.get<IUser[]>(`${this.baseUrl}/users?email=${email}`);
+    return this._http.get<IUser[]>(`${this.baseUrl}/users?email=${email}`);
   }
 }
