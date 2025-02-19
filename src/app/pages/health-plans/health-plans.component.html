@@ -31,6 +31,8 @@
     <app-table
       [columns]="columns"
       [data]="(healthPlans$! | async)!"
+      (edit)="editHealthPlan($event)"
+      (delete)="deleteHealthPlan($event)"
     ></app-table>
   </div>
 </div>

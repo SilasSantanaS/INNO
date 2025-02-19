@@ -59,7 +59,7 @@ export class AuthComponent implements OnInit {
           return;
         }
 
-        return this.router.navigate(['/']);
+        return this.router.navigate(['/dashboard']);
       })
     );
   }
@@ -79,14 +79,19 @@ export class AuthComponent implements OnInit {
         .subscribe({
           next: (user) => {},
           error: (error) => {
-            this.messageService.add({
-              key: 'notification',
-              severity: 'error',
-              summary: 'Houve um problema!',
-              detail: error?.error?.messages?.length
-                ? error.error.messages[0]
-                : 'Tente novamente mais tarde.',
-            });
+            if (error.status === 401) {
+              this.messageService.add({
+                severity: 'error',
+                summary: 'Erro',
+                detail: 'Email e/ou senha inválido(s).',
+              });
+            } else {
+              this.messageService.add({
+                severity: 'error',
+                summary: 'Errro',
+                detail: 'Não foi possível logar no sistema.',
+              });
+            }
           },
         })
     );

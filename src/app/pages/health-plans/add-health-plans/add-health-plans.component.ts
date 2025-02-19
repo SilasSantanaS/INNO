@@ -1,6 +1,7 @@
-import { Router } from '@angular/router';
+import { Status } from '../../../enums/status';
 import { Component, OnInit } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IHealthPlan } from '../../../interfaces/health-plan';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HealthPlansFacade } from '../../../facades/health-plans.facade';
@@ -13,16 +14,30 @@ import { HealthPlansFacade } from '../../../facades/health-plans.facade';
 export class AddHealthPlansComponent implements OnInit {
   form: FormGroup;
   isLoading: boolean = false;
+  btnTitle: string = 'Cadastrar';
   breadcrumbItems: MenuItem[] = [];
+
+  readonly statuses = [
+    {
+      id: Status.Active,
+      label: 'Ativo',
+    },
+    {
+      id: Status.Inactive,
+      label: 'Inativo',
+    },
+  ];
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
+    private route: ActivatedRoute,
     private messageService: MessageService,
     private healthPlansFacade: HealthPlansFacade
   ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
+      status: ['', Validators.required],
     });
   }
 
@@ -37,23 +52,67 @@ export class AddHealthPlansComponent implements OnInit {
         routerLink: '/health-plans/new',
       },
     ];
+
+    this.editComponentSettings();
   }
 
   save(): void {
     this.isLoading = true;
-    let healthPlan = this.form.value as IHealthPlan;
-    //this.professinalService.createProfessinal(professional);
+    const healthPlan = { ...this.form.value } as IHealthPlan;
 
-    setTimeout(() => {
-      this.isLoading = false;
+    this.route.paramMap.subscribe((params) => {
+      const healthPlanId = params.get('id');
 
-      this.messageService.add({
-        severity: 'success',
-        summary: 'Êxito',
-        detail: 'Plano de saúde cadastrado com sucesso.',
+      if (healthPlanId) {
+        this.healthPlansFacade
+          .updateHealthPlan(+healthPlanId, healthPlan)
+          .subscribe(() => {
+            this.isLoading = false;
+
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Êxito',
+              detail: 'Plano de saúde editado com sucesso.',
+            });
+
+            this.router.navigate(['health-plans']);
+          });
+
+        return;
+      }
+
+      this.healthPlansFacade.newHealthPlan(healthPlan).subscribe(() => {
+        this.isLoading = false;
+
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Êxito',
+          detail: 'Plano de saúde cadastrado com sucesso.',
+        });
+
+        this.router.navigate(['health-plans']);
       });
+    });
+  }
 
-      this.router.navigate(['./health-plans']);
-    }, 3000);
+  editComponentSettings(): void {
+    this.route.paramMap.subscribe((params) => {
+      const id = params.get('id');
+
+      if (id) {
+        this.healthPlansFacade
+          .getHealthPlanById(+id)
+          .subscribe((healthPlan) => {
+            this.form.patchValue({
+              ...healthPlan,
+              status: healthPlan.inactivatedAt
+                ? Status.Inactive
+                : Status.Active,
+            });
+          });
+
+        this.btnTitle = 'Editar';
+      }
+    });
   }
 }

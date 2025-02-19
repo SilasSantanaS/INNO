@@ -21,6 +21,8 @@ export class AddPatientsComponent implements OnInit {
   btnTitle: string = 'Cadastrar';
   breadcrumbItems: MenuItem[] = [];
 
+  items: number[] = [0, 1, 2];
+
   readonly healthPlanTypes = [
     {
       id: HealthPlanType.Gold,

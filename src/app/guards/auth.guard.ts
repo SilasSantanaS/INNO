@@ -1,12 +1,34 @@
-import { inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  CanActivateChild,
+  Router,
+  RouterStateSnapshot,
+} from '@angular/router';
+import { map, Observable, tap } from 'rxjs';
+import { AuthFacade } from '../facades/auth.facade';
 
-export const authGuard: CanActivateFn = (route, state) => {
-  if (sessionStorage.getItem('email')) {
-    return true;
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthGuard implements CanActivate, CanActivateChild {
+  private readonly isAuthenticated$ = this.authFacade.authState$.pipe(
+    map(({ isAuthenticated }) => isAuthenticated)
+  );
+
+  constructor(private _router: Router, private authFacade: AuthFacade) {}
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    return (this.isAuthenticated$ as Observable<boolean>).pipe(
+      tap(
+        (isAuthenticated) =>
+          !isAuthenticated && this._router.navigate(['/auth/login'])
+      )
+    );
   }
 
-  const router = inject(Router);
-
-  return router.navigate(['auth/login']);
-};
+  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    return this.canActivate(route, state);
+  }
+}

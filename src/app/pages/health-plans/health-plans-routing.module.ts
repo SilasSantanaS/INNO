@@ -15,6 +15,13 @@ const routes: Routes = [
         (m) => m.AddHealthPlansModule
       ),
   },
+  {
+    path: ':id',
+    loadChildren: () =>
+      import('./add-health-plans/add-health-plans.module').then(
+        (m) => m.AddHealthPlansModule
+      ),
+  },
 ];
 
 @NgModule({

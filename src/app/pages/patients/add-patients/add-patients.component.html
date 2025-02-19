@@ -85,7 +85,7 @@
         </div>
 
         <p-divider align="left" type="solid">
-          <b>Plano de Saúde e adicionais</b>
+          <b>Plano de Saúde</b>
         </p-divider>
 
         <div class="grid">
@@ -233,9 +233,21 @@
           <b>Documentos e anexos</b>
         </p-divider>
 
-        <!-- <div class="grid flex justify-content-start">
-          <app-file-upload></app-file-upload>
-        </div> -->
+        <div class="bg-primary flex justify-content-end">
+          <p-button
+            label="Anexar arquivo"
+            icon="pi pi-file-import"
+            [text]="true"
+            class="mb-4"
+            pTooltip="Limite até 15MB"
+            showDelay="1000"
+          />
+        </div>
+
+        <app-file-card
+          *ngFor="let item of items"
+          [title]="'Certidão de nascimento (.pdf)'"
+        />
 
         <p-button
           type="submit"

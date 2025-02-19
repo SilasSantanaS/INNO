@@ -1,0 +1,34 @@
+<div class="mt-2">
+  <p-card [style]="{ height: '50px' }">
+    <div class="grid flex w-full -mt-6">
+      <div class="col-10 flex align-items-center">
+        <i class="pi pi-file" style="font-size: 1.3rem"></i>
+        <span class="ml-2"> {{ title }}</span>
+      </div>
+      <div class="col-2 flex align-items-end">
+        <p-button
+          icon="pi pi-download"
+          [rounded]="true"
+          [text]="true"
+          pTooltip="Baixar"
+          tooltipPosition="bottom"
+        />
+        <p-button
+          icon="pi pi-eye"
+          [rounded]="true"
+          [text]="true"
+          pTooltip="Visualizar"
+          tooltipPosition="bottom"
+        />
+        <p-button
+          icon="pi pi-trash"
+          [rounded]="true"
+          [text]="true"
+          pTooltip="Excluir"
+          tooltipPosition="bottom"
+          *ngIf="showDeleteButton"
+        />
+      </div>
+    </div>
+  </p-card>
+</div>

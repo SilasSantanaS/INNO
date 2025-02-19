@@ -1,6 +1,9 @@
+import { SubSink } from 'subsink';
+import { shareReplay } from 'rxjs';
 import { MenuItem } from 'primeng/api';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { AuthFacade } from '../../facades/auth.facade';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit {
+  private subs = new SubSink();
+
   items: MenuItem[] | undefined;
 
   members = [
@@ -31,11 +36,17 @@ export class HeaderComponent implements OnInit {
     },
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authFacade: AuthFacade) {}
 
   logout(): void {
-    sessionStorage.clear();
-    this.router.navigate(['auth/login']);
+    this.subs.add(
+      this.authFacade
+        .logout()
+        .pipe(shareReplay({ refCount: true }))
+        .subscribe(() => {
+          this.router.navigate(['auth/login']);
+        })
+    );
   }
 
   ngOnInit(): void {

@@ -1,6 +1,6 @@
-import { Observable, shareReplay } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { IUser } from '../interfaces/user';
+import { Observable, shareReplay } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment.prod';
 
@@ -26,12 +26,12 @@ export class AuthService {
 
   login(body: ILoginBody) {
     return this._http
-      .post<IUser>(`${this.baseUrl}/auth/login`, body)
+      .post<IUser>(`auth/login`, body)
       .pipe(shareReplay());
   }
 
   refreshToken(body: IRefreshTokenBody) {
-    return this._http.post<IUser>('auth/refresh', body);
+    return this._http.post<IUser>(`auth/refresh`, body);
   }
 
   revokeToken(id: IUser['id']) {
@@ -39,10 +39,10 @@ export class AuthService {
   }
 
   registerUser(user: IUser) {
-    return this._http.post(`${this.baseUrl}/users`, user);
+    return this._http.post(`users`, user);
   }
 
   getUserByEmail(email: string): Observable<IUser[]> {
-    return this._http.get<IUser[]>(`${this.baseUrl}/users?email=${email}`);
+    return this._http.get<IUser[]>(`users?email=${email}`);
   }
 }
