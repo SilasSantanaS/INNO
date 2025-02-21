@@ -1,0 +1,9 @@
+::webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+p-scroller-content {
+  scrollbar-width: none; /* Para Firefox */
+  -ms-overflow-style: none; /* Para IE e Edge */
+}
