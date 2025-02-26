@@ -9,6 +9,7 @@ import { ScrollerModule } from 'primeng/scroller';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { SpinnerModule } from '../../../components/spinner/spinner.module';
 import { DashPatientsRoutingModule } from './dash-patients-routing.module';
+import { FileCardModule } from "../../../components/file-card/file-card.module";
 import { BreadCrumbModule } from "../../../components/bread-crumb/bread-crumb.module";
 
 import { DashPatientsComponent } from './dash-patients.component';
@@ -25,10 +26,11 @@ import { DashPatientsComponent } from './dash-patients.component';
     CommonModule,
     TooltipModule,
     SpinnerModule,
+    FileCardModule,
     ScrollerModule,
     BreadCrumbModule,
     AvatarGroupModule,
-    DashPatientsRoutingModule
-  ]
+    DashPatientsRoutingModule,
+]
 })
 export class DashPatientsModule { }
