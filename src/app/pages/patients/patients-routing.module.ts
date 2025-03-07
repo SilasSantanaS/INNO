@@ -16,6 +16,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: ':id',
+    loadChildren: () =>
+      import('./add-patients/add-patients.module').then(
+        (m) => m.AddPatientsModule
+      ),
+  },
+  {
     path: 'dashboard',
     loadChildren: () =>
       import('./dash-patients/dash-patients.module').then(

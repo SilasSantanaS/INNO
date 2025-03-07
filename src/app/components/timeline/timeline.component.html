@@ -1,0 +1,23 @@
+<p-button
+  label="Ver histórico"
+  icon="pi pi-book"
+  [outlined]="true"
+  (onClick)="showDialog()"
+/>
+
+<p-dialog
+  header="Histórico"
+  [modal]="true"
+  [(visible)]="visible"
+  [style]="{ width: '50rem' }"
+  [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+>
+  <p-timeline [value]="events">
+    <ng-template pTemplate="content" let-event>
+      <small class="p-text-secondary">{{ event.date }}</small>
+    </ng-template>
+    <ng-template pTemplate="opposite" let-event>
+      {{ event.status }}
+    </ng-template>
+  </p-timeline>
+</p-dialog>

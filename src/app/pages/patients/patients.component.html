@@ -67,6 +67,10 @@
   </form>
 
   <div class="w-full">
-    <app-table [data]="(patients$! | async)!" [columns]="columns"></app-table>
+    <app-table
+      [data]="(patients$! | async)!"
+      (edit)="editPatient($event)"
+      [columns]="columns"
+    ></app-table>
   </div>
 </div>

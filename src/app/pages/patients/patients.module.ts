@@ -7,6 +7,7 @@ import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PatientsRoutingModule } from './patients-routing.module';
+import { TimelineModule } from '../../components/timeline/timeline.module';
 import { TableModule as TModule } from '../../components/table/table.module';
 import { FileCardModule } from '../../components/file-card/file-card.module';
 import { BreadCrumbModule } from '../../components/bread-crumb/bread-crumb.module';
@@ -19,6 +20,7 @@ import { PatientsComponent } from './patients.component';
     TModule,
     CommonModule,
     ButtonModule,
+    TimelineModule,
     FileCardModule,
     DropdownModule,
     InputTextModule,
